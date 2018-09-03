@@ -6,3 +6,6 @@
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/google/gs201/overlay-lineage
+
+# Google Assistant
+PRODUCT_PRODUCT_PROPERTIES += ro.opa.eligible_device=true
