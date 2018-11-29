@@ -2,12 +2,11 @@ import /vendor/etc/init/hw/init.gs201.usb.rc
 import android.hardware.drm@1.2-service.widevine.rc
 import init.exynos.sensorhub.rc
 
-on early-init && property:ro.debuggable=1
-    # Convert /dev/block/by-name/persist to ext4 on userdebug builds only
+on early-init && property:ro.build.type=eng
+    # Convert /dev/block/by-name/persist to ext4 on eng builds only
     exec -- /system_ext/bin/convert_to_ext4.sh /dev/block/by-name/persist false
-    mount_all /vendor/etc/fstab.persist --early
 
-on early-init && property:ro.debuggable=0
+on early-init
     mount_all /vendor/etc/fstab.persist --early
 
 on init
@@ -653,8 +652,8 @@ on property:vendor.ril.cbd.svc=0
     stop lhd
     stop scd
 
-# on userdebug and eng builds, enable kgdb on the serial console
-on property:ro.debuggable=1
+# on eng builds, enable kgdb on the serial console
+on property:ro.build.type=eng
     write /sys/module/kgdboc/parameters/kgdboc ttyFIQ1
     write /sys/module/fiq_debugger/parameters/kgdb_enable 1
 
