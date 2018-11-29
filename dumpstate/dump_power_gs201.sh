@@ -88,7 +88,7 @@ if [ -e "/dev/logbuffer_tcpm" ]
 then
   echo "\n------ Logbuffer TCPM ------"
   cat "/dev/logbuffer_tcpm"
-elif [ $build_type = "userdebug" ]
+elif [ $build_type = "eng" ]
 then
   echo "\n------ TCPM logs ------"
   if [ -d "/sys/kernel/debug/tcpm" ]
@@ -172,7 +172,7 @@ cat "/sys/class/power_supply/main-charger/device/registers_dump"
 echo "\n------ max77729_pmic registers dump ------"
 cat /sys/devices/platform/*.hsi2c/i2c-*/*-0066/registers_dump
 
-if [ $build_type = "userdebug" ]
+if [ $build_type = "eng" ]
 then
   echo "\n------ Charging table dump ------"
   cat "/d/google_battery/chg_raw_profile"
@@ -226,7 +226,7 @@ fi
 
 echo "\n------ Charger Stats ------"
 cat "/sys/class/power_supply/battery/charge_details"
-if [ $build_type = "userdebug" ]
+if [ $build_type = "eng" ]
 then
   echo "\n------ Google Charger ------"
   cd /sys/kernel/debug/google_charger/
@@ -253,7 +253,7 @@ cat "/sys/class/power_supply/wireless/device/fw_rev"
 echo "\n------ RTX ------"
 cat "/dev/logbuffer_rtx"
 
-if [ $build_type = "userdebug" ]
+if [ $build_type = "eng" ]
 then
   echo "\n------ gvotables ------"
   cat /sys/kernel/debug/gvotables/*/status

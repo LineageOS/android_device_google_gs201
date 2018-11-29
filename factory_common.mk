@@ -81,5 +81,5 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.device_config.configuration.disable_rescue_party=true
 
 # PixelLogger for RF testing
-PRODUCT_PACKAGES_DEBUG += \
+PRODUCT_PACKAGES_ENG += \
     PixelLogger \
