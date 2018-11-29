@@ -3,7 +3,7 @@ PRODUCT_COPY_FILES += \
 	device/google/gs201/gnss/47765/config/gps.cer:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.cer \
 	device/google/gs201/gnss/47765/firmware/SensorHub.patch:$(TARGET_COPY_OUT_VENDOR)/firmware/SensorHub.patch
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 	PRODUCT_COPY_FILES += \
 		device/google/gs201/gnss/47765/config/lhd.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/lhd.conf \
 		device/google/gs201/gnss/47765/config/scd.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/scd.conf
@@ -25,5 +25,7 @@ PRODUCT_PACKAGES += \
 	scd \
 	android.hardware.gnss@2.1-service-brcm
 
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES_DEBUG += \
 	init.gps_log.rc
+endif
