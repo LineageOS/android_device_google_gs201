@@ -14,3 +14,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Google Assistant
 PRODUCT_PRODUCT_PROPERTIES += ro.opa.eligible_device=true
+
+# Parts
+PRODUCT_PACKAGES += \
+    GoogleParts
