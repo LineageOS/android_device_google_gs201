@@ -22,3 +22,6 @@ PRODUCT_PRODUCT_PROPERTIES += ro.opa.eligible_device=true
 # Parts
 PRODUCT_PACKAGES += \
     GoogleParts
+
+# Touch
+include hardware/google/pixel/touch/device.mk
