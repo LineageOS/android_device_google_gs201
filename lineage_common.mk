@@ -15,3 +15,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Linker config
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
     device/google/gs201/linker.config.json
+
+# Touch
+include hardware/google/pixel/touch/device.mk
