@@ -433,3 +433,5 @@ BOARD_PVMFWIMAGE_PARTITION_SIZE := 0x00100000
 
 # pick up library for cleaning digital car keys on factory reset
 -include vendor/google_devices/gs-common/proprietary/BoardConfigVendor.mk
+
+include device/google/gs201/BoardConfigLineage.mk
