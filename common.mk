@@ -321,6 +321,11 @@ endif
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
+# GMS
+ifeq ($(WITH_GMS),true)
+GMS_MAKEFILE=gms_minimal.mk
+endif
+
 # GNSS
 ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
