@@ -1,0 +1,8 @@
+# b/205073167
+dontaudit hal_neuralnetworks_armnn default_prop:file { open };
+dontaudit hal_neuralnetworks_armnn default_prop:file { read };
+# b/205202540
+dontaudit hal_neuralnetworks_armnn default_prop:file { getattr };
+dontaudit hal_neuralnetworks_armnn default_prop:file { map };
+# b/205779871
+dontaudit hal_neuralnetworks_armnn system_data_file:dir { search };

@@ -1,0 +1,3 @@
+# b/229354991
+dontaudit untrusted_app isolated_app:process { getsched };
+dontaudit untrusted_app shell_test_data_file:dir { search };

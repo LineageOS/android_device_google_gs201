@@ -1,0 +1,2 @@
+# b/208909060
+dontaudit hardware_info_app vendor_maxfg_debugfs:dir search;

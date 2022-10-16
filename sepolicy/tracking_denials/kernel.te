@@ -1,0 +1,9 @@
+# b/213817227
+dontaudit kernel vendor_battery_debugfs:dir { search };
+# b/220801802
+allow kernel same_process_hal_file:file r_file_perms;
+# b/227121550
+dontaudit kernel vendor_usb_debugfs:dir { search };
+dontaudit kernel vendor_votable_debugfs:dir { search };
+# b/228181404
+dontaudit kernel vendor_maxfg_debugfs:dir { search };

@@ -1,0 +1,2 @@
+allow system_app hal_wlc_hwservice:hwservice_manager find;
+binder_call(system_app, hal_wlc)

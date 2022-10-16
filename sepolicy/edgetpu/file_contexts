@@ -1,0 +1,2 @@
+# EdgeTPU device (DarwiNN)
+/dev/janeiro                      u:object_r:edgetpu_device:s0

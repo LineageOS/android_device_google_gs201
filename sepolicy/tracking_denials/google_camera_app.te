@@ -1,0 +1,8 @@
+# b/209889068
+dontaudit google_camera_app edgetpu_app_service:service_manager { find };
+dontaudit google_camera_app edgetpu_device:chr_file { ioctl };
+dontaudit google_camera_app edgetpu_device:chr_file { map };
+dontaudit google_camera_app edgetpu_device:chr_file { read write };
+dontaudit google_camera_app vendor_default_prop:file { getattr };
+dontaudit google_camera_app vendor_default_prop:file { map };
+dontaudit google_camera_app vendor_default_prop:file { open };
