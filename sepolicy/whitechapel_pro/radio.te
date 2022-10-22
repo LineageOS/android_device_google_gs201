@@ -3,3 +3,5 @@ allow radio proc_vendor_sched:file w_file_perms;
 
 allow radio radio_vendor_data_file:dir rw_dir_perms;
 allow radio radio_vendor_data_file:file create_file_perms;
+
+allow radio hal_exynos_rild_hwservice:hwservice_manager find;
