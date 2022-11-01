@@ -16,6 +16,7 @@ allow rild mnt_vendor_file:dir r_dir_perms;
 
 r_dir_file(rild, modem_img_file)
 
+binder_call(rild, platform_app)
 binder_call(rild, bipchmgr)
 binder_call(rild, gpsd)
 binder_call(rild, hal_audio_default)
