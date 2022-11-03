@@ -305,9 +305,6 @@ BOARD_SECCOMP_POLICY = device/google/gs201/seccomp_policy
 #CURL
 BOARD_USES_CURL := true
 
-# Sensor HAL
-BOARD_USES_EXYNOS_SENSORS_DUMMY := true
-
 # VISION
 # Exynos vision framework (EVF)
 #TARGET_USES_EVF := true
