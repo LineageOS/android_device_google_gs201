@@ -901,7 +901,7 @@ endif
 
 #GPS HAL
 include device/google/gs201/gnss/device-gnss.mk
-BOARD_VENDOR_SEPOLICY_DIRS += device/google/gs201-sepolicy/gps
+BOARD_VENDOR_SEPOLICY_DIRS += device/google/gs201/sepolicy/gps
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 #$(call inherit-product, hardware/google_devices/exynos5/exynos5.mk)
