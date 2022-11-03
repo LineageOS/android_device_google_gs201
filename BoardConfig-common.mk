@@ -416,7 +416,7 @@ BOARD_VENDOR_KERNEL_MODULES := $(KERNEL_MODULES)
 # Using BUILD_COPY_HEADERS
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
-include device/google/gs201-sepolicy/gs201-sepolicy.mk
+include device/google/gs201/sepolicy/gs201-sepolicy.mk
 
 # Battery options
 BOARD_KERNEL_CMDLINE += at24.write_timeout=100
