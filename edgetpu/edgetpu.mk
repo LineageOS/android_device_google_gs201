@@ -24,5 +24,5 @@ PRODUCT_PACKAGES += \
 # TPU metrics logger library
 PRODUCT_PACKAGES += \
 	libmetrics_logger
-BOARD_VENDOR_SEPOLICY_DIRS += device/google/gs101-sepolicy/edgetpu/
-BOARD_VENDOR_SEPOLICY_DIRS += device/google/gs201-sepolicy/edgetpu/
+BOARD_VENDOR_SEPOLICY_DIRS += device/google/gs101/sepolicy/edgetpu/
+BOARD_VENDOR_SEPOLICY_DIRS += device/google/gs201/sepolicy/edgetpu/
