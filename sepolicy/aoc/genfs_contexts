@@ -1,0 +1,28 @@
+# AOC
+genfscon sysfs /devices/platform/19000000.aoc/aoc_clock_and_kernel_boottime u:object_r:sysfs_aoc_boottime:s0
+genfscon sysfs /devices/platform/19000000.aoc/firmware                      u:object_r:sysfs_aoc_firmware:s0
+genfscon sysfs /devices/platform/19000000.aoc                               u:object_r:sysfs_aoc:s0
+genfscon sysfs /devices/platform/19000000.aoc/reset                         u:object_r:sysfs_aoc_reset:s0
+genfscon sysfs /devices/platform/19000000.aoc/services                      u:object_r:sysfs_aoc_dumpstate:s0
+genfscon sysfs /devices/platform/19000000.aoc/restart_count                 u:object_r:sysfs_aoc_dumpstate:s0
+genfscon sysfs /devices/platform/19000000.aoc/coredump_count                u:object_r:sysfs_aoc_dumpstate:s0
+genfscon sysfs /devices/platform/19000000.aoc/control/ring_buffer_wakeup    u:object_r:sysfs_aoc_dumpstate:s0
+genfscon sysfs /devices/platform/19000000.aoc/control/host_ipc_wakeup       u:object_r:sysfs_aoc_dumpstate:s0
+genfscon sysfs /devices/platform/19000000.aoc/control/usf_wakeup            u:object_r:sysfs_aoc_dumpstate:s0
+genfscon sysfs /devices/platform/19000000.aoc/control/audio_wakeup          u:object_r:sysfs_aoc_dumpstate:s0
+genfscon sysfs /devices/platform/19000000.aoc/control/logging_wakeup        u:object_r:sysfs_aoc_dumpstate:s0
+genfscon sysfs /devices/platform/19000000.aoc/control/hotword_wakeup        u:object_r:sysfs_aoc_dumpstate:s0
+genfscon sysfs /devices/platform/19000000.aoc/control/memory_exception      u:object_r:sysfs_aoc_dumpstate:s0
+genfscon sysfs /devices/platform/19000000.aoc/control/memory_votes          u:object_r:sysfs_aoc_dumpstate:s0
+
+# pixelstat_vendor
+genfscon sysfs /devices/platform/audiometrics/codec_state                   u:object_r:sysfs_pixelstats:s0
+genfscon sysfs /devices/platform/audiometrics/hs_codec_state                u:object_r:sysfs_pixelstats:s0
+genfscon sysfs /devices/platform/audiometrics/speaker_impedance             u:object_r:sysfs_pixelstats:s0
+genfscon sysfs /devices/platform/audiometrics/speaker_excursion             u:object_r:sysfs_pixelstats:s0
+genfscon sysfs /devices/platform/audiometrics/speaker_heartbeat             u:object_r:sysfs_pixelstats:s0
+genfscon sysfs /devices/platform/audiometrics/speaker_temp                  u:object_r:sysfs_pixelstats:s0
+genfscon sysfs /devices/platform/audiometrics/mic_broken_degrade            u:object_r:sysfs_pixelstats:s0
+genfscon sysfs /devices/platform/audiometrics/codec_crashed_counter         u:object_r:sysfs_pixelstats:s0
+genfscon sysfs /devices/platform/audiometrics/hwinfo_part_number            u:object_r:sysfs_pixelstats:s0
+

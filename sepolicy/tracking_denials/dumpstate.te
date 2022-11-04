@@ -1,0 +1,6 @@
+# b/221384768
+dontaudit dumpstate app_zygote:process { signal };
+dontaudit dumpstate hal_power_stats_vendor_service:service_manager { find };
+dontaudit dumpstate sysfs:file { read };
+# b/227694693
+dontaudit dumpstate incident:process { signal };

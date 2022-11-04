@@ -1,0 +1,2 @@
+# b/226850644
+dontaudit incidentd debugfs_wakeup_sources:file { read };

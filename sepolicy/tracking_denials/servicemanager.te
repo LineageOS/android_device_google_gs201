@@ -1,0 +1,4 @@
+# b/214122471
+dontaudit servicemanager hal_fingerprint_default:binder { call };
+# b/229677756
+dontaudit servicemanager hal_dumpstate_default:binder { call };
