@@ -110,6 +110,7 @@ genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-5/i2c-s2mpg13mfd/s2mp
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-6/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/iio:device   u:object_r:sysfs_odpm:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-7/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/iio:device   u:object_r:sysfs_odpm:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-8/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/iio:device   u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-9/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/iio:device   u:object_r:sysfs_odpm:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-0/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-1/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-2/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
@@ -119,6 +120,7 @@ genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-5/i2c-s2mpg13mfd/s2mp
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-6/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-7/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-8/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-9/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 
 # Devfreq current frequency
 genfscon sysfs /devices/platform/17000010.devfreq_mif/devfreq/17000010.devfreq_mif/cur_freq             u:object_r:sysfs_devfreq_cur:s0
@@ -236,6 +238,13 @@ genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-5/5-0069/power_supply       
 genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-6/6-0069/power_supply       u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-7/7-0069/power_supply       u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-8/8-0069/power_supply       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-2/2-0057/chg_stats          u:object_r:sysfs_pca:s0
+genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-3/3-0057/chg_stats          u:object_r:sysfs_pca:s0
+genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-4/4-0057/chg_stats          u:object_r:sysfs_pca:s0
+genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-5/5-0057/chg_stats          u:object_r:sysfs_pca:s0
+genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-6/6-0057/chg_stats          u:object_r:sysfs_pca:s0
+genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-7/7-0057/chg_stats          u:object_r:sysfs_pca:s0
+genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-8/8-0057/chg_stats          u:object_r:sysfs_pca:s0
 
 # Extcon
 genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-2/i2c-max77759tcpc/extcon   u:object_r:sysfs_extcon:s0
@@ -337,6 +346,7 @@ genfscon sysfs /devices/platform/11210000.usb/wakeup                            
 genfscon sysfs /devices/platform/14520000.pcie/pci0001:00/0001:00:00.0/0001:01:00.0/wakeup                                  u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/14520000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/wakeup                                  u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/19000000.aoc/com.google.usf/wakeup                                                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/19000000.aoc/com.google.usf.non_wake_up/wakeup                                             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/19000000.aoc/wakeup                                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/19000000.aoc/usb_control/wakeup                                                            u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-7/i2c-s2mpg12mfd/s2mpg12-power-keys/wakeup                       u:object_r:sysfs_wakeup:s0
@@ -406,3 +416,7 @@ genfscon sysfs /module/trusty_core/parameters/use_high_wq                 u:obje
 
 # EM Profile
 genfscon sysfs /kernel/pixel_em/active_profile                            u:object_r:sysfs_em_profile:s0
+
+# Privacy LED
+genfscon sysfs /devices/platform/pwmleds/leds/green/brightness            u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/pwmleds/leds/green/max_brightness        u:object_r:sysfs_leds:s0

@@ -6,6 +6,11 @@ allow hal_dumpstate_default sysfs_cpu:file r_file_perms;
 allow hal_dumpstate_default vendor_usf_reg_edit:file execute_no_trans;
 allow hal_dumpstate_default vendor_usf_stats:file execute_no_trans;
 
+userdebug_or_eng(`
+  allow hal_dumpstate_default sensor_debug_data_file:dir r_dir_perms;
+  allow hal_dumpstate_default sensor_debug_data_file:file r_file_perms;
+')
+
 allow hal_dumpstate_default vendor_rfsd_log_file:dir r_dir_perms;
 allow hal_dumpstate_default vendor_rfsd_log_file:file r_file_perms;
 
@@ -93,6 +98,13 @@ allow hal_dumpstate_default vendor_shell_exec:file execute_no_trans;
 
 allow hal_dumpstate_default proc_vendor_sched:dir r_dir_perms;
 allow hal_dumpstate_default proc_vendor_sched:file r_file_perms;
+
+userdebug_or_eng(`
+  allow hal_dumpstate_default sysfs_leds:dir search;
+  allow hal_dumpstate_default sysfs_leds:file rw_file_perms;
+  allow hal_dumpstate_default persist_file:dir search;
+  r_dir_file(hal_dumpstate_default, persist_leds_file);
+')
 
 get_prop(hal_dumpstate_default, vendor_camera_debug_prop);
 get_prop(hal_dumpstate_default, boottime_public_prop)

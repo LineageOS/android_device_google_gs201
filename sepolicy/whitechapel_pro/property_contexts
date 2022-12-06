@@ -103,3 +103,6 @@ vendor.dynamic_sensor.                     u:object_r:vendor_dynamic_sensor_prop
 
 # for ims service
 persist.vendor.ims.                        u:object_r:vendor_imssvc_prop:s0
+
+# for vendor telephony debug app
+vendor.config.debug.                       u:object_r:vendor_telephony_app_prop:s0

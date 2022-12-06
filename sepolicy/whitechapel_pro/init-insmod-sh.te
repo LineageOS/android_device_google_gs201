@@ -10,6 +10,7 @@ allow init-insmod-sh self:capability sys_nice;
 allow init-insmod-sh kernel:process setsched;
 
 set_prop(init-insmod-sh, vendor_device_prop)
+set_prop(init-insmod-sh, vendor_ready_prop)
 
 dontaudit init-insmod-sh proc_cmdline:file r_file_perms;
 
