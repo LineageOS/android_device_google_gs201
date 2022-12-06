@@ -11,3 +11,5 @@ init-insmod-sh vendor_ready_prop property_service b/239364360
 kernel vendor_charger_debugfs dir b/238571150
 kernel vendor_usb_debugfs dir b/227121550
 shell sysfs_wlc dir b/238260741
+hal_contexthub_default fwk_stats_service service_manager b/241714943
+shell sscoredump_vendor_data_crashinfo_file dir b/241714944

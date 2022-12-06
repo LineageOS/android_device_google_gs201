@@ -44,6 +44,7 @@
 /vendor/bin/hw/battery_mitigation                                           u:object_r:battery_mitigation_exec:s0
 /vendor/bin/hw/android\.hardware\.memtrack-service\.pixel                   u:object_r:hal_memtrack_default_exec:s0
 /system_ext/bin/convert_to_ext4\.sh                                         u:object_r:convert-to-ext4-sh_exec:s0
+/vendor/bin/hw/disable_contaminant_detection\.sh                            u:object_r:disable-contaminant-detection-sh_exec:s0
 
 # Vendor Firmwares
 /vendor/firmware(/.*)?                                                      u:object_r:vendor_fw_file:s0
@@ -91,6 +92,7 @@
 /dev/watchdog0                                                              u:object_r:watchdog_device:s0
 /dev/mali0                                                                  u:object_r:gpu_device:s0
 /dev/logbuffer_usbpd                                                        u:object_r:logbuffer_device:s0
+/dev/logbuffer_pogo_transport                                               u:object_r:logbuffer_device:s0
 /dev/logbuffer_ssoc                                                         u:object_r:logbuffer_device:s0
 /dev/logbuffer_wireless                                                     u:object_r:logbuffer_device:s0
 /dev/logbuffer_ttf                                                          u:object_r:logbuffer_device:s0
@@ -150,6 +152,7 @@
 /dev/st33spi                                                                u:object_r:st33spi_device:s0
 /dev/ttyGS[0-3]                                                             u:object_r:serial_device:s0
 /dev/oem_ipc[0-7]                                                           u:object_r:radio_device:s0
+/dev/oem_test                                                               u:object_r:radio_test_device:s0
 /dev/umts_boot0                                                             u:object_r:radio_device:s0
 /dev/umts_ipc0                                                              u:object_r:radio_device:s0
 /dev/umts_ipc1                                                              u:object_r:radio_device:s0
@@ -206,6 +209,7 @@
 /data/vendor/media(/.*)?                                                    u:object_r:vendor_media_data_file:s0
 /data/vendor/misc(/.*)?                                                     u:object_r:vendor_misc_data_file:s0
 /data/per_boot(/.*)?                                                        u:object_r:per_boot_file:s0
+/data/vendor/sensors/debug(/.*)?                                            u:object_r:sensor_debug_data_file:s0
 /data/vendor/sensors/registry(/.*)?                                         u:object_r:sensor_reg_data_file:s0
 /data/vendor/uwb(/.*)?                                                      u:object_r:uwb_data_vendor:s0
 /dev/battery_history                                                        u:object_r:battery_history_device:s0
@@ -220,6 +224,7 @@
 /mnt/vendor/persist/ss(/.*)?                                                u:object_r:persist_ss_file:s0
 /mnt/vendor/persist/uwb(/.*)?                                               u:object_r:persist_uwb_file:s0
 /mnt/vendor/persist/display(/.*)?                                           u:object_r:persist_display_file:s0
+/mnt/vendor/persist/led(/.*)?                                               u:object_r:persist_leds_file:s0
 
 # Extra mount images
 /mnt/vendor/modem_img(/.*)?                                                 u:object_r:modem_img_file:s0
