@@ -1135,7 +1135,7 @@ PRODUCT_PACKAGES += \
 	update_verifier
 
 # pKVM
-$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
+#$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
 PRODUCT_BUILD_PVMFW_IMAGE := true
 
 # Enable to build standalone vendor_kernel_boot image.
