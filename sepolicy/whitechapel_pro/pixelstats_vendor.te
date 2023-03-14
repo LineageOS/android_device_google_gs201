@@ -26,3 +26,10 @@ allow pixelstats_vendor sysfs_pca:file rw_file_perms;
 #Thermal
 r_dir_file(pixelstats_vendor, sysfs_thermal)
 allow pixelstats_vendor sysfs_thermal:lnk_file r_file_perms;
+
+#vendor-metrics
+r_dir_file(pixelstats_vendor, sysfs_vendor_metrics)
+
+# BCL
+allow pixelstats_vendor sysfs_bcl:dir search;
+allow pixelstats_vendor sysfs_bcl:file r_file_perms;

@@ -108,6 +108,7 @@
 /dev/logbuffer_maxfg_monitor                                                u:object_r:logbuffer_device:s0
 /dev/logbuffer_maxfg_base_monitor                                           u:object_r:logbuffer_device:s0
 /dev/logbuffer_maxfg_flip_monitor                                           u:object_r:logbuffer_device:s0
+/dev/logbuffer_bd                                                           u:object_r:logbuffer_device:s0
 /dev/bbd_pwrstat                                                            u:object_r:power_stats_device:s0
 /dev/lwis-act-jotnar                                                        u:object_r:lwis_device:s0
 /dev/lwis-act-slenderman                                                    u:object_r:lwis_device:s0
@@ -213,6 +214,7 @@
 /data/vendor/sensors/debug(/.*)?                                            u:object_r:sensor_debug_data_file:s0
 /data/vendor/sensors/registry(/.*)?                                         u:object_r:sensor_reg_data_file:s0
 /data/vendor/uwb(/.*)?                                                      u:object_r:uwb_data_vendor:s0
+/dev/maxfg_history                                                          u:object_r:battery_history_device:s0
 /dev/battery_history                                                        u:object_r:battery_history_device:s0
 /data/vendor/powerstats(/.*)?                                               u:object_r:powerstats_vendor_data_file:s0
 /data/vendor/mitigation(/.*)?                                               u:object_r:mitigation_vendor_data_file:s0

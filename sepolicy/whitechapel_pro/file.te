@@ -56,7 +56,7 @@ type sysfs_soc, sysfs_type, fs_type;
 type sysfs_camera, sysfs_type, fs_type;
 type sysfs_write_leds, sysfs_type, fs_type;
 type sysfs_pca, sysfs_type, fs_type;
-
+type sysfs_ptracker, sysfs_type, fs_type;
 # debugfs
 type debugfs_f2fs, debugfs_type, fs_type;
 type vendor_maxfg_debugfs, fs_type, debugfs_type;
@@ -96,6 +96,9 @@ type vendor_usf_stats, vendor_file_type, file_type;
 type vendor_usf_reg_edit, vendor_file_type, file_type;
 type vendor_dumpsys, vendor_file_type, file_type;
 
+#vendor-metrics
+type sysfs_vendor_metrics, fs_type, sysfs_type;
+
 # Modem
 type modem_efs_file, file_type;
 type modem_userdata_file, file_type;
@@ -109,6 +112,9 @@ type sysfs_usbc_throttling_stats, sysfs_type, fs_type;
 
 # Touch
 type proc_touch, proc_type, fs_type;
+userdebug_or_eng(`
+    typeattribute proc_touch mlstrustedobject;
+')
 
 # Vendor sched files
 userdebug_or_eng(`

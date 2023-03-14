@@ -44,6 +44,9 @@ user=_app isPrivApp=true seinfo=mds name=com.google.mds domain=modem_diagnostic_
 # CBRS setup app
 user=_app seinfo=platform name=com.google.googlecbrs domain=cbrs_setup_app type=app_data_file levelFrom=user
 
+# Touch app
+user=_app seinfo=platform name=com.google.touch.touchinspector domain=google_touch_app type=app_data_file levelFrom=user
+
 # Qorvo UWB system app
 # TODO(b/222204912): Should this run under uwb user?
 user=_app isPrivApp=true seinfo=uwb name=com.qorvo.uwb.vendorservice domain=uwb_vendor_app type=uwb_vendor_data_file levelFrom=all
@@ -71,3 +74,6 @@ user=system seinfo=platform name=com.google.android.CatEngine domain=cat_engine_
 
 # CccDkTimeSyncService
 user=_app isPrivApp=true name=com.google.pixel.digitalkey.timesync domain=vendor_cccdktimesync_app type=app_data_file levelFrom=all
+
+# BrownoutDetection
+user=_app isPrivApp=true name=com.google.android.brownoutdetection domain=brownout_detection_app type=app_data_file levelFrom=all
