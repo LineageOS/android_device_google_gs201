@@ -35,3 +35,12 @@ set_prop(vendor_init, vendor_battery_defender_prop)
 
 # Display
 set_prop(vendor_init, vendor_display_prop)
+
+# Battery Mitigation
+set_prop(vendor_init, vendor_brownout_reason_prop)
+
+# MM
+allow vendor_init proc_watermark_scale_factor:file w_file_perms;
+
+# Trusty storage FS ready
+get_prop(vendor_init, vendor_trusty_storage_prop)

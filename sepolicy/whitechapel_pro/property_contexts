@@ -106,3 +106,10 @@ persist.vendor.ims.                        u:object_r:vendor_imssvc_prop:s0
 
 # for vendor telephony debug app
 vendor.config.debug.                       u:object_r:vendor_telephony_app_prop:s0
+
+# Battery Mitigation
+vendor.brownout.mitigation.ready           u:object_r:vendor_mitigation_ready_prop:s0
+vendor.brownout_reason                     u:object_r:vendor_brownout_reason_prop:s0
+
+# Trusty
+ro.vendor.trusty.storage.fs_ready          u:object_r:vendor_trusty_storage_prop:s0

@@ -40,6 +40,7 @@ genfscon sysfs /devices/platform/10db0000.spi/spi_master/spi16/spi16.0/ieee80215
 
 # WiFi
 genfscon sysfs /wifi                                                           u:object_r:sysfs_wifi:s0
+genfscon sysfs /wlan_ptracker                                                  u:object_r:sysfs_ptracker:s0
 
 # ACPM
 genfscon sysfs /devices/platform/acpm_stats                                    u:object_r:sysfs_acpm_stats:s0
@@ -342,6 +343,9 @@ genfscon sysfs /devices/platform/11210000.usb/11210000.dwc3/xhci-hcd-exynos.4.au
 genfscon sysfs /devices/platform/11210000.usb/11210000.dwc3/xhci-hcd-exynos.5.auto/wakeup                                   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11210000.usb/11210000.dwc3/xhci-hcd-exynos.5.auto/usb2                                     u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11210000.usb/11210000.dwc3/xhci-hcd-exynos.5.auto/usb3                                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11210000.usb/11210000.dwc3/xhci-hcd-exynos.6.auto/wakeup                                   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11210000.usb/11210000.dwc3/xhci-hcd-exynos.6.auto/usb2                                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11210000.usb/11210000.dwc3/xhci-hcd-exynos.6.auto/usb3                                     u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11210000.usb/wakeup                                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/14520000.pcie/pci0001:00/0001:00:00.0/0001:01:00.0/wakeup                                  u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/14520000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/wakeup                                  u:object_r:sysfs_wakeup:s0
@@ -387,8 +391,14 @@ genfscon sysfs /module/gs_thermal/parameters/tmu_top_reg_dump_fall_thres   u:obj
 genfscon sysfs /module/gs_thermal/parameters/tmu_sub_reg_dump_rise_thres   u:object_r:sysfs_thermal:s0
 genfscon sysfs /module/gs_thermal/parameters/tmu_sub_reg_dump_fall_thres   u:object_r:sysfs_thermal:s0
 
+#vendor-metrics
+genfscon sysfs /kernel/metrics/temp_residency/temp_residency_all/stats    u:object_r:sysfs_vendor_metrics:s0
+genfscon sysfs /kernel/metrics/resume_latency/resume_latency_metrics      u:object_r:sysfs_vendor_metrics:s0
+genfscon sysfs /kernel/metrics/irq/long_irq_metrics                       u:object_r:sysfs_vendor_metrics:s0
+
 # Camera
 genfscon sysfs /devices/platform/17000030.devfreq_intcam/devfreq/17000030.devfreq_intcam/min_freq    u:object_r:sysfs_camera:s0
+genfscon sysfs /devices/platform/17000060.devfreq_tnr/devfreq/17000060.devfreq_tnr/max_freq          u:object_r:sysfs_camera:s0
 genfscon sysfs /devices/platform/17000060.devfreq_tnr/devfreq/17000060.devfreq_tnr/min_freq          u:object_r:sysfs_camera:s0
 
 # USB-C throttling stats

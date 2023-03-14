@@ -30,3 +30,6 @@ allow hal_fingerprint_default sysfs_trusty:file rw_file_perms;
 # Allow fingerprint to access display hal
 allow hal_fingerprint_default hal_pixel_display_service:service_manager find;
 binder_call(hal_fingerprint_default, hal_graphics_composer_default)
+
+# allow fingerprint to access thermal hal
+hal_client_domain(hal_fingerprint_default, hal_thermal);

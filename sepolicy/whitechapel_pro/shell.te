@@ -3,3 +3,6 @@ userdebug_or_eng(`
   allow shell sysfs_sjtag:dir r_dir_perms;
   allow shell sysfs_sjtag:file rw_file_perms;
 ')
+
+# wlc
+dontaudit shell sysfs_wlc:dir search;
