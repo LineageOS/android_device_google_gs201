@@ -381,6 +381,9 @@ BOARD_BUILD_VENDOR_RAMDISK_IMAGE := true
 KERNEL_MODULE_DIR := $(TARGET_KERNEL_DIR)
 KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/*.ko)
 
+ifneq ($(wildcard $(KERNEL_MODULE_DIR)/system_dlkm.modules.blocklist),)
+BOARD_SYSTEM_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_MODULE_DIR)/system_dlkm.modules.blocklist
+endif
 BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_MODULE_DIR)/vendor_dlkm.modules.blocklist
 
 # Prebuilt kernel modules that are *not* listed in vendor_kernel_boot.modules.load
