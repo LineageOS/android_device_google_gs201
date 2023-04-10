@@ -61,4 +61,7 @@
     <string name="config_systemUiIntelligence">com.google.android.as</string>
     <string name="config_systemVisualIntelligence">com.google.android.as</string>
 
+    <!-- IWLAN-->
+    <string name="config_qualified_networks_service_package">com.android.qns</string>
+
 </resources>
