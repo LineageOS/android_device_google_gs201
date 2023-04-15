@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82344dc8_d92e5003",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2023-04-15T17:14:28Z",
+      "side": 1,
+      "message": "https://review.lineageos.org/c/LineageOS/android_device_google_gs201/+/353718",
+      "revId": "3eba8ac48cc38ec56c461c4d05281cc8c78655b2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
