@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2650af9d_424fa86c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2023-04-15T15:11:28Z",
+      "side": 1,
+      "message": "Just a heads up from https://wiki.lineageos.org/how-to/submitting-patches#uploading-your-changes: \"The first line of your commit message will become the change’s title. Add a blank line after the title and write the summary of changes there, if you would like. Make sure that each line does not exceed 80 chars and the title should not exceed 50 chars.\"",
+      "revId": "677bcae07244b48fe698801a3ee8d8bb5bef7de2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
