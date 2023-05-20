@@ -19,6 +19,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Google Assistant
 PRODUCT_PRODUCT_PROPERTIES += ro.opa.eligible_device=true
 
+# Lineage Health
+include hardware/google/pixel/lineage_health/device.mk
+
 # Parts
 PRODUCT_PACKAGES += \
     GoogleParts
