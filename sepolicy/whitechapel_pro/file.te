@@ -46,6 +46,7 @@ type sysfs_exynos_bts_stats, sysfs_type, fs_type;
 type sysfs_bcl, sysfs_type, fs_type;
 type sysfs_chip_id, sysfs_type, fs_type;
 type sysfs_touch, sysfs_type, fs_type;
+type sysfs_exynos_pcie_stats, sysfs_type, fs_type;
 type sysfs_bcmdhd, sysfs_type, fs_type;
 type sysfs_wlc, sysfs_type, fs_type;
 type sysfs_chargelevel, sysfs_type, fs_type;
@@ -112,8 +113,10 @@ type sysfs_usbc_throttling_stats, sysfs_type, fs_type;
 
 # Touch
 type proc_touch, proc_type, fs_type;
+type proc_touch_gti, proc_type, fs_type;
 userdebug_or_eng(`
     typeattribute proc_touch mlstrustedobject;
+    typeattribute proc_touch_gti mlstrustedobject;
 ')
 
 # Vendor sched files

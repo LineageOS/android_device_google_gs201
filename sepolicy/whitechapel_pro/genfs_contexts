@@ -31,6 +31,7 @@ genfscon sysfs /devices/soc0/revision                                          u
 genfscon sysfs /devices/platform/10d10000.spi/spi_master/spi0/spi0.0/synaptics_tcm.0/sysfs   u:object_r:sysfs_touch:s0
 genfscon sysfs /devices/virtual/sec/tsp                                        u:object_r:sysfs_touch:s0
 genfscon proc  /focaltech_touch                                                u:object_r:proc_touch:s0
+genfscon proc  /goog_touch_interface                                           u:object_r:proc_touch_gti:s0
 
 # tracefs
 genfscon tracefs /events/dmabuf_heap/dma_heap_stat                             u:object_r:debugfs_tracing:s0
@@ -146,6 +147,9 @@ genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/osc2_clk_kh
 genfscon sysfs /devices/platform/1c2c0000.drmdsim/hs_clock                                                u:object_r:sysfs_display:s0
 genfscon sysfs /devices/platform/1c240000.drmdecon/early_wakeup                                           u:object_r:sysfs_display:s0
 genfscon sysfs /devices/platform/1c242000.drmdecon/early_wakeup                                           u:object_r:sysfs_display:s0
+genfscon sysfs /devices/platform/1c240000.drmdecon/counters                                               u:object_r:sysfs_display:s0
+genfscon sysfs /devices/platform/1c241000.drmdecon/counters                                               u:object_r:sysfs_display:s0
+genfscon sysfs /devices/platform/1c242000.drmdecon/counters                                               u:object_r:sysfs_display:s0
 
 genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/backlight                            u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/panel_extinfo                        u:object_r:sysfs_display:s0
@@ -395,6 +399,10 @@ genfscon sysfs /module/gs_thermal/parameters/tmu_sub_reg_dump_fall_thres   u:obj
 genfscon sysfs /kernel/metrics/temp_residency/temp_residency_all/stats    u:object_r:sysfs_vendor_metrics:s0
 genfscon sysfs /kernel/metrics/resume_latency/resume_latency_metrics      u:object_r:sysfs_vendor_metrics:s0
 genfscon sysfs /kernel/metrics/irq/long_irq_metrics                       u:object_r:sysfs_vendor_metrics:s0
+
+# PCIe link
+genfscon sysfs /devices/platform/14520000.pcie/link_stats                 u:object_r:sysfs_exynos_pcie_stats:s0
+genfscon sysfs /devices/platform/11920000.pcie/link_stats                 u:object_r:sysfs_exynos_pcie_stats:s0
 
 # Camera
 genfscon sysfs /devices/platform/17000030.devfreq_intcam/devfreq/17000030.devfreq_intcam/min_freq    u:object_r:sysfs_camera:s0

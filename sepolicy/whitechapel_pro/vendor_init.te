@@ -38,6 +38,7 @@ set_prop(vendor_init, vendor_display_prop)
 
 # Battery Mitigation
 set_prop(vendor_init, vendor_brownout_reason_prop)
+get_prop(vendor_init, system_boot_reason_prop)
 
 # MM
 allow vendor_init proc_watermark_scale_factor:file w_file_perms;

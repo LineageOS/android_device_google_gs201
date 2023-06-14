@@ -33,3 +33,7 @@ r_dir_file(pixelstats_vendor, sysfs_vendor_metrics)
 # BCL
 allow pixelstats_vendor sysfs_bcl:dir search;
 allow pixelstats_vendor sysfs_bcl:file r_file_perms;
+
+# PCIe statistics
+allow pixelstats_vendor sysfs_exynos_pcie_stats:dir search;
+allow pixelstats_vendor sysfs_exynos_pcie_stats:file rw_file_perms;

@@ -25,6 +25,9 @@ allow hal_dumpstate_default sysfs_wlc:file r_file_perms;
 allow hal_dumpstate_default sysfs_exynos_bts:dir r_dir_perms;
 allow hal_dumpstate_default sysfs_exynos_bts_stats:file r_file_perms;
 
+allow hal_dumpstate_default sysfs_exynos_pcie_stats:dir r_dir_perms;
+allow hal_dumpstate_default sysfs_exynos_pcie_stats:file r_file_perms;
+
 allow hal_dumpstate_default sysfs_aoc:dir r_dir_perms;
 allow hal_dumpstate_default sysfs_aoc_dumpstate:file r_file_perms;
 
@@ -83,6 +86,9 @@ allow hal_dumpstate_default sysfs_touch:file rw_file_perms;
 
 allow hal_dumpstate_default proc_touch:dir r_dir_perms;
 allow hal_dumpstate_default proc_touch:file rw_file_perms;
+
+allow hal_dumpstate_default proc_touch_gti:dir r_dir_perms;
+allow hal_dumpstate_default proc_touch_gti:file rw_file_perms;
 
 allow hal_dumpstate_default vendor_displaycolor_service:service_manager find;
 binder_call(hal_dumpstate_default, hal_graphics_composer_default);

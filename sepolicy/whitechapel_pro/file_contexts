@@ -109,6 +109,8 @@
 /dev/logbuffer_maxfg_base_monitor                                           u:object_r:logbuffer_device:s0
 /dev/logbuffer_maxfg_flip_monitor                                           u:object_r:logbuffer_device:s0
 /dev/logbuffer_bd                                                           u:object_r:logbuffer_device:s0
+/dev/logbuffer_pcie0                                                        u:object_r:logbuffer_device:s0
+/dev/logbuffer_pcie1                                                        u:object_r:logbuffer_device:s0
 /dev/bbd_pwrstat                                                            u:object_r:power_stats_device:s0
 /dev/lwis-act-jotnar                                                        u:object_r:lwis_device:s0
 /dev/lwis-act-slenderman                                                    u:object_r:lwis_device:s0
