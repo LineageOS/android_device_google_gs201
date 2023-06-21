@@ -27,8 +27,10 @@ PRODUCT_PACKAGES += \
 include hardware/google/pixel/lineage_health/device.mk
 
 # Parts
+ifneq ($(BOARD_WITHOUT_RADIO),true)
 PRODUCT_PACKAGES += \
     GoogleParts
+endif
 
 # Touch
 include hardware/google/pixel/touch/device.mk
