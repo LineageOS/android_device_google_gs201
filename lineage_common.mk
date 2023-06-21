@@ -20,15 +20,19 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_PRODUCT_PROPERTIES += ro.opa.eligible_device=true
 
 # EUICC
+ifneq ($(BOARD_WITHOUT_RADIO),true)
 PRODUCT_PACKAGES += \
     EuiccSupportPixelOverlay
+endif
 
 # Lineage Health
 include hardware/google/pixel/lineage_health/device.mk
 
 # Parts
+ifneq ($(BOARD_WITHOUT_RADIO),true)
 PRODUCT_PACKAGES += \
     GoogleParts
+endif
 
 # Touch
 include hardware/google/pixel/touch/device.mk
