@@ -132,8 +132,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
 	persist.radio.reboot_on_modem_change=false
 
 # Configure DSDS by default
+ifneq ($(BOARD_WITHOUT_RADIO),true)
 PRODUCT_PRODUCT_PROPERTIES += \
 	persist.radio.multisim.config=dsds
+endif
 
 # Enable Early Camping
 PRODUCT_PRODUCT_PROPERTIES += \
