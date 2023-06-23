@@ -355,9 +355,6 @@ include device/google/gs-common/insmod/insmod.mk
 PRODUCT_HOST_PACKAGES += \
 	mkdtimg
 
-PRODUCT_PACKAGES += \
-	messaging
-
 # Contexthub HAL
 PRODUCT_PACKAGES += \
 	android.hardware.contexthub-service.generic
