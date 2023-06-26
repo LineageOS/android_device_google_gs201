@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73daf124_cab807e5",
+        "filename": "aosp_common.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2023-06-26T21:38:53Z",
+      "side": 1,
+      "message": "relevant diff:\n\n```\n# More AOSP packages\nPRODUCT_PACKAGES +\u003d \\\n    messaging \\\n    PhotoTable \\\n    WallpaperPicker \\\n```",
+      "revId": "ed28c34b26692a13cbd53f58487c28f1722eb48f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
