@@ -62,7 +62,11 @@ class EuiccDisabler {
             ? PackageManager.COMPONENT_ENABLED_STATE_DISABLED
             : PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
         for (String pkg : EUICC_PACKAGES) {
-            pm.setApplicationEnabledSetting(pkg, flag, 0);
+            try {
+                pm.setApplicationEnabledSetting(pkg, flag, 0);
+            } catch (IllegalArgumentException e) {
+                Log.d(TAG, "package " + pkg + " is not present");
+            }
         }
     }
 }
