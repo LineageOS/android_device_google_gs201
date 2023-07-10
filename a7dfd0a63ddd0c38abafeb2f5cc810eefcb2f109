@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28354945_a22c2ed4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2023-07-10T14:57:18Z",
+      "side": 1,
+      "message": "This breaks gs201 phones",
+      "revId": "a7dfd0a63ddd0c38abafeb2f5cc810eefcb2f109",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
