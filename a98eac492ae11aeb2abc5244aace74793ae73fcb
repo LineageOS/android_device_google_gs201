@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c7ebe6_e7a870a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2023-07-10T14:56:59Z",
+      "side": 1,
+      "message": "We don\u0027t inherit aosp_base_telephony.mk",
+      "revId": "a98eac492ae11aeb2abc5244aace74793ae73fcb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
