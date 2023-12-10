@@ -1,2 +1,9 @@
 # Fingerprint (UDFPS) GHBM/LHBM toggle
 system_vendor_config_prop(fingerprint_ghbm_prop)
+
+# Telephony
+system_public_prop(telephony_ril_prop)
+
+userdebug_or_eng(`
+  set_prop(shell, telephony_ril_prop)
+')

@@ -7,6 +7,8 @@ allow modem_diagnostic_app app_api_service:service_manager find;
 allow modem_diagnostic_app radio_service:service_manager find;
 
 userdebug_or_eng(`
+  hal_client_domain(modem_diagnostic_app, hal_power_stats);
+
   binder_call(modem_diagnostic_app, dmd)
 
   set_prop(modem_diagnostic_app, vendor_cbd_prop)

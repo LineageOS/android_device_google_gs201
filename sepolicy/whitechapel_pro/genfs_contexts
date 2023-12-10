@@ -73,6 +73,16 @@ genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-5/i2c-s2mpg12mfd/s2mp
 genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-6/i2c-s2mpg12mfd/s2mpg12-meter/s2mpg12-odpm/iio:device   u:object_r:sysfs_odpm:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-7/i2c-s2mpg12mfd/s2mpg12-meter/s2mpg12-odpm/iio:device   u:object_r:sysfs_odpm:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-8/i2c-s2mpg12mfd/s2mpg12-meter/s2mpg12-odpm/iio:device   u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-0/0-001f/s2mpg12-meter/s2mpg12-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-1/1-001f/s2mpg12-meter/s2mpg12-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-2/2-001f/s2mpg12-meter/s2mpg12-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-3/3-001f/s2mpg12-meter/s2mpg12-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-4/4-001f/s2mpg12-meter/s2mpg12-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-5/5-001f/s2mpg12-meter/s2mpg12-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-6/6-001f/s2mpg12-meter/s2mpg12-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-7/7-001f/s2mpg12-meter/s2mpg12-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-8/8-001f/s2mpg12-meter/s2mpg12-odpm/iio:device           u:object_r:sysfs_odpm:s0
+
 genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-0/i2c-s2mpg12mfd/s2mpg12-meter/s2mpg12-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-1/i2c-s2mpg12mfd/s2mpg12-meter/s2mpg12-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-2/i2c-s2mpg12mfd/s2mpg12-meter/s2mpg12-odpm/wakeup       u:object_r:sysfs_wakeup:s0
@@ -82,6 +92,15 @@ genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-5/i2c-s2mpg12mfd/s2mp
 genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-6/i2c-s2mpg12mfd/s2mpg12-meter/s2mpg12-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-7/i2c-s2mpg12mfd/s2mpg12-meter/s2mpg12-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-8/i2c-s2mpg12mfd/s2mpg12-meter/s2mpg12-odpm/wakeup       u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-0/0-001f/s2mpg12-meter/s2mpg12-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-1/1-001f/s2mpg12-meter/s2mpg12-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-2/2-001f/s2mpg12-meter/s2mpg12-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-3/3-001f/s2mpg12-meter/s2mpg12-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-4/4-001f/s2mpg12-meter/s2mpg12-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-5/5-001f/s2mpg12-meter/s2mpg12-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-6/6-001f/s2mpg12-meter/s2mpg12-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-7/7-001f/s2mpg12-meter/s2mpg12-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-8/8-001f/s2mpg12-meter/s2mpg12-odpm/wakeup               u:object_r:sysfs_wakeup:s0
 
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-0/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/iio:device   u:object_r:sysfs_odpm:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-1/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/iio:device   u:object_r:sysfs_odpm:s0
@@ -93,6 +112,17 @@ genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-6/i2c-s2mpg13mfd/s2mp
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-7/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/iio:device   u:object_r:sysfs_odpm:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-8/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/iio:device   u:object_r:sysfs_odpm:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-9/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/iio:device   u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-0/0-002f/s2mpg13-meter/s2mpg13-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-1/1-002f/s2mpg13-meter/s2mpg13-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-2/2-002f/s2mpg13-meter/s2mpg13-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-3/3-002f/s2mpg13-meter/s2mpg13-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-4/4-002f/s2mpg13-meter/s2mpg13-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-5/5-002f/s2mpg13-meter/s2mpg13-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-6/6-002f/s2mpg13-meter/s2mpg13-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-7/7-002f/s2mpg13-meter/s2mpg13-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-8/8-002f/s2mpg13-meter/s2mpg13-odpm/iio:device           u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-9/9-002f/s2mpg13-meter/s2mpg13-odpm/iio:device           u:object_r:sysfs_odpm:s0
+
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-0/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-1/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-2/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
@@ -103,6 +133,15 @@ genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-6/i2c-s2mpg13mfd/s2mp
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-7/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-8/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-9/i2c-s2mpg13mfd/s2mpg13-meter/s2mpg13-odpm/wakeup       u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-0/0-002f/s2mpg13-meter/s2mpg13-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-1/1-002f/s2mpg13-meter/s2mpg13-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-2/2-002f/s2mpg13-meter/s2mpg13-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-3/3-002f/s2mpg13-meter/s2mpg13-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-4/4-002f/s2mpg13-meter/s2mpg13-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-5/5-002f/s2mpg13-meter/s2mpg13-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-6/6-002f/s2mpg13-meter/s2mpg13-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-7/7-002f/s2mpg13-meter/s2mpg13-odpm/wakeup               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-8/8-002f/s2mpg13-meter/s2mpg13-odpm/wakeup               u:object_r:sysfs_wakeup:s0
 
 # Devfreq current frequency
 genfscon sysfs /devices/platform/17000010.devfreq_mif/devfreq/17000010.devfreq_mif/cur_freq             u:object_r:sysfs_devfreq_cur:s0
