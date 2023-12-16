@@ -20,9 +20,9 @@
 /vendor/bin/hw/android\.hardware\.gatekeeper-service\.trusty                u:object_r:hal_gatekeeper_default_exec:s0
 /vendor/bin/hw/android\.hardware\.security\.keymint-service\.trusty         u:object_r:hal_keymint_default_exec:s0
 /vendor/bin/hw/android\.hardware\.security\.keymint-service\.rust\.trusty   u:object_r:hal_keymint_default_exec:s0
+/vendor/bin/hw/android\.hardware\.security\.secretkeeper\.trusty            u:object_r:hal_secretkeeper_default_exec:s0
 /vendor/bin/hw/vendor\.google\.radioext@1\.0-service                        u:object_r:hal_radioext_default_exec:s0
 /vendor/bin/hw/android\.hardware\.contexthub-service\.generic               u:object_r:hal_contexthub_default_exec:s0
-/vendor/bin/hw/android\.hardware\.boot@1\.2-service-gs201                   u:object_r:hal_bootctl_default_exec:s0
 /vendor/bin/hw/android\.hardware\.composer\.hwc3-service\.pixel             u:object_r:hal_graphics_composer_default_exec:s0
 /vendor/bin/hw/samsung\.hardware\.media\.c2@1\.0-service                    u:object_r:mediacodec_samsung_exec:s0
 /vendor/bin/hw/google\.hardware\.media\.c2@1\.0-service                     u:object_r:mediacodec_google_exec:s0
@@ -146,7 +146,6 @@
 /dev/gxp                                                                    u:object_r:gxp_device:s0
 /dev/dit2                                                                   u:object_r:vendor_toe_device:s0
 /dev/trusty-ipc-dev0                                                        u:object_r:tee_device:s0
-/dev/sg1                                                                    u:object_r:sg_device:s0
 /dev/st21nfc                                                                u:object_r:nfc_device:s0
 /dev/st54spi                                                                u:object_r:st54spi_device:s0
 /dev/st33spi                                                                u:object_r:st33spi_device:s0

@@ -27,7 +27,6 @@ type sysfs_em_profile, sysfs_type, fs_type;
 
 # sysfs
 type sysfs_chosen, sysfs_type, fs_type;
-type sysfs_ota, sysfs_type, fs_type;
 type bootdevice_sysdev, dev_type;
 type sysfs_fabric, sysfs_type, fs_type;
 type sysfs_acpm_stats, sysfs_type, fs_type;
