@@ -243,6 +243,11 @@ then
   xxd /sys/devices/platform/10da0000.hsi2c/i2c-7/7-0050/eeprom
 fi
 
+if [ -e "/sys/devices/platform/10da0000.hsi2c/i2c-8/8-0050/eeprom" ]
+then
+  xxd /sys/devices/platform/10da0000.hsi2c/i2c-8/8-0050/eeprom
+fi
+
 if [ -e "/sys/devices/platform/10da0000.hsi2c/i2c-9/9-0050/eeprom" ]
 then
   xxd /sys/devices/platform/10da0000.hsi2c/i2c-9/9-0050/eeprom
