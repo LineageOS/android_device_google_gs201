@@ -195,9 +195,6 @@ genfscon sysfs /devices/platform/exynos-drm/tui_status                          
 
 genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/backlight/panel0-backlight/als_table u:object_r:sysfs_write_leds:s0
 
-# mediacodec_samsung
-genfscon sysfs /devices/platform/mfc/video4linux/video                         u:object_r:sysfs_mfc:s0
-
 # Storage
 genfscon proc /fs/f2fs                                                  u:object_r:proc_f2fs:s0
 genfscon proc /sys/vm/swappiness                                        u:object_r:proc_dirty:s0
