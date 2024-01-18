@@ -43,4 +43,6 @@ allow rild modem_img_file:lnk_file r_file_perms;
 # Allow rild to ptrace for memory leak detection
 userdebug_or_eng(`
 allow rild self:process ptrace;
+
+binder_call(rild, modem_diagnostic_app)
 ')

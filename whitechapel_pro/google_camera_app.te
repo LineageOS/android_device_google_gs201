@@ -1,5 +1,6 @@
-# Allows camera app to access the GXP device.
+# Allows camera app to access the GXP device and properties.
 allow google_camera_app gxp_device:chr_file rw_file_perms;
+get_prop(google_camera_app, vendor_gxp_prop)
 
 # Allows camera app to search for GXP firmware file.
 allow google_camera_app vendor_fw_file:dir search;
@@ -7,6 +8,3 @@ allow google_camera_app vendor_fw_file:dir search;
 # Allows GCA to find and access the EdgeTPU.
 allow google_camera_app edgetpu_app_service:service_manager find;
 allow google_camera_app edgetpu_device:chr_file { getattr read write ioctl map };
-
-# Library code may try to access vendor properties, but should be denied
-dontaudit google_camera_app vendor_default_prop:file { getattr map open };

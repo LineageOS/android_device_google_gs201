@@ -13,4 +13,4 @@ allow dumpstate modem_efs_file:dir r_dir_perms;
 allow dumpstate modem_userdata_file:dir r_dir_perms;
 allow dumpstate modem_img_file:dir r_dir_perms;
 allow dumpstate fuse:dir search;
-
+allow dumpstate rlsservice:binder call;

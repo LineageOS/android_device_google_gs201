@@ -1,3 +1,0 @@
-# b/208721505
-dontaudit hal_uwb_vendor_default dumpstate:fd { use };
-dontaudit hal_uwb_vendor_default dumpstate:fifo_file { write };
