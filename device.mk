@@ -21,12 +21,13 @@ include device/google/gs-common/soc/soc.mk
 include device/google/gs-common/soc/freq.mk
 include device/google/gs-common/modem/modem.mk
 include device/google/gs-common/aoc/aoc.mk
-include device/google/gs-common/thermal/thermal.mk
+include device/google/gs-common/thermal/dump/thermal.mk
+include device/google/gs-common/thermal/thermal_hal/device.mk
 include device/google/gs-common/pixel_metrics/pixel_metrics.mk
 include device/google/gs-common/performance/perf.mk
 include device/google/gs-common/display/dump.mk
 include device/google/gs-common/camera/dump.mk
-include device/google/gs-common/gxp/dump.mk
+include device/google/gs-common/gxp/gxp.mk
 include device/google/gs-common/gps/dump/log.mk
 include device/google/gs-common/radio/dump.mk
 include device/google/gs-common/umfw_stat/umfw_stat.mk
@@ -35,6 +36,7 @@ include device/google/gs-common/widevine/widevine.mk
 include device/google/gs-common/sota_app/factoryota.mk
 include device/google/gs-common/misc_writer/misc_writer.mk
 include device/google/gs-common/gyotaku_app/gyotaku.mk
+include device/google/gs-common/bootctrl/bootctrl_aidl.mk
 
 TARGET_BOARD_PLATFORM := gs201
 
@@ -190,7 +192,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Carrier configuration default location
 PRODUCT_PROPERTY_OVERRIDES += \
-	persist.vendor.radio.config.carrier_config_dir=/mnt/vendor/modem_img/images/default/confpack
+	persist.vendor.radio.config.carrier_config_dir=/vendor/firmware/carrierconfig
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	telephony.active_modems.max_count=2
@@ -219,22 +221,24 @@ USES_GAUDIO := true
 USE_SWIFTSHADER := false
 
 # HWUI
-TARGET_USES_VULKAN = true
+ifeq ($(USE_SWIFTSHADER),true)
+	TARGET_USES_VULKAN = false
+else
+	TARGET_USES_VULKAN = true
+endif
 
 PRODUCT_SOONG_NAMESPACES += \
 	vendor/arm/mali/valhall
 
 $(call soong_config_set,pixel_mali,soc,$(TARGET_BOARD_PLATFORM))
 
+include device/google/gs-common/gpu/gpu.mk
 PRODUCT_PACKAGES += \
 	csffw_image_prebuilt__firmware_prebuilt_todx_mali_csffw.bin \
 	libGLES_mali \
 	vulkan.mali \
 	libOpenCL \
 	libgpudataproducer \
-
-PRODUCT_VENDOR_PROPERTIES += \
-	ro.hardware.vulkan=mali
 
 # Mali Configuration Properties
 # b/221255664 prevents setting PROTECTED_MAX_CORE_COUNT=2
@@ -245,13 +249,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 	vendor.mali.base_protected_tls_max=67108864 \
 	vendor.mali.platform_agt_frequency_khz=24576
 
-ifeq ($(USE_SWIFTSHADER),true)
-PRODUCT_PACKAGES += \
-   libGLESv1_CM_swiftshader \
-   libEGL_swiftshader \
-   libGLESv2_swiftshader
-endif
-
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
 	frameworks/native/data/etc/android.hardware.vulkan.version-1_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
@@ -261,11 +258,19 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.opengles.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml
 
 ifeq ($(USE_SWIFTSHADER),true)
+PRODUCT_PACKAGES += \
+	vulkan.pastel
+endif
+
+ifeq ($(USE_SWIFTSHADER),true)
 PRODUCT_VENDOR_PROPERTIES += \
-	ro.hardware.egl = swiftshader
+	ro.hardware.egl = mali \
+	persist.graphics.egl = angle \
+	ro.hardware.vulkan = pastel
 else
 PRODUCT_VENDOR_PROPERTIES += \
-	ro.hardware.egl = mali
+	ro.hardware.egl = mali \
+	ro.hardware.vulkan = mali
 endif
 
 # Configure EGL blobcache
@@ -277,6 +282,9 @@ PRODUCT_VENDOR_PROPERTIES += \
 	ro.opengles.version=196610 \
 	graphics.gpu.profiler.support=true \
 	debug.renderengine.backend=skiaglthreaded
+
+# b/295257834 Add HDR shaders to SurfaceFlinger's pre-warming cache
+PRODUCT_VENDOR_PROPERTIES += ro.surface_flinger.prime_shader_cache.ultrahdr=1
 
 # GRAPHICS - GPU (end)
 # ####################
@@ -326,7 +334,8 @@ PRODUCT_COPY_FILES += \
 
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
-	device/google/gs201/conf/init.debug.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.debug.rc
+	device/google/gs201/conf/init.debug.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.debug.rc \
+	device/google/gs201/conf/init.check_ap_pd_auth.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.check_ap_pd_auth.sh
 endif
 
 # Recovery files
@@ -508,7 +517,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	android.hardware.graphics.mapper@4.0-impl \
-	android.hardware.graphics.allocator-V1-service
+	android.hardware.graphics.allocator-V2-service
 
 PRODUCT_PACKAGES += \
 	android.hardware.memtrack-service.pixel \
@@ -810,11 +819,12 @@ $(call inherit-product, system/core/trusty/trusty-base.mk)
 # Trusty dump
 include device/google/gs-common/trusty/trusty.mk
 
-# Trusty unit test tool
+# Trusty unit test and code coverage tool
 PRODUCT_PACKAGES_DEBUG += \
    trusty-ut-ctrl \
    tipc-test \
    trusty_stats_test \
+   trusty-coverage-controller \
 
 include device/google/gs101/confirmationui/confirmationui.mk
 
@@ -907,18 +917,11 @@ $(call inherit-product-if-exists, vendor/samsung_slsi/telephony/$(BOARD_USES_SHA
 
 PRODUCT_PACKAGES += ShannonIms
 
-#RCS Test Messaging App
 PRODUCT_PACKAGES_DEBUG += \
-	preinstalled-packages-product-gs201-device-debug.xml \
-	TestRcsApp
+	preinstalled-packages-product-gs201-device-debug.xml
 
 PRODUCT_PACKAGES += ShannonRcs
 endif
-
-# Boot Control HAL
-PRODUCT_PACKAGES += \
-	android.hardware.boot@1.2-impl-gs201 \
-	android.hardware.boot@1.2-service-gs201
 
 # Exynos RIL and telephony
 # Multi SIM(DSDS)
@@ -1000,9 +1003,6 @@ PRODUCT_COPY_FILES += \
 	device/google/$(TARGET_BOARD_PLATFORM)/radio/config/Pixel_stability.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/modem/Pixel_stability.cfg \
 	device/google/$(TARGET_BOARD_PLATFORM)/radio/config/Pixel_stability.nprf:$(TARGET_COPY_OUT_VENDOR)/etc/modem/Pixel_stability.nprf \
 
-# ARM NN files
-ARMNN_COMPUTE_CL_ENABLE := 1
-
 # Vibrator Diag
 PRODUCT_PACKAGES_DEBUG += \
 	diag-vibrator \
@@ -1076,7 +1076,6 @@ include device/google/gs101/telephony/pktrouter.mk
 
 # Thermal HAL
 PRODUCT_PROPERTY_OVERRIDES += persist.vendor.enable.thermal.genl=true
-include hardware/google/pixel/thermal/device.mk
 
 # EdgeTPU
 include device/google/gs-common/edgetpu/edgetpu.mk
@@ -1162,10 +1161,6 @@ PRODUCT_COPY_FILES += \
 
 # Call deleteAllKeys if vold detects a factory reset
 PRODUCT_VENDOR_PROPERTIES += ro.crypto.metadata_init_delete_all_keys.enabled?=true
-
-# Increase lmkd aggressiveness
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lmk.swap_free_low_percentage=100
 
 # Hardware Info
 include hardware/google/pixel/HardwareInfo/HardwareInfo.mk
