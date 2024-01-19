@@ -37,7 +37,7 @@ else
 fi
 
 echo "\n------ Power supply property tcpm ------"
-cat "/sys/class/power_supply/tcpm-source-psy-8-0025/uevent"
+cat /sys/class/power_supply/tcpm-source-psy-*/uevent
 echo "\n------ Power supply property usb ------"
 cat "/sys/class/power_supply/usb/uevent"
 echo "\n------ Power supply property wireless ------"
