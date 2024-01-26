@@ -19,6 +19,7 @@
 #include <AdaptiveDvfsStateResidencyDataProvider.h>
 #include <AocTimedStateResidencyDataProvider.h>
 #include <DevfreqStateResidencyDataProvider.h>
+#include <DisplayMrrStateResidencyDataProvider.h>
 #include <DvfsStateResidencyDataProvider.h>
 #include <UfsStateResidencyDataProvider.h>
 #include <dataproviders/GenericStateResidencyDataProvider.h>
@@ -37,6 +38,7 @@
 using aidl::android::hardware::power::stats::AdaptiveDvfsStateResidencyDataProvider;
 using aidl::android::hardware::power::stats::AocTimedStateResidencyDataProvider;
 using aidl::android::hardware::power::stats::DevfreqStateResidencyDataProvider;
+using aidl::android::hardware::power::stats::DisplayMrrStateResidencyDataProvider;
 using aidl::android::hardware::power::stats::DvfsStateResidencyDataProvider;
 using aidl::android::hardware::power::stats::UfsStateResidencyDataProvider;
 using aidl::android::hardware::power::stats::EnergyConsumerType;
@@ -606,6 +608,15 @@ void addCamera(std::shared_ptr<PowerStats> p) {
             EnergyConsumerType::CAMERA,
             "CAMERA",
             {"VSYS_PWR_CAM"}));
+}
+
+void addDisplayMrrByEntity(std::shared_ptr<PowerStats> p, std::string name, std::string path) {
+    p->addStateResidencyDataProvider(std::make_unique<DisplayMrrStateResidencyDataProvider>(
+            name, path));
+}
+
+void addDisplayMrr(std::shared_ptr<PowerStats> p) {
+    addDisplayMrrByEntity(p, "Display", "/sys/class/drm/card0/device/primary-panel/");
 }
 
 void addGs201CommonDataProviders(std::shared_ptr<PowerStats> p) {
