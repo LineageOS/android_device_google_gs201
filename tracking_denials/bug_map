@@ -4,7 +4,6 @@ incidentd debugfs_wakeup_sources file b/282626428
 incidentd incidentd anon_inode b/282626428
 kernel dm_device blk_file b/319403445
 kernel tmpfs chr_file b/321731318
-kernel vendor_charger_debugfs dir b/307863370
 rfsd vendor_cbd_prop file b/317734397
 surfaceflinger selinuxfs file b/315104594
 system_suspend sysfs dir b/322035303
