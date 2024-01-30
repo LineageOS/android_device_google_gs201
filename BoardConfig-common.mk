@@ -416,9 +416,6 @@ BOARD_VENDOR_KERNEL_MODULES := $(KERNEL_MODULES)
 endif
 
 BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/system_dlkm.modules.load))
-ifndef BOARD_SYSTEM_KERNEL_MODULES_LOAD
-$(warning system_dlkm.modules.load not found or empty)
-endif
 BOARD_SYSTEM_KERNEL_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/, $(notdir $(BOARD_SYSTEM_KERNEL_MODULES_LOAD)))
 
 # Using BUILD_COPY_HEADERS
