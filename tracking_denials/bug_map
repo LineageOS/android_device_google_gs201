@@ -10,4 +10,6 @@ system_suspend sysfs dir b/322035303
 system_suspend sysfs dir b/322036333
 vendor_init default_prop file b/315104479
 vendor_init default_prop file b/315104803
+vendor_init default_prop file b/323086703
+vendor_init default_prop file b/323086890
 vendor_init default_prop property_service b/315104803
