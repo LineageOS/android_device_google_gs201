@@ -449,6 +449,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	android.hardware.usb.gadget-service
 
+ifneq (,$(filter 5.10, $(TARGET_LINUX_KERNEL_VERSION)))
+PRODUCT_PACKAGES += usb_service_init_rc_legacy
+else
+PRODUCT_PACKAGES += usb_service_init_rc
+endif
+
 # MIDI feature
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml

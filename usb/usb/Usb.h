@@ -99,6 +99,7 @@ struct Usb : public BnUsb {
     // Usb hub vendor command settings for JK level tuning
     int mUsbHubVendorCmdValue;
     int mUsbHubVendorCmdIndex;
+    std::string mI2cClientPath;
 
   private:
     pthread_t mPoll;

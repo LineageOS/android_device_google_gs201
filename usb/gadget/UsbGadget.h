@@ -118,6 +118,7 @@ struct UsbGadget : public BnUsbGadget {
     // Indicates to the kernel that the gadget service is ready and the kernel can
     // set SDP timeout to a lower value.
     void updateSdpEnumTimeout();
+    std::string mI2cClientPath;
 
   private:
     Status tearDownGadget();
