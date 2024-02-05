@@ -100,23 +100,21 @@ then
 fi
 
 echo "\n------ TCPC ------"
-for f in /sys/devices/platform/10d60000.hsi2c/i2c-*/i2c-max77759tcpc
-do
-  echo "registers:"
-  cat $f/registers
-  echo "frs:"
-  cat $f/frs
-  echo "auto_discharge:"
-  cat $f/auto_discharge
-  echo "bc12_enabled:"
-  cat $f/bc12_enabled
-  echo "cc_toggle_enable:"
-  cat $f/cc_toggle_enable
-  echo "contaminant_detection:"
-  cat $f/contaminant_detection
-  echo "contaminant_detection_status:"
-  cat $f/contaminant_detection_status
-done
+max77759tcpc_path="/sys/devices/platform/10d60000.hsi2c/i2c-13/13-0025"
+echo "registers:"
+cat $max77759tcpc_path/registers
+echo "frs:"
+cat $max77759tcpc_path/frs
+echo "auto_discharge:"
+cat $max77759tcpc_path/auto_discharge
+echo "bc12_enabled:"
+cat $max77759tcpc_path/bc12_enabled
+echo "cc_toggle_enable:"
+cat $max77759tcpc_path/cc_toggle_enable
+echo "contaminant_detection:"
+cat $max77759tcpc_path/contaminant_detection
+echo "contaminant_detection_status:"
+cat $max77759tcpc_path/contaminant_detection_status
 
 echo "\n------ PD Engine ------"
 cat "/dev/logbuffer_usbpd"
@@ -220,39 +218,9 @@ then
 fi
 
 echo "\n------ Battery EEPROM ------"
-if [ -e "/sys/devices/platform/10970000.hsi2c/i2c-4/4-0050/eeprom" ]
+if [ -e "/sys/devices/platform/10da0000.hsi2c/i2c-15/15-0050/eeprom" ]
 then
-  xxd /sys/devices/platform/10970000.hsi2c/i2c-4/4-0050/eeprom
-fi
-
-if [ -e "/sys/devices/platform/10970000.hsi2c/i2c-5/5-0050/eeprom" ]
-then
-  xxd /sys/devices/platform/10970000.hsi2c/i2c-5/5-0050/eeprom
-fi
-
-if [ -e "/sys/devices/platform/10da0000.hsi2c/i2c-5/5-0050/eeprom" ]
-then
-  xxd /sys/devices/platform/10da0000.hsi2c/i2c-5/5-0050/eeprom
-fi
-
-if [ -e "/sys/devices/platform/10da0000.hsi2c/i2c-6/6-0050/eeprom" ]
-then
-  xxd /sys/devices/platform/10da0000.hsi2c/i2c-6/6-0050/eeprom
-fi
-
-if [ -e "/sys/devices/platform/10da0000.hsi2c/i2c-7/7-0050/eeprom" ]
-then
-  xxd /sys/devices/platform/10da0000.hsi2c/i2c-7/7-0050/eeprom
-fi
-
-if [ -e "/sys/devices/platform/10da0000.hsi2c/i2c-8/8-0050/eeprom" ]
-then
-  xxd /sys/devices/platform/10da0000.hsi2c/i2c-8/8-0050/eeprom
-fi
-
-if [ -e "/sys/devices/platform/10da0000.hsi2c/i2c-9/9-0050/eeprom" ]
-then
-  xxd /sys/devices/platform/10da0000.hsi2c/i2c-9/9-0050/eeprom
+  xxd /sys/devices/platform/10da0000.hsi2c/i2c-15/15-0050/eeprom
 fi
 
 echo "\n------ Charger Stats ------"

@@ -1,7 +1,6 @@
 #!/vendor/bin/sh
 
-for f in /sys/devices/platform/10d60000.hsi2c/i2c-*/i2c-max77759tcpc; do
-  if [ -d $f ]; then
-    echo 0 > $f/contaminant_detection;
-  fi
-done
+max77759tcpc_path=/sys/devices/platform/10d60000.hsi2c/i2c-13/13-0025
+if [ -d $max77759tcpc_path ]; then
+  echo 0 > $max77759tcpc_path/contaminant_detection;
+fi
