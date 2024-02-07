@@ -74,6 +74,8 @@ PRODUCT_SOONG_NAMESPACES += \
 	vendor/google_nos/test/system-test-harness \
 	vendor/google/camera
 
+LOCAL_KERNEL := $(TARGET_KERNEL_DIR)/Image.lz4
+
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.oem_unlock_supported=1
@@ -317,6 +319,7 @@ PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
 
 # Init files
 PRODUCT_COPY_FILES += \
+	$(LOCAL_KERNEL):kernel \
 	device/google/gs201/conf/init.gs201.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.gs201.usb.rc \
 	device/google/gs201/conf/ueventd.gs201.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
 
