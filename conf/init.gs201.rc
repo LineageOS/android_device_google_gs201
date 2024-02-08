@@ -225,13 +225,7 @@ on init
     chown system system /dev/maxfg_history
 
     # Dump eeprom
-    chown system system /sys/devices/platform/10970000.hsi2c/i2c-5/5-0050/eeprom
-    chown system system /sys/devices/platform/10970000.hsi2c/i2c-4/4-0050/eeprom
-    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-5/5-0050/eeprom
-    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-6/6-0050/eeprom
-    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-7/7-0050/eeprom
-    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-8/8-0050/eeprom
-    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-9/9-0050/eeprom
+    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-15/15-0050/eeprom
 
     # Loading common kernel modules in background
     start init_display
@@ -734,11 +728,11 @@ on property:sys.boot_completed=1
     write /proc/vendor_sched/pmu_poll_enable 0
 
     # Make devices on the critical path for suspend/resume asynchronous
-    write /sys/devices/platform/acpm_mfd_bus@18110000/i2c-8/i2c-s2mpg13mfd/power/async "enabled"
-    write /sys/devices/platform/acpm_mfd_bus@18110000/i2c-8/power/async "enabled"
+    write /sys/devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/power/async "enabled"
+    write /sys/devices/platform/acpm_mfd_bus@18110000/i2c-21/power/async "enabled"
     write /sys/devices/platform/acpm_mfd_bus@18110000/power/async "enabled"
-    write /sys/devices/platform/acpm_mfd_bus@18100000/i2c-7/i2c-s2mpg12mfd/power/async "enabled"
-    write /sys/devices/platform/acpm_mfd_bus@18100000/i2c-7/power/async "enabled"
+    write /sys/devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/power/async "enabled"
+    write /sys/devices/platform/acpm_mfd_bus@18100000/i2c-20/power/async "enabled"
     write /sys/devices/platform/acpm_mfd_bus@18100000/power/async "enabled"
     write /sys/devices/platform/dbgdev-pd-hsi0/power/async "enabled"
     write /sys/devices/platform/fixedregulator@0/regulator/regulator.2/power/async "enabled"
