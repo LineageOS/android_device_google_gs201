@@ -182,6 +182,7 @@ genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-13/13-0069/power_supply/dc/w
 genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-13/13-0069/power_supply/main-charger/wakeup                             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-13/13-0069/wakeup/wakeup                                                u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-13/13-0025/power_supply/tcpm-source-psy-13-0025/wakeup                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-13/13-0025/power_supply/tcpm-source-psy-i2c-max77759tcpc/wakeup         u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-13/13-0025/power_supply/usb/wakeup                                      u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/10d60000.hsi2c/i2c-13/13-0025/wakeup                                                       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/10da0000.hsi2c/i2c-15/15-003c/power_supply/wireless/wakeup                                 u:object_r:sysfs_wakeup:s0
