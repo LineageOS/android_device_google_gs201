@@ -71,7 +71,7 @@ PRODUCT_SOONG_NAMESPACES += \
 	hardware/google/pixel \
 	device/google/gs201 \
 	device/google/gs201/powerstats \
-	system/chre/host/hal_generic \
+	vendor/google_devices/common/chre/host/hal \
 	vendor/google/whitechapel/tools \
 	vendor/google/interfaces \
 	vendor/google_devices/common/proprietary/confirmatioui_hal \
@@ -368,25 +368,21 @@ PRODUCT_HOST_PACKAGES += \
 PRODUCT_PACKAGES += \
 	messaging
 
-# Contexthub HAL
-PRODUCT_PACKAGES += \
-	android.hardware.contexthub-service.generic
-
-# CHRE tools
+# CHRE
+## tools
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
 	chre_power_test_client \
-	chre_test_client
+	chre_test_client \
+	chre_aidl_hal_client
 endif
 
+## HAL
+include device/google/gs-common/chre/hal.mk
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.context_hub.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.context_hub.xml
-
-## Enable the CHRE Daemon
-CHRE_USF_DAEMON_ENABLED := true
 CHRE_DEDICATED_TRANSPORT_CHANNEL_ENABLED := true
 PRODUCT_PACKAGES += \
-	chre \
 	preloaded_nanoapps.json
 
 # Filesystem management tools
