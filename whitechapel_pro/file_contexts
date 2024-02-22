@@ -22,7 +22,6 @@
 /vendor/bin/hw/android\.hardware\.security\.keymint-service\.rust\.trusty   u:object_r:hal_keymint_default_exec:s0
 /vendor/bin/hw/android\.hardware\.security\.secretkeeper\.trusty            u:object_r:hal_secretkeeper_default_exec:s0
 /vendor/bin/hw/vendor\.google\.radioext@1\.0-service                        u:object_r:hal_radioext_default_exec:s0
-/vendor/bin/hw/android\.hardware\.contexthub-service\.generic               u:object_r:hal_contexthub_default_exec:s0
 /vendor/bin/hw/android\.hardware\.composer\.hwc3-service\.pixel             u:object_r:hal_graphics_composer_default_exec:s0
 /vendor/bin/hw/google\.hardware\.media\.c2@1\.0-service                     u:object_r:mediacodec_google_exec:s0
 /vendor/bin/hw/android\.hardware\.secure_element@1\.2-service-gto           u:object_r:hal_secure_element_st54spi_exec:s0
@@ -194,6 +193,7 @@
 /dev/block/platform/14700000\.ufs/by-name/fips                              u:object_r:fips_block_device:s0
 
 # Data
+/data/vendor/chre(/.*)?                                                     u:object_r:chre_data_file:s0
 /data/vendor/slog(/.*)?                                                     u:object_r:vendor_slog_file:s0
 /data/vendor/modem_stat(/.*)?                                               u:object_r:modem_stat_data_file:s0
 /data/vendor/log(/.*)?                                                      u:object_r:vendor_log_file:s0

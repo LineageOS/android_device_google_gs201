@@ -1,4 +1,5 @@
 # Data
+type chre_data_file, file_type, data_file_type;
 type rild_vendor_data_file, file_type, data_file_type;
 type vendor_log_file, file_type, data_file_type;
 type vendor_rfsd_log_file, file_type, data_file_type;
