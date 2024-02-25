@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efc3163_8c1484d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2024-02-25T20:42:03Z",
+      "side": 1,
+      "message": "Tablet doesn\u0027t have this apk, should move to devices",
+      "revId": "2ed7813ab69a7c09f3cc5377588781f85f132699",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
