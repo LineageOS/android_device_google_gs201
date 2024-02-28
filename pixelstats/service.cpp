@@ -94,7 +94,17 @@ const struct SysfsCollector::SysfsPaths sysfs_paths = {
 
 const struct UeventListener::UeventPaths ueventPaths = {
         .AudioUevent = "/devices/virtual/amcs/amcs",
-        .TypeCPartnerUevent = "PRODUCT_TYPE="};
+        .TypeCPartnerUevent = "PRODUCT_TYPE=",
+        .FGLearningPath = {
+            "/sys/class/power_supply/maxfg/fg_learning_events",
+            "/sys/class/power_supply/maxfg_base/fg_learning_events"
+        },
+        .FwUpdatePath = "",
+        .FGModelLoadingPath = {
+            "/sys/class/power_supply/maxfg/m5_model_state",
+            "/sys/class/power_supply/maxfg_base/m5_model_state"
+        }
+};
 
 int main() {
     LOG(INFO) << "starting PixelStats";
