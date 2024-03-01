@@ -1155,3 +1155,4 @@ PRODUCT_PACKAGES += ufs_firmware_update.sh
 
 # Touch service
 include device/google/gs-common/touch/twoshay/aidl_gs101.mk
+include device/google/gs-common/touch/twoshay/twoshay.mk
