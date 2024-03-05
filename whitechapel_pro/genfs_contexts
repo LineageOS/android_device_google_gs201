@@ -219,6 +219,8 @@ genfscon sysfs /devices/platform/google,usbc_port_cooling_dev/wakeup            
 genfscon sysfs /devices/platform/gpio_keys/wakeup                                                                           u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/odm/odm:btbcm/wakeup                                                                       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/sound-aoc/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/wakeup                                                 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c2d0000.drmdsim/1c2d0000.drmdsim.0/wakeup                                                 u:object_r:sysfs_wakeup:s0
 
 #SecureElement
 genfscon sysfs /devices/platform/181c0000.spi/spi_master/spi17/spi17.0/st33spi u:object_r:sysfs_st33spi:s0
