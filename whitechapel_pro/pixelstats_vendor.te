@@ -33,6 +33,9 @@ allow pixelstats_vendor sysfs_thermal:lnk_file r_file_perms;
 # BCL
 allow pixelstats_vendor sysfs_bcl:dir search;
 allow pixelstats_vendor sysfs_bcl:file r_file_perms;
+allow pixelstats_vendor mitigation_vendor_data_file:dir search;
+allow pixelstats_vendor mitigation_vendor_data_file:file rw_file_perms;
+get_prop(pixelstats_vendor, vendor_brownout_reason_prop);
 
 # PCIe statistics
 allow pixelstats_vendor sysfs_exynos_pcie_stats:dir search;

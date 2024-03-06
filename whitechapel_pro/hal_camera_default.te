@@ -28,9 +28,6 @@ binder_call(hal_camera_default, edgetpu_vendor_server)
 allow hal_camera_default edgetpu_app_service:service_manager find;
 binder_call(hal_camera_default, edgetpu_app_server)
 
-# Allow the camera hal to access the GXP device.
-allow hal_camera_default gxp_device:chr_file rw_file_perms;
-
 # Allow access to data files used by the camera HAL
 allow hal_camera_default mnt_vendor_file:dir search;
 allow hal_camera_default persist_file:dir search;

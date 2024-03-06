@@ -42,5 +42,5 @@ vendor_internal_prop(vendor_trusty_storage_prop)
 # Mali Integration
 vendor_restricted_prop(vendor_arm_runtime_option_prop)
 
-# ArmNN
-vendor_internal_prop(vendor_armnn_config_prop)
+# SJTAG lock state
+vendor_internal_prop(vendor_sjtag_lock_state_prop)
