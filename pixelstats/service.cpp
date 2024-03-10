@@ -44,6 +44,10 @@ const struct SysfsCollector::SysfsPaths sysfs_paths = {
     .ImpedancePath = "/sys/devices/platform/audiometrics/speaker_impedance",
     .CodecPath =     "/sys/devices/platform/audiometrics/codec_state",
     .EEPROMPath = "/dev/battery_history",
+    .MitigationPath = "/sys/devices/virtual/pmic/mitigation",
+    .MitigationDurationPath = "/sys/devices/virtual/pmic/mitigation/irq_dur_cnt",
+    .BrownoutReasonProp = "vendor.brownout_reason",
+    .BrownoutLogPath = "/data/vendor/mitigation/lastmeal.txt",
     .SpeakerTemperaturePath = "/sys/devices/platform/audiometrics/speaker_temp",
     .SpeakerExcursionPath = "/sys/devices/platform/audiometrics/speaker_excursion",
     .SpeakerHeartBeatPath = "/sys/devices/platform/audiometrics/speaker_heartbeat",
@@ -67,7 +71,7 @@ const struct SysfsCollector::SysfsPaths sysfs_paths = {
         "/sys/devices/platform/100b0000.TPU/trip_counter",
         "/sys/devices/platform/100b0000.AUR/trip_counter",
     },
-    .CCARatePath = "/sys/devices/platform/audiometrics/cca_rate_read_once",
+    .CCARatePath = "/sys/devices/platform/audiometrics/cca_count_read_once",
     .TempResidencyAndResetPaths = {
         {
             "/sys/kernel/metrics/thermal/tr_by_group/tmu/stats",
@@ -83,7 +87,9 @@ const struct SysfsCollector::SysfsPaths sysfs_paths = {
     .StormIRQMetricsPath = "/sys/kernel/metrics/irq/storm_irq_metrics",
     .IRQStatsResetPath = "/sys/kernel/metrics/irq/stats_reset",
     .ModemPcieLinkStatsPath = "/sys/devices/platform/11920000.pcie/link_stats",
-    .WifiPcieLinkStatsPath = "/sys/devices/platform/14520000.pcie/link_stats"
+    .WifiPcieLinkStatsPath = "/sys/devices/platform/14520000.pcie/link_stats",
+    .GMSRPath = "/sys/class/power_supply/maxfg/gmsr",
+    .TotalCallCountPath = "/sys/devices/platform/audiometrics/call_count"
 };
 
 const struct UeventListener::UeventPaths ueventPaths = {
