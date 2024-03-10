@@ -1,2 +1,2 @@
-# b/214122471
-dontaudit servicemanager hal_fingerprint_default:binder { call };
+# b/305600595
+dontaudit servicemanager hal_thermal_default:binder call;

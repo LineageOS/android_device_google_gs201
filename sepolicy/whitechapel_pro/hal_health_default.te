@@ -18,3 +18,4 @@ allow hal_health_default sysfs_batteryinfo:file w_file_perms;
 allow hal_health_default sysfs_thermal:dir search;
 allow hal_health_default sysfs_thermal:file w_file_perms;
 allow hal_health_default thermal_link_device:dir search;
+allow hal_health_default sysfs_wlc:file r_file_perms;
