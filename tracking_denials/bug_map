@@ -5,9 +5,12 @@ incidentd incidentd anon_inode b/282626428
 kernel dm_device blk_file b/319403445
 kernel tmpfs chr_file b/321731318
 rfsd vendor_cbd_prop file b/317734397
+shell sysfs_net file b/329380891
 surfaceflinger selinuxfs file b/315104594
 vendor_init default_prop file b/315104479
 vendor_init default_prop file b/315104803
 vendor_init default_prop file b/323086703
 vendor_init default_prop file b/323086890
+vendor_init default_prop file b/329380363
+vendor_init default_prop file b/329381126
 vendor_init default_prop property_service b/315104803
