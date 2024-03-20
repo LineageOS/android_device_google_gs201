@@ -16,6 +16,24 @@
       "message": "This seems to be broken in the device-[oriole/raven].mk files on the include lines as well.",
       "revId": "9f4785195323d5bc9687b84e804992b12e8c2d42",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c564c1_635e39e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25889
+      },
+      "writtenOn": "2024-03-20T23:01:43Z",
+      "side": 1,
+      "message": "To be specific in the raviole repo, not the gs201 repo.",
+      "parentUuid": "0c111e0f_d368792b",
+      "revId": "9f4785195323d5bc9687b84e804992b12e8c2d42",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
