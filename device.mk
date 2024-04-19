@@ -766,8 +766,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.stagefright.c2inputsurface=-1 \
 
-PRODUCT_PROPERTY_OVERRIDES += media.c2.hal.selection=aidl
-
 # 2. OpenMAX IL
 PRODUCT_COPY_FILES += \
 	device/google/gs201/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
