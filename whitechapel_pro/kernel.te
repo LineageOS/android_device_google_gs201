@@ -13,3 +13,4 @@ dontaudit kernel vendor_maxfg_debugfs:dir { search };
 dontaudit kernel vendor_regmap_debugfs:dir search;
 dontaudit kernel vendor_votable_debugfs:dir search;
 dontaudit kernel vendor_usb_debugfs:dir search;
+dontaudit kernel vendor_charger_debugfs:dir search;
