@@ -43,8 +43,9 @@
 
 #include <aidl/android/frameworks/stats/IStats.h>
 #include <android_hardware_usb_flags.h>
-#include <pixelusb/UsbGadgetAidlCommon.h>
 #include <pixelstats/StatsHelper.h>
+#include <pixelusb/I2cHelper.h>
+#include <pixelusb/UsbGadgetAidlCommon.h>
 
 namespace usb_flags = android::hardware::usb::flags;
 
@@ -55,6 +56,7 @@ using android::base::Trim;
 using android::hardware::google::pixel::getStatsService;
 using android::hardware::google::pixel::PixelAtoms::VendorUsbPortOverheat;
 using android::hardware::google::pixel::reportUsbPortOverheat;
+using android::hardware::google::pixel::usb::getI2cClientPath;
 using android::String8;
 using android::Vector;
 
@@ -67,18 +69,19 @@ volatile bool destroyThread;
 
 string enabledPath;
 constexpr char kHsi2cPath[] = "/sys/devices/platform/10d60000.hsi2c";
-constexpr char kI2CPath[] = "/sys/devices/platform/10d60000.hsi2c/i2c-";
+constexpr char kTcpcDevName[] = "i2c-max77759tcpc";
+constexpr char kI2cClientId[] = "0025";
 constexpr char kComplianceWarningsPath[] = "device/non_compliant_reasons";
 constexpr char kComplianceWarningBC12[] = "bc12";
 constexpr char kComplianceWarningDebugAccessory[] = "debug-accessory";
 constexpr char kComplianceWarningMissingRp[] = "missing_rp";
 constexpr char kComplianceWarningOther[] = "other";
 constexpr char kComplianceWarningInputPowerLimited[] = "input_power_limited";
-constexpr char kContaminantDetectionPath[] = "i2c-max77759tcpc/contaminant_detection";
-constexpr char kStatusPath[] = "i2c-max77759tcpc/contaminant_detection_status";
-constexpr char kSinkLimitEnable[] = "i2c-max77759tcpc/usb_limit_sink_enable";
-constexpr char kSourceLimitEnable[] = "i2c-max77759tcpc/usb_limit_source_enable";
-constexpr char kSinkLimitCurrent[] = "i2c-max77759tcpc/usb_limit_sink_current";
+constexpr char kContaminantDetectionPath[] = "contaminant_detection";
+constexpr char kStatusPath[] = "contaminant_detection_status";
+constexpr char kSinkLimitEnable[] = "usb_limit_sink_enable";
+constexpr char kSourceLimitEnable[] = "usb_limit_source_enable";
+constexpr char kSinkLimitCurrent[] = "usb_limit_sink_current";
 constexpr char kTypecPath[] = "/sys/class/typec";
 constexpr char kDisableContatminantDetection[] = "vendor.usb.contaminantdisable";
 constexpr char kOverheatStatsPath[] = "/sys/devices/platform/google,usbc_port_cooling_dev/";
@@ -245,31 +248,9 @@ ScopedAStatus Usb::resetUsbPort(const std::string& in_portName, int64_t in_trans
     return ::ndk::ScopedAStatus::ok();
 }
 
-Status getI2cBusHelper(string *name) {
-    DIR *dp;
-
-    dp = opendir(kHsi2cPath);
-    if (dp != NULL) {
-        struct dirent *ep;
-
-        while ((ep = readdir(dp))) {
-            if (ep->d_type == DT_DIR) {
-                if (string::npos != string(ep->d_name).find("i2c-")) {
-                    std::strtok(ep->d_name, "-");
-                    *name = std::strtok(NULL, "-");
-                }
-            }
-        }
-        closedir(dp);
-        return Status::SUCCESS;
-    }
-
-    ALOGE("Failed to open %s", kHsi2cPath);
-    return Status::ERROR;
-}
-
-Status queryMoistureDetectionStatus(std::vector<PortStatus> *currentPortStatus) {
-    string enabled, status, path, DetectedPath;
+Status queryMoistureDetectionStatus(android::hardware::usb::Usb *usb,
+                                    std::vector<PortStatus> *currentPortStatus) {
+    string enabled, status, DetectedPath;
 
     (*currentPortStatus)[0].supportedContaminantProtectionModes
             .push_back(ContaminantProtectionMode::FORCE_DISABLE);
@@ -278,8 +259,15 @@ Status queryMoistureDetectionStatus(std::vector<PortStatus> *currentPortStatus) 
     (*currentPortStatus)[0].supportsEnableContaminantPresenceDetection = true;
     (*currentPortStatus)[0].supportsEnableContaminantPresenceProtection = false;
 
-    getI2cBusHelper(&path);
-    enabledPath = kI2CPath + path + "/" + kContaminantDetectionPath;
+    if (usb->mI2cClientPath.empty()) {
+        usb->mI2cClientPath = getI2cClientPath(kHsi2cPath, kTcpcDevName, kI2cClientId);
+        if (usb->mI2cClientPath.empty()) {
+            ALOGE("%s: Unable to locate i2c bus node", __func__);
+            return Status::ERROR;
+        }
+    }
+
+    enabledPath = usb->mI2cClientPath + kContaminantDetectionPath;
     if (!ReadFileToString(enabledPath, &enabled)) {
         ALOGE("Failed to open moisture_detection_enabled");
         return Status::ERROR;
@@ -287,7 +275,7 @@ Status queryMoistureDetectionStatus(std::vector<PortStatus> *currentPortStatus) 
 
     enabled = Trim(enabled);
     if (enabled == "1") {
-        DetectedPath = kI2CPath + path + "/" + kStatusPath;
+        DetectedPath = usb->mI2cClientPath + kStatusPath;
         if (!ReadFileToString(DetectedPath, &status)) {
             ALOGE("Failed to open moisture_detected");
             return Status::ERROR;
@@ -562,7 +550,8 @@ Usb::Usb()
                           ThrottlingSeverity::NONE)}, kSamplingIntervalSec),
       mUsbDataEnabled(true),
       mUsbHubVendorCmdValue(GL852G_VENDOR_CMD_VALUE_DEFAULT),
-      mUsbHubVendorCmdIndex(GL852G_VENDOR_CMD_INDEX_DEFAULT) {
+      mUsbHubVendorCmdIndex(GL852G_VENDOR_CMD_INDEX_DEFAULT),
+      mI2cClientPath("") {
     pthread_condattr_t attr;
     if (pthread_condattr_init(&attr)) {
         ALOGE("pthread_condattr_init failed: %s", strerror(errno));
@@ -584,6 +573,11 @@ Usb::Usb()
         ALOGE("pthread creation failed %d\n", errno);
         abort();
     }
+
+    ALOGI("feature flag enable_usb_data_compliance_warning: %d",
+          usb_flags::enable_usb_data_compliance_warning());
+    ALOGI("feature flag enable_input_power_limited_warning: %d",
+          usb_flags::enable_input_power_limited_warning());
 }
 
 ScopedAStatus Usb::switchRole(const string& in_portName, const PortRole& in_role,
@@ -645,12 +639,19 @@ ScopedAStatus Usb::limitPowerTransfer(const string& in_portName, bool in_limit,
         int64_t in_transactionId) {
     bool sessionFail = false, success;
     std::vector<PortStatus> currentPortStatus;
-    string path, sinkLimitEnablePath, currentLimitPath, sourceLimitEnablePath;
+    string sinkLimitEnablePath, currentLimitPath, sourceLimitEnablePath;
 
-    getI2cBusHelper(&path);
-    sinkLimitEnablePath = kI2CPath + path + "/" + kSinkLimitEnable;
-    currentLimitPath = kI2CPath + path + "/" + kSinkLimitCurrent;
-    sourceLimitEnablePath = kI2CPath + path + "/" + kSourceLimitEnable;
+    if (mI2cClientPath.empty()) {
+        mI2cClientPath = getI2cClientPath(kHsi2cPath, kTcpcDevName, kI2cClientId);
+        if (mI2cClientPath.empty()) {
+            ALOGE("%s: Unable to locate i2c bus node", __func__);
+            return ScopedAStatus::ok();
+        }
+    }
+
+    sinkLimitEnablePath = mI2cClientPath + kSinkLimitEnable;
+    currentLimitPath = mI2cClientPath + kSinkLimitCurrent;
+    sourceLimitEnablePath = mI2cClientPath + kSourceLimitEnable;
 
     pthread_mutex_lock(&mLock);
     if (in_limit) {
@@ -690,11 +691,19 @@ ScopedAStatus Usb::limitPowerTransfer(const string& in_portName, bool in_limit,
     return ScopedAStatus::ok();
 }
 
-Status queryPowerTransferStatus(std::vector<PortStatus> *currentPortStatus) {
-    string limitedPath, enabled, path;
+Status queryPowerTransferStatus(android::hardware::usb::Usb *usb,
+                                std::vector<PortStatus> *currentPortStatus) {
+    string limitedPath, enabled;
 
-    getI2cBusHelper(&path);
-    limitedPath = kI2CPath + path + "/" + kSinkLimitEnable;
+    if (usb->mI2cClientPath.empty()) {
+        usb->mI2cClientPath = getI2cClientPath(kHsi2cPath, kTcpcDevName, kI2cClientId);
+        if (usb->mI2cClientPath.empty()) {
+            ALOGE("%s: Unable to locate i2c bus node", __func__);
+            return Status::ERROR;
+        }
+    }
+
+    limitedPath = usb->mI2cClientPath + kSinkLimitEnable;
     if (!ReadFileToString(limitedPath, &enabled)) {
         ALOGE("Failed to open limit_sink_enable");
         return Status::ERROR;
@@ -948,8 +957,8 @@ void queryVersionHelper(android::hardware::usb::Usb *usb,
     Status status;
     pthread_mutex_lock(&usb->mLock);
     status = getPortStatusHelper(usb, currentPortStatus);
-    queryMoistureDetectionStatus(currentPortStatus);
-    queryPowerTransferStatus(currentPortStatus);
+    queryMoistureDetectionStatus(usb, currentPortStatus);
+    queryPowerTransferStatus(usb, currentPortStatus);
     queryNonCompliantChargerStatus(currentPortStatus);
     queryUsbDataSession(usb, currentPortStatus);
     if (usb->mCallback != NULL) {

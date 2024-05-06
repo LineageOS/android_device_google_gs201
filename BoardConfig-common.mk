@@ -190,6 +190,7 @@ BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 # Video Codec
 ########################
 # 1. Exynos C2
+BOARD_USE_CODEC2_HIDL_1_2 := true
 BOARD_USE_CSC_FILTER := false
 BOARD_USE_DEC_SW_CSC := true
 BOARD_USE_ENC_SW_CSC := true
@@ -380,6 +381,9 @@ BOARD_BUILD_VENDOR_RAMDISK_IMAGE := true
 KERNEL_MODULE_DIR := $(TARGET_KERNEL_DIR)
 KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/*.ko)
 
+ifneq ($(wildcard $(KERNEL_MODULE_DIR)/system_dlkm.modules.blocklist),)
+BOARD_SYSTEM_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_MODULE_DIR)/system_dlkm.modules.blocklist
+endif
 BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_MODULE_DIR)/vendor_dlkm.modules.blocklist
 
 # Prebuilt kernel modules that are *not* listed in vendor_kernel_boot.modules.load
@@ -410,6 +414,9 @@ BOARD_VENDOR_KERNEL_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/, $(notdir $(BOA
 else
 BOARD_VENDOR_KERNEL_MODULES := $(KERNEL_MODULES)
 endif
+
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/system_dlkm.modules.load))
+BOARD_SYSTEM_KERNEL_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/, $(notdir $(BOARD_SYSTEM_KERNEL_MODULES_LOAD)))
 
 # Using BUILD_COPY_HEADERS
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true

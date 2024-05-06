@@ -55,7 +55,6 @@
 /dev/video55              0666   system     graphics
 /dev/g2d                  0660   system     graphics
 /dev/fimg2d               0666   system     graphics
-/dev/i2c-2                0660   system     system
 /dev/HPD                  0660   system     system
 
 # wfd

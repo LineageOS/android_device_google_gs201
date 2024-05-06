@@ -17,7 +17,6 @@
 #define LOG_TAG "android.hardware.usb.gadget.aidl-service"
 
 #include "UsbGadget.h"
-#include <dirent.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <sys/inotify.h>
@@ -29,6 +28,7 @@
 #include <android-base/properties.h>
 
 #include <aidl/android/frameworks/stats/IStats.h>
+#include <pixelusb/I2cHelper.h>
 
 namespace aidl {
 namespace android {
@@ -37,39 +37,19 @@ namespace usb {
 namespace gadget {
 
 using ::android::base::GetBoolProperty;
+using ::android::hardware::google::pixel::usb::getI2cClientPath;
 using ::android::hardware::google::pixel::usb::kUvcEnabled;
 
 string enabledPath;
 constexpr char kHsi2cPath[] = "/sys/devices/platform/10d60000.hsi2c";
-constexpr char kI2CPath[] = "/sys/devices/platform/10d60000.hsi2c/i2c-";
-constexpr char kAccessoryLimitCurrent[] = "i2c-max77759tcpc/usb_limit_accessory_current";
-constexpr char kAccessoryLimitCurrentEnable[] = "i2c-max77759tcpc/usb_limit_accessory_enable";
-constexpr char kUpdateSdpEnumTimeout[] = "i2c-max77759tcpc/update_sdp_enum_timeout";
+constexpr char kTcpcDevName[] = "i2c-max77759tcpc";
+constexpr char kI2cClientId[] = "0025";
+constexpr char kAccessoryLimitCurrent[] = "usb_limit_accessory_current";
+constexpr char kAccessoryLimitCurrentEnable[] = "usb_limit_accessory_enable";
+constexpr char kUpdateSdpEnumTimeout[] = "update_sdp_enum_timeout";
 
-Status getI2cBusHelper(string *name) {
-    DIR *dp;
-
-    dp = opendir(kHsi2cPath);
-    if (dp != NULL) {
-        struct dirent *ep;
-
-        while ((ep = readdir(dp))) {
-            if (ep->d_type == DT_DIR) {
-                if (string::npos != string(ep->d_name).find("i2c-")) {
-                    std::strtok(ep->d_name, "-");
-                    *name = std::strtok(NULL, "-");
-                }
-            }
-        }
-        closedir(dp);
-        return Status::SUCCESS;
-    }
-
-    ALOGE("Failed to open %s", kHsi2cPath);
-    return Status::ERROR;
-}
-
-UsbGadget::UsbGadget() : mGadgetIrqPath("") {
+UsbGadget::UsbGadget() : mGadgetIrqPath(""),
+      mI2cClientPath("") {
     if (access(OS_DESC_PATH, R_OK) != 0) {
         ALOGE("configfs setup not done yet");
         abort();
@@ -389,14 +369,16 @@ ScopedAStatus UsbGadget::reset(const shared_ptr<IUsbGadgetCallback> &callback,
 }
 
 void UsbGadget::updateSdpEnumTimeout() {
-    string i2c_node, update_sdp_enum_timeout_path;
+    string update_sdp_enum_timeout_path;
 
-    Status status = getI2cBusHelper(&i2c_node);
-    if (status != Status::SUCCESS) {
-        ALOGE("%s: Unable to locate i2c bus node", __func__);
+    if (mI2cClientPath.empty()) {
+        mI2cClientPath = getI2cClientPath(kHsi2cPath, kTcpcDevName, kI2cClientId);
+        if (mI2cClientPath.empty()) {
+            ALOGE("%s: Unable to locate i2c bus node", __func__);
+        }
     }
 
-    update_sdp_enum_timeout_path = kI2CPath + i2c_node + "/" + kUpdateSdpEnumTimeout;
+    update_sdp_enum_timeout_path = mI2cClientPath + kUpdateSdpEnumTimeout;
     if (!WriteStringToFile("1", update_sdp_enum_timeout_path)) {
         ALOGE("%s: Unable to write to %s.", __func__, update_sdp_enum_timeout_path.c_str());
     } else {
@@ -494,15 +476,20 @@ ScopedAStatus UsbGadget::setCurrentUsbFunctions(long functions,
     std::unique_lock<std::mutex> lk(mLockSetCurrentFunction);
     std::string current_usb_power_operation_mode, current_usb_type;
     std::string usb_limit_sink_enable;
-
-    string accessoryCurrentLimitEnablePath, accessoryCurrentLimitPath, path;
+    std::string accessoryCurrentLimitEnablePath, accessoryCurrentLimitPath;
 
     mCurrentUsbFunctions = functions;
     mCurrentUsbFunctionsApplied = false;
 
-    getI2cBusHelper(&path);
-    accessoryCurrentLimitPath = kI2CPath + path + "/" + kAccessoryLimitCurrent;
-    accessoryCurrentLimitEnablePath = kI2CPath + path + "/" + kAccessoryLimitCurrentEnable;
+    if (mI2cClientPath.empty()) {
+        mI2cClientPath = getI2cClientPath(kHsi2cPath, kTcpcDevName, kI2cClientId);
+        if (mI2cClientPath.empty()) {
+            ALOGE("%s: Unable to locate i2c bus node", __func__);
+        }
+    }
+
+    accessoryCurrentLimitPath = mI2cClientPath + kAccessoryLimitCurrent;
+    accessoryCurrentLimitEnablePath = mI2cClientPath + kAccessoryLimitCurrentEnable;
 
     // Get the gadget IRQ number before tearDownGadget()
     if (mGadgetIrqPath.empty())
