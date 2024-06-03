@@ -16,7 +16,7 @@
 
 include device/google/gs-common/device.mk
 include device/google/gs-common/gs_watchdogd/watchdog.mk
-include device/google/gs-common/ramdump/ramdump.mk
+include device/google/gs-common/ramdump_and_coredump/ramdump_and_coredump.mk
 include device/google/gs-common/soc/soc.mk
 include device/google/gs-common/soc/freq.mk
 include device/google/gs-common/modem/modem.mk
@@ -202,9 +202,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	telephony.active_modems.max_count=2
 
 USE_LASSEN_OEMHOOK := true
+# The "power-anomaly-sitril" is added into PRODUCT_SOONG_NAMESPACES when
+# $(USE_LASSEN_OEMHOOK) is true and $(BOARD_WITHOUT_RADIO) is not true.
+ifneq ($(BOARD_WITHOUT_RADIO),true)
+    PRODUCT_SOONG_NAMESPACES += vendor/google/tools/power-anomaly-sitril
+endif
 
 # Use for GRIL
 USES_LASSEN_MODEM := true
+$(call soong_config_set, vendor_ril_google_feature, use_lassen_modem, true)
 
 ifeq ($(USES_GOOGLE_DIALER_CARRIER_SETTINGS),true)
 USE_GOOGLE_DIALER := true
@@ -258,9 +264,8 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.vulkan.version-1_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
 	frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
 	frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
-	frameworks/native/data/etc/android.software.vulkan.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
-	frameworks/native/data/etc/android.software.contextualsearch.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.contextualsearch.xml \
-	frameworks/native/data/etc/android.software.opengles.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml
+	frameworks/native/data/etc/android.software.vulkan.deqp.level-2024-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
+	frameworks/native/data/etc/android.software.opengles.deqp.level-2024-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml
 
 ifeq ($(USE_SWIFTSHADER),true)
 PRODUCT_PACKAGES += \
@@ -762,6 +767,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.stagefright.c2inputsurface=-1 \
 
+PRODUCT_PROPERTY_OVERRIDES += media.c2.hal.selection=aidl
+
 # 2. OpenMAX IL
 PRODUCT_COPY_FILES += \
 	device/google/gs201/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
@@ -1066,7 +1073,9 @@ PRODUCT_SOONG_NAMESPACES += \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/darwinn_logging_service \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/nnapi_stable_aidl \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/aidl \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/hal
+	vendor/google_devices/gs201/proprietary/gchips/tpu/hal \
+	vendor/google_devices/gs201/proprietary/gchips/tpu/tachyon/api \
+	vendor/google_devices/gs201/proprietary/gchips/tpu/tachyon/service
 # TPU firmware
 PRODUCT_PACKAGES += edgetpu-janeiro.fw
 
@@ -1114,9 +1123,6 @@ include hardware/google/pixel/common/pixel-common-device.mk
 # Pixel Logger
 include hardware/google/pixel/PixelLogger/PixelLogger.mk
 
-# sscoredump
-include hardware/google/pixel/sscoredump/device.mk
-
 # RadioExt Version
 USES_RADIOEXT_V1_5 = true
 
@@ -1157,3 +1163,10 @@ PRODUCT_PACKAGES += ufs_firmware_update.sh
 # Touch service
 include device/google/gs-common/touch/twoshay/aidl_gs101.mk
 include device/google/gs-common/touch/twoshay/twoshay.mk
+
+
+# Allow longer timeout for incident report generation in bugreport
+# Overriding in /product partition instead of /vendor intentionally,
+# since it can't be overridden from /vendor.
+PRODUCT_PRODUCT_PROPERTIES += \
+	dumpstate.strict_run=false

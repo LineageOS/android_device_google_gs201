@@ -41,6 +41,10 @@
     </exception>
     -->
 
+    <exception package="com.google.android.GoogleCamera">
+        <permission name="android.permission.POST_NOTIFICATIONS" fixed="false"/>
+    </exception>
+
     <exception
             package="com.google.android.apps.camera.services">
         <!-- Camera -->
@@ -76,6 +80,8 @@
         <permission name="android.permission.ACTIVITY_RECOGNITION" fixed="false"/>
         <!-- Notifications -->
         <permission name="android.permission.POST_NOTIFICATIONS" fixed="false"/>
+        <!-- Used by Bluetooth Module to collect bluetooth info -->
+        <permission name="android.permission.BLUETOOTH_CONNECT" fixed="false"/>
     </exception>
 
     <exception
