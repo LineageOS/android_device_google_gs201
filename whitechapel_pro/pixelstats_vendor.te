@@ -19,6 +19,7 @@ allow pixelstats_vendor fwk_sensor_service:service_manager find;
 
 # Batery history
 allow pixelstats_vendor battery_history_device:chr_file r_file_perms;
+allow pixelstats_vendor logbuffer_device:chr_file r_file_perms;
 
 # storage smart idle maintenance
 get_prop(pixelstats_vendor, smart_idle_maint_enabled_prop);

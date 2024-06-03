@@ -11,6 +11,8 @@ set_prop(vendor_init, vendor_usb_config_prop)
 set_prop(vendor_init, vendor_rild_prop)
 set_prop(vendor_init, logpersistd_logging_prop)
 set_prop(vendor_init, vendor_logger_prop)
+get_prop(vendor_init, telephony_modem_prop)
+
 
 allow vendor_init proc_dirty:file w_file_perms;
 allow vendor_init proc_sched:file w_file_perms;

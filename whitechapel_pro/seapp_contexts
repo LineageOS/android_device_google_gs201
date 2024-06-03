@@ -18,9 +18,6 @@ user=system seinfo=platform name=com.samsung.slsi.telephony.networktestmode doma
 # Samsung S.LSI engineer mode
 user=_app seinfo=platform name=com.samsung.slsi.engineermode domain=vendor_engineermode_app levelFrom=all
 
-# coredump/ramdump
-user=_app seinfo=platform name=com.android.ramdump domain=ramdump_app type=app_data_file levelFrom=all
-
 # Domain for OFLBasicAgentApp to support NFC/eSIM fw upgrade
 user=_app isPrivApp=true  seinfo=platform name=com.thales.device.ofl.app.basicagent domain=ofl_app type=app_data_file levelFrom=user
 
@@ -39,9 +36,6 @@ user=_app seinfo=platform name=com.google.googlecbrs domain=cbrs_setup_app type=
 
 # Domain for EuiccSupportPixel
 user=_app isPrivApp=true seinfo=EuiccSupportPixel name=com.google.euiccpixel domain=euiccpixel_app type=app_data_file levelFrom=all
-
-# Sub System Ramdump
-user=system seinfo=platform name=com.google.SSRestartDetector domain=ssr_detector_app type=system_app_data_file levelFrom=user
 
 # Domain for CatEngineService
 user=system seinfo=platform name=com.google.android.CatEngine domain=cat_engine_service_app type=system_app_data_file levelFrom=all

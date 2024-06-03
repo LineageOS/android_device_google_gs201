@@ -8,3 +8,5 @@ user=_app seinfo=platform name=com.android.hbmsvmanager domain=hbmsvmanager_app 
 # TODO(b/222204912): Should this run under uwb user?
 user=_app isPrivApp=true seinfo=uwb name=com.qorvo.uwb.vendorservice domain=uwb_vendor_app type=uwb_vendor_data_file levelFrom=all
 
+# PixelNtnService
+user=system seinfo=platform name=com.google.android.satellite domain=pixelntnservice_app type=app_data_file levelFrom=all
