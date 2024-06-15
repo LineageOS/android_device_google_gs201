@@ -37,6 +37,9 @@ include device/google/gs-common/sota_app/factoryota.mk
 include device/google/gs-common/misc_writer/misc_writer.mk
 include device/google/gs-common/gyotaku_app/gyotaku.mk
 include device/google/gs-common/bootctrl/bootctrl_aidl.mk
+ifneq ($(filter cheetah felix panther, $(TARGET_PRODUCT)),)
+  include device/google/gs-common/bcmbt/dump/dumplog.mk
+endif
 
 TARGET_BOARD_PLATFORM := gs201
 
@@ -68,7 +71,7 @@ PRODUCT_SOONG_NAMESPACES += \
 	hardware/google/pixel \
 	device/google/gs201 \
 	device/google/gs201/powerstats \
-	system/chre/host/hal_generic \
+	vendor/google_devices/common/chre/host/hal \
 	vendor/google/whitechapel/tools \
 	vendor/google/interfaces \
 	vendor/google_devices/common/proprietary/confirmatioui_hal \
@@ -257,6 +260,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
 	frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
 	frameworks/native/data/etc/android.software.vulkan.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
+	frameworks/native/data/etc/android.software.contextualsearch.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.contextualsearch.xml \
 	frameworks/native/data/etc/android.software.opengles.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml
 
 ifeq ($(USE_SWIFTSHADER),true)
@@ -282,8 +286,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 PRODUCT_VENDOR_PROPERTIES += \
 	ro.opengles.version=196610 \
-	graphics.gpu.profiler.support=true \
-	debug.renderengine.backend=skiaglthreaded
+	graphics.gpu.profiler.support=true
 
 # b/295257834 Add HDR shaders to SurfaceFlinger's pre-warming cache
 PRODUCT_VENDOR_PROPERTIES += ro.surface_flinger.prime_shader_cache.ultrahdr=1
@@ -365,25 +368,21 @@ include device/google/gs-common/insmod/insmod.mk
 PRODUCT_HOST_PACKAGES += \
 	mkdtimg
 
-# Contexthub HAL
-PRODUCT_PACKAGES += \
-	android.hardware.contexthub-service.generic
-
-# CHRE tools
+# CHRE
+## tools
 ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
 	chre_power_test_client \
-	chre_test_client
+	chre_test_client \
+	chre_aidl_hal_client
 endif
 
+## HAL
+include device/google/gs-common/chre/hal.mk
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.context_hub.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.context_hub.xml
-
-## Enable the CHRE Daemon
-CHRE_USF_DAEMON_ENABLED := true
 CHRE_DEDICATED_TRANSPORT_CHANNEL_ENABLED := true
 PRODUCT_PACKAGES += \
-	chre \
 	preloaded_nanoapps.json
 
 # Filesystem management tools
@@ -704,10 +703,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=tr
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.protected_contents=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.display_update_imminent_timeout_ms=50
 
-# force to blend in P3 mode
 PRODUCT_PROPERTY_OVERRIDES += \
-	persist.sys.sf.native_mode=2 \
-	persist.sys.sf.color_mode=9
+	persist.sys.sf.native_mode=2
 PRODUCT_COPY_FILES += \
 	device/google/gs201/display/display_colordata_cal0.pb:$(TARGET_COPY_OUT_VENDOR)/etc/display_colordata_cal0.pb
 
@@ -754,29 +751,13 @@ endif
 $(call soong_config_set,bigo,soc,gs201)
 
 # 1. Codec 2.0
-# exynos service
-PRODUCT_SOONG_NAMESPACES += vendor/samsung_slsi/codec2
+# for settings used by different C2 hal
+include device/google/gs-common/mediacodec/common/mediacodec_common.mk
+# for Exynos C2 Hal
+include device/google/gs-common/mediacodec/samsung/mediacodec_samsung.mk
 
 PRODUCT_COPY_FILES += \
 	device/google/gs201/media_codecs_performance_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_c2.xml \
-
-PRODUCT_PACKAGES += \
-	samsung.hardware.media.c2@1.0-service \
-	codec2.vendor.base.policy \
-	codec2.vendor.ext.policy \
-	libExynosC2ComponentStore \
-	libExynosC2H264Dec \
-	libExynosC2H264Enc \
-	libExynosC2HevcDec \
-	libExynosC2HevcEnc \
-	libExynosC2Mpeg4Dec \
-	libExynosC2Mpeg4Enc \
-	libExynosC2H263Dec \
-	libExynosC2H263Enc \
-	libExynosC2Vp8Dec \
-	libExynosC2Vp8Enc \
-	libExynosC2Vp9Dec \
-	libExynosC2Vp9Enc
 
 PRODUCT_PROPERTY_OVERRIDES += \
        debug.stagefright.c2-poolmask=458752 \
@@ -1092,6 +1073,14 @@ PRODUCT_PROPERTY_OVERRIDES += persist.vendor.enable.thermal.genl=true
 include device/google/gs-common/edgetpu/edgetpu.mk
 # Config variables for TPU chip on device.
 $(call soong_config_set,edgetpu_config,chip,janeiro)
+# Include the edgetpu targets defined the namespaces below into the final image.
+PRODUCT_SOONG_NAMESPACES += \
+	vendor/google_devices/gs201/proprietary/gchips/tpu/metrics \
+	vendor/google_devices/gs201/proprietary/gchips/tpu/tflite_delegate \
+	vendor/google_devices/gs201/proprietary/gchips/tpu/darwinn_logging_service \
+	vendor/google_devices/gs201/proprietary/gchips/tpu/nnapi_stable_aidl \
+	vendor/google_devices/gs201/proprietary/gchips/tpu/aidl \
+	vendor/google_devices/gs201/proprietary/gchips/tpu/hal
 # TPU firmware
 PRODUCT_PACKAGES += edgetpu-janeiro.fw
 
@@ -1180,3 +1169,6 @@ include hardware/google/pixel/HardwareInfo/HardwareInfo.mk
 
 # UFS: the script is used to select the corresponding firmware to run FFU.
 PRODUCT_PACKAGES += ufs_firmware_update.sh
+
+# Touch service
+include device/google/gs-common/touch/twoshay/aidl_gs101.mk

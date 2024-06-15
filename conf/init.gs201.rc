@@ -19,12 +19,8 @@ on init
     write /proc/vendor_sched/teo_util_threshold "1024 1024 1024"
 
     # Boot time fs tuning
-    write /sys/block/sda/queue/iostats 0
     write /sys/block/sda/queue/scheduler bfq
     write /sys/block/sda/queue/iosched/slice_idle 0
-    write /sys/block/sda/queue/nr_requests 256
-    write /dev/sys/fs/by-name/userdata/data_io_flag 56
-    write /dev/sys/fs/by-name/userdata/node_io_flag 56
 
     chown system system /proc/vendor_sched/groups/bg/set_task_group
     chown system system /proc/vendor_sched/groups/cam/set_task_group
@@ -103,15 +99,6 @@ on init
     chmod 0220 /proc/vendor_sched/prefer_idle_clear
     chmod 0220 /proc/vendor_sched/pmu_poll_enable
     chmod 0220 /proc/vendor_sched/pmu_poll_time
-
-    wait /dev/block/platform/${ro.boot.boot_devices}
-    symlink /dev/block/platform/${ro.boot.boot_devices} /dev/block/bootdevice
-
-    # to access UFS/eMMC sysfs directly
-    symlink /sys/devices/platform/${ro.boot.boot_devices} /dev/sys/block/bootdevice
-
-    # Disable UFS powersaving
-    write /dev/sys/block/bootdevice/clkgate_enable 0
 
     start vendor.keymaster-4-0
 
@@ -237,12 +224,7 @@ on init
     chown system system /dev/maxfg_history
 
     # Dump eeprom
-    chown system system /sys/devices/platform/10970000.hsi2c/i2c-5/5-0050/eeprom
-    chown system system /sys/devices/platform/10970000.hsi2c/i2c-4/4-0050/eeprom
-    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-5/5-0050/eeprom
-    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-6/6-0050/eeprom
-    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-7/7-0050/eeprom
-    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-9/9-0050/eeprom
+    chown system system /sys/devices/platform/10da0000.hsi2c/i2c-15/15-0050/eeprom
 
     # Loading common kernel modules in background
     start init_display
@@ -287,6 +269,7 @@ on init
 
     # BatteryHealthData
     chown system system /sys/class/power_supply/battery/first_usage_date
+    chown system system /sys/devices/platform/google,battery/power_supply/battery/swelling_data
 
     # Battery Defender
     chown system system /sys/devices/platform/google,battery/power_supply/battery/bd_trickle_cnt
@@ -309,6 +292,7 @@ on init
     chown system system /sys/devices/platform/google,charger/bd_trigger_time
     chown system system /sys/devices/platform/google,charger/bd_trigger_voltage
     chown system system /sys/devices/platform/google,charger/bd_clear
+    chown system system /sys/devices/platform/google,charger/bd_state
     chown system system /sys/devices/platform/google,charger/charge_start_level
     chown system system /sys/devices/platform/google,charger/charge_stop_level
     chown system system /sys/devices/platform/google,cpm/dc_ctl
@@ -460,15 +444,6 @@ on early-boot
     # Wait for insmod_sh to finish all common modules
     wait_for_prop vendor.common.modules.ready 1
 
-    # Permission for Health Storage HAL
-    chown system system /dev/sys/block/bootdevice/manual_gc
-
-    # Permission for Pixelstats
-    chown system system /dev/sys/block/bootdevice/slowio_read_cnt
-    chown system system /dev/sys/block/bootdevice/slowio_write_cnt
-    chown system system /dev/sys/block/bootdevice/slowio_unmap_cnt
-    chown system system /dev/sys/block/bootdevice/slowio_sync_cnt
-
     # PCIe link stats for pixelstats
     chown system system /sys/devices/platform/11920000.pcie/link_stats/complete_timeout_irqs
     chown system system /sys/devices/platform/11920000.pcie/link_stats/link_down_irqs
@@ -506,6 +481,7 @@ on early-boot
     chown system system /dev/logbuffer_cpm
     chown system system /dev/logbuffer_bd
     chown system system /dev/logbuffer_dual_batt
+    chown system system /dev/logbuffer_cpif
 
 on boot
 
@@ -589,6 +565,7 @@ on fs
     chown system system /sys/class/backlight/panel0-backlight/dimming_on
     chown system system /sys/class/backlight/panel0-backlight/hbm_mode
     chown system system /sys/class/backlight/panel0-backlight/local_hbm_mode
+    chown system system /sys/class/backlight/panel0-backlight/allow_wakeup_by_state_change
     chown system system /sys/devices/platform/exynos-drm/primary-panel/gamma
     chown system system /sys/devices/platform/exynos-drm/primary-panel/min_vrefresh
     chown system system /sys/devices/platform/exynos-drm/primary-panel/idle_delay_ms
@@ -686,21 +663,6 @@ on property:init.svc.vendor.charger=running
     write /sys/devices/system/cpu/cpu7/online 0
 
 on property:sys.boot_completed=1
-
-    # Runtime fs tuning
-    write /sys/block/sda/queue/nr_requests 128
-    write /sys/block/sda/queue/iostats 1
-    write /sys/block/sda/queue/iosched/slice_idle 0
-    write /dev/sys/fs/by-name/userdata/data_io_flag 8
-    write /dev/sys/fs/by-name/userdata/node_io_flag 8
-
-    # Permission for Pixelstats
-    chown system system /dev/sys/fs/by-name/userdata/compr_written_block
-    chown system system /dev/sys/fs/by-name/userdata/compr_saved_block
-    chown system system /dev/sys/fs/by-name/userdata/compr_new_inode
-    chown system system /dev/sys/fs/by-name/userdata/gc_segment_mode
-    chown system system /dev/sys/fs/by-name/userdata/gc_reclaimed_segments
-
     # Enable ZRAM on boot_complete
     swapon_all /vendor/etc/fstab.${ro.board.platform}
     write /proc/sys/vm/swappiness 60
@@ -711,9 +673,6 @@ on property:sys.boot_completed=1
     # Back to default VM settings
     write /proc/sys/vm/dirty_expire_centisecs 3000
     write /proc/sys/vm/dirty_background_ratio 10
-
-    # Enable UFS powersaving
-    write /dev/sys/block/bootdevice/clkgate_enable 1
 
     # Reset DDR frequency
     write /sys/devices/platform/17000010.devfreq_mif/devfreq/17000010.devfreq_mif/exynos_data/cancel_boot_freq 1
@@ -768,11 +727,11 @@ on property:sys.boot_completed=1
     write /proc/vendor_sched/pmu_poll_enable 0
 
     # Make devices on the critical path for suspend/resume asynchronous
-    write /sys/devices/platform/acpm_mfd_bus@18110000/i2c-8/i2c-s2mpg13mfd/power/async "enabled"
-    write /sys/devices/platform/acpm_mfd_bus@18110000/i2c-8/power/async "enabled"
+    write /sys/devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/power/async "enabled"
+    write /sys/devices/platform/acpm_mfd_bus@18110000/i2c-21/power/async "enabled"
     write /sys/devices/platform/acpm_mfd_bus@18110000/power/async "enabled"
-    write /sys/devices/platform/acpm_mfd_bus@18100000/i2c-7/i2c-s2mpg12mfd/power/async "enabled"
-    write /sys/devices/platform/acpm_mfd_bus@18100000/i2c-7/power/async "enabled"
+    write /sys/devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/power/async "enabled"
+    write /sys/devices/platform/acpm_mfd_bus@18100000/i2c-20/power/async "enabled"
     write /sys/devices/platform/acpm_mfd_bus@18100000/power/async "enabled"
     write /sys/devices/platform/dbgdev-pd-hsi0/power/async "enabled"
     write /sys/devices/platform/fixedregulator@0/regulator/regulator.2/power/async "enabled"
@@ -923,6 +882,7 @@ on post-fs-data
     chown bluetooth system /proc/bluetooth/sleep/btwake
     chown bluetooth system /proc/bluetooth/sleep/lpm
     chown bluetooth system /proc/bluetooth/sleep/btwrite
+    mkdir /data/vendor/bluetooth 0770 bluetooth system
 
 on post-fs-data
     mkdir /data/vendor/powerstats 0771 system system
@@ -936,7 +896,7 @@ on property:vendor.brownout.mitigation.ready=1
     write /sys/devices/virtual/pmic/mitigation/clock_ratio/tpu_light_clk_ratio 0x80041c3 #DFS
     write /sys/devices/virtual/pmic/mitigation/clock_ratio/cpu1_heavy_clk_ratio 0xfff041c0 #DFS
     write /sys/devices/virtual/pmic/mitigation/clock_ratio/cpu2_heavy_clk_ratio 0xfff041c0 #DFS
-    write /sys/devices/virtual/pmic/mitigation/clock_ratio/gpu_light_clk_ratio 0xfff041c1 #DFS
+    write /sys/devices/virtual/pmic/mitigation/clock_ratio/gpu_light_clk_ratio 0xfff041c3 #DFS
     write /sys/devices/virtual/pmic/mitigation/clock_ratio/cpu2_light_clk_ratio 0xfff041c3 #OCP
     write /sys/devices/virtual/pmic/mitigation/clock_ratio/gpu_heavy_clk_ratio 0xfff04385 #OCP
     write /sys/devices/virtual/pmic/mitigation/clock_ratio/tpu_heavy_clk_ratio 0xfff041c1 #OCP
@@ -1024,16 +984,6 @@ on charger
     mkdir /dev/thermal/cdev-by-name 0750 system system
     start vendor.thermal.symlinks
 
-    # Runtime fs tuning
-    write /sys/block/sda/queue/nr_requests 128
-    write /sys/block/sda/queue/iostats 1
-    write /sys/block/sda/queue/iosched/slice_idle 0
-    write /dev/sys/fs/by-name/userdata/data_io_flag 8
-    write /dev/sys/fs/by-name/userdata/node_io_flag 8
-
-    # Enable UFS powersaving
-    write /dev/sys/block/bootdevice/clkgate_enable 1
-
     # Cancel boot devfreq and uclamp
     write /sys/devices/platform/17000010.devfreq_mif/devfreq/17000010.devfreq_mif/exynos_data/cancel_boot_freq 1
     write /sys/devices/platform/17000020.devfreq_int/devfreq/17000020.devfreq_int/exynos_data/cancel_boot_freq 1
@@ -1074,10 +1024,7 @@ on property:persist.vendor.softmaxfreq.cl1=*
 on property:persist.vendor.softmaxfreq.cl2=*
     write /sys/devices/platform/exynos-acme/freq_qos_max "6 ${persist.vendor.softmaxfreq.cl2}"
 
-# UFS
 on property:ro.boot.mode=charger && property:init.svc.vendor.charger=running
-    # Enable UFS powersaving in Off Mode Charger
-    write /dev/sys/block/bootdevice/clkgate_enable 1
     # Disable dock-defend in Off Mode Charger
     write /sys/devices/platform/google,charger/dd_state -1
 
