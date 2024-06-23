@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d1eb860_c7572e12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-06-23T04:34:31Z",
+      "side": 1,
+      "message": "Modern Debian/Ubuntu 24.04 both have strange issues building f2fs user data images.\n\nIt\u0027s a bandaid, but it\u0027s harmless to Lineage\u0027s use cases.\n\nWe can always revert if a better solution is found, but I refuse to have a perpetual pick on a device I work on hehe.",
+      "revId": "0db58100ecd71650e5e5b3257406c1575c36d55e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
