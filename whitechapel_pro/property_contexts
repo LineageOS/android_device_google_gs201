@@ -38,6 +38,9 @@ vendor.sys.rild_reset                      u:object_r:vendor_rild_prop:s0
 persist.vendor.radio.                      u:object_r:vendor_rild_prop:s0
 ro.vendor.config.build_carrier             u:object_r:vendor_carrier_prop:s0
 
+# for GRIL
+vendor.gril.                               u:object_r:vendor_gril_prop:s0
+
 persist.vendor.config.                     u:object_r:vendor_persist_config_default_prop:s0
 
 # SSR Detector
