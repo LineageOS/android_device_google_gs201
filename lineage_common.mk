@@ -16,11 +16,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.vendor.camera.extensions.package=com.google.android.apps.camera.services \
     ro.vendor.camera.extensions.service=com.google.android.apps.camera.services.extensions.service.PixelExtensions
 
-# GMS
-ifeq ($(WITH_GMS),true)
-GMS_MAKEFILE=gms_64bit_only.mk
-endif
-
 # Google Assistant
 PRODUCT_PRODUCT_PROPERTIES += ro.opa.eligible_device=true
 
