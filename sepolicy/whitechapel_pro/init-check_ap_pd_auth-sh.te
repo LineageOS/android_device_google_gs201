@@ -1,0 +1,14 @@
+type init-check_ap_pd_auth-sh, domain;
+type init-check_ap_pd_auth-sh_exec, vendor_file_type, exec_type, file_type;
+
+userdebug_or_eng(`
+  init_daemon_domain(init-check_ap_pd_auth-sh)
+
+  set_prop(init-check_ap_pd_auth-sh, vendor_sjtag_lock_state_prop)
+
+  allow init-check_ap_pd_auth-sh sysfs_sjtag:dir r_dir_perms;
+  allow init-check_ap_pd_auth-sh sysfs_sjtag:file r_file_perms;
+
+  allow init-check_ap_pd_auth-sh vendor_shell_exec:file rx_file_perms;
+  allow init-check_ap_pd_auth-sh vendor_toolbox_exec:file rx_file_perms;
+')

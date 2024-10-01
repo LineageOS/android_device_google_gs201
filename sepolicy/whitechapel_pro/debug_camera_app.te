@@ -1,0 +1,12 @@
+userdebug_or_eng(`
+	# Allows camera app to access the GXP device and properties.
+	allow debug_camera_app gxp_device:chr_file rw_file_perms;
+	get_prop(debug_camera_app, vendor_gxp_prop)
+
+	# Allows camera app to search for GXP firmware file.
+	allow debug_camera_app vendor_fw_file:dir search;
+
+	# Allows GCA-Eng to find and access the EdgeTPU.
+	allow debug_camera_app edgetpu_app_service:service_manager find;
+	allow debug_camera_app edgetpu_device:chr_file { getattr read write ioctl map };
+')
