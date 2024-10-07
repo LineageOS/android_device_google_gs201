@@ -1,8 +1,6 @@
+# device.te
 type modem_block_device, dev_type;
 type custom_ab_block_device, dev_type;
-type persist_block_device, dev_type;
-type efs_block_device, dev_type;
-type modem_userdata_block_device, dev_type;
 type mfg_data_block_device, dev_type;
 type vendor_toe_device, dev_type;
 type lwis_device, dev_type;
@@ -20,3 +18,4 @@ type fips_block_device, dev_type;
 # SecureElement SPI device
 type st54spi_device, dev_type;
 type st33spi_device, dev_type;
+

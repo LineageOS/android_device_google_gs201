@@ -33,6 +33,7 @@ genfscon sysfs /devices/platform/28000000.mali/dma_buf_gpu_mem                 u
 genfscon sysfs /devices/platform/28000000.mali/total_gpu_mem                   u:object_r:sysfs_gpu:s0
 genfscon sysfs /devices/platform/28000000.mali/kprcs                           u:object_r:sysfs_gpu:s0
 genfscon sysfs /devices/platform/28000000.mali/dvfs_period                     u:object_r:sysfs_gpu:s0
+genfscon sysfs /devices/platform/28000000.mali/cur_freq                        u:object_r:sysfs_gpu:s0
 
 # Fabric
 genfscon sysfs /devices/platform/17000010.devfreq_mif/devfreq/17000010.devfreq_mif/min_freq                u:object_r:sysfs_fabric:s0
@@ -63,6 +64,55 @@ genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-me
 
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device             u:object_r:sysfs_odpm:s0
 genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/wakeup                 u:object_r:sysfs_wakeup:s0
+
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power0_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power1_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power2_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power3_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power4_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power5_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power6_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power7_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power8_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power9_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power10_scale   u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_power11_scale   u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power0_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power1_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power2_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power3_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power4_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power5_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power6_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power7_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power8_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power9_scale    u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power10_scale   u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_power11_scale   u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current0_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current1_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current2_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current3_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current4_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current5_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current6_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current7_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current8_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current9_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current10_scale u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18100000/i2c-20/20-001f/s2mpg12-meter/s2mpg12-odpm//iio:device0/in_current11_scale u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current0_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current1_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current2_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current3_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current4_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current5_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current6_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current7_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current8_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current9_scale  u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current10_scale u:object_r:sysfs_odpm:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@18110000/i2c-21/21-002f/s2mpg13-meter/s2mpg13-odpm/iio:device1/in_current11_scale u:object_r:sysfs_odpm:s0
 
 # Devfreq current frequency
 genfscon sysfs /devices/platform/17000010.devfreq_mif/devfreq/17000010.devfreq_mif/cur_freq             u:object_r:sysfs_devfreq_cur:s0
@@ -103,6 +153,7 @@ genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/panel_name 
 genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/serial_number                        u:object_r:sysfs_display:s0
 genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/refresh_rate                         u:object_r:sysfs_display:s0
 genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/panel_pwr_vreg                       u:object_r:sysfs_display:s0
+genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/power_mode                           u:object_r:sysfs_display:s0
 genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/power_state                          u:object_r:sysfs_display:s0
 
 genfscon sysfs /devices/platform/1c2d0000.drmdsim/1c2d0000.drmdsim.0/backlight                            u:object_r:sysfs_leds:s0
