@@ -356,6 +356,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/google/gs201/conf/init.gs201.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.gs201.rc
 
+ifneq (,$(filter 5.%, $(TARGET_LINUX_KERNEL_VERSION)))
+PRODUCT_COPY_FILES += \
+	device/google/gs201/storage/5.10/init.gs201.storage.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.gs201.storage.rc
+else
+PRODUCT_COPY_FILES += \
+	device/google/gs201/storage/6.1/init.gs201.storage.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.gs201.storage.rc
+endif
+
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
 	device/google/gs201/conf/init.debug.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.debug.rc \
@@ -383,12 +391,13 @@ PRODUCT_COPY_FILES += \
 
 include device/google/gs-common/insmod/insmod.mk
 
+# Insmod config files
+PRODUCT_COPY_FILES += \
+	$(call find-copy-subdir-files,init.insmod.*.cfg,$(TARGET_KERNEL_DIR),$(TARGET_COPY_OUT_VENDOR_DLKM)/etc)
+
 # For creating dtbo image
 PRODUCT_HOST_PACKAGES += \
 	mkdtimg
-
-PRODUCT_PACKAGES += \
-	messaging
 
 # CHRE
 ## tools
@@ -1095,7 +1104,7 @@ PRODUCT_SOONG_NAMESPACES += \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/nnapi_stable_aidl \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/aidl \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/hal \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/tachyon/api \
+	vendor/google_devices/gs201/proprietary/gchips/tpu/tachyon/tachyon_apis \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/tachyon/service
 # TPU firmware
 PRODUCT_PACKAGES += edgetpu-janeiro.fw
@@ -1152,7 +1161,7 @@ include hardware/google/pixel/wifi_ext/device.mk
 
 # Battery Stats Viewer
 PRODUCT_PACKAGES_DEBUG += BatteryStatsViewer
-PRODUCT_PACKAGES += dump_power_gs201.sh
+include device/google/gs201/dumpstate/item.mk
 
 # Install product specific framework compatibility matrix
 # (TODO: b/169535506) This includes the FCM for system_ext and product partition.
@@ -1160,12 +1169,19 @@ PRODUCT_PACKAGES += dump_power_gs201.sh
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs201/device_framework_matrix_product.xml
 
 # Preopt SystemUI
+ifneq ($(RELEASE_SYSTEMUI_USE_SPEED_PROFILE), true)
 PRODUCT_DEXPREOPT_SPEED_APPS += SystemUIGoogle  # For internal
-PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI  # For AOSP
+PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI        # For AOSP
+endif
 
-# Compile SystemUI on device with `speed`.
+# Set on-device compilation mode for SystemUI.
+ifeq ($(RELEASE_SYSTEMUI_USE_SPEED_PROFILE), true)
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.systemuicompilerfilter=speed-profile
+else
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.systemuicompilerfilter=speed
+endif
 
 # Keymint configuration
 PRODUCT_COPY_FILES += \

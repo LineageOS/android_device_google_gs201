@@ -1,3 +1,4 @@
+import /vendor/etc/init/hw/init.gs201.storage.rc
 import /vendor/etc/init/hw/init.gs201.usb.rc
 import android.hardware.drm@1.2-service.widevine.rc
 import init.exynos.sensorhub.rc
@@ -18,10 +19,6 @@ on init
     write /sys/devices/system/cpu/cpuidle/current_governor teo
     # Disable util-awareness
     write /proc/vendor_sched/teo_util_threshold "1024 1024 1024"
-
-    # Boot time fs tuning
-    write /sys/block/sda/queue/scheduler bfq
-    write /sys/block/sda/queue/iosched/slice_idle 0
 
     chown system system /proc/vendor_sched/groups/bg/set_task_group
     chown system system /proc/vendor_sched/groups/cam/set_task_group
@@ -51,6 +48,8 @@ on init
     chown system system /proc/vendor_sched/prefer_idle_clear
     chown system system /proc/vendor_sched/pmu_poll_enable
     chown system system /proc/vendor_sched/pmu_poll_time
+    chown system system /proc/vendor_sched/uclamp_fork_reset_clear
+    chown system system /proc/vendor_sched/uclamp_fork_reset_set
     chown system system /sys/devices/system/cpu/cpufreq/policy0/sched_pixel/lcpi_threshold
     chown system system /sys/devices/system/cpu/cpufreq/policy0/sched_pixel/spc_threshold
     chown system system /sys/devices/system/cpu/cpufreq/policy0/sched_pixel/limit_frequency
@@ -100,6 +99,8 @@ on init
     chmod 0220 /proc/vendor_sched/prefer_idle_clear
     chmod 0220 /proc/vendor_sched/pmu_poll_enable
     chmod 0220 /proc/vendor_sched/pmu_poll_time
+    chmod 0220 /proc/vendor_sched/uclamp_fork_reset_clear
+    chmod 0220 /proc/vendor_sched/uclamp_fork_reset_set
 
     start vendor.keymaster-4-0
 
