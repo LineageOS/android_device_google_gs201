@@ -22,6 +22,7 @@ TARGET_SOC := gs201
 TARGET_SOC_NAME := google
 
 USES_DEVICE_GOOGLE_GS201 := true
+$(call soong_config_set,CitadelProvision,target_soc,gs201)
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-2a
@@ -49,6 +50,7 @@ BOARD_KERNEL_CMDLINE += cgroup_disable=memory
 BOARD_KERNEL_CMDLINE += rcupdate.rcu_expedited=1 rcu_nocbs=all rcutree.enable_rcu_lazy
 BOARD_KERNEL_CMDLINE += stack_depot_disable=off page_pinner=on
 BOARD_KERNEL_CMDLINE += swiotlb=1024
+BOARD_KERNEL_CMDLINE += cgroup.memory=nokmem
 BOARD_KERNEL_CMDLINE += disable_dma32=on
 BOARD_BOOTCONFIG += androidboot.boot_devices=14700000.ufs
 
@@ -267,6 +269,8 @@ BOARD_USES_EXYNOS_AFBC_FEATURE := true
 
 BOARD_LIBACRYL_DEFAULT_COMPOSITOR := fimg2d_gs201
 BOARD_LIBACRYL_G2D_HDR_PLUGIN := libacryl_hdr_plugin
+$(call soong_config_set,acryl,libacryl_g2d_hdr_plugin,//hardware/google/graphics/gs201/libacryl_plugins:libacryl_hdr_plugin)
+$(call soong_config_set,acryl,libacryl_c_include,hardware/google/graphics/$(TARGET_BOARD_PLATFORM)/libcap)
 
 # HWCServices
 BOARD_USES_HWC_SERVICES := true
