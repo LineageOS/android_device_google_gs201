@@ -5,7 +5,7 @@
 /vendor/bin/vcd                                                             u:object_r:vcd_exec:s0
 /vendor/bin/chre                                                            u:object_r:chre_exec:s0
 /vendor/bin/cbd                                                             u:object_r:cbd_exec:s0
-/vendor/bin/modem_svc_sit                                                   u:object_r:modem_svc_sit_exec:s0
+/vendor/bin/shared_modem_platform                                           u:object_r:modem_svc_sit_exec:s0
 /vendor/bin/rfsd                                                            u:object_r:rfsd_exec:s0
 /vendor/bin/bipchmgr                                                        u:object_r:bipchmgr_exec:s0
 /vendor/bin/storageproxyd                                                   u:object_r:tee_exec:s0

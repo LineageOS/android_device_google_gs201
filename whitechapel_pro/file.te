@@ -93,3 +93,6 @@ type sysfs_usbc_throttling_stats, sysfs_type, fs_type;
 
 # WLC
 type sysfs_wlc, sysfs_type, fs_type;
+
+# /system_ext/bin/convert_to_ext4.sh
+type convert-to-ext4-sh_exec, system_file_type, exec_type, file_type;
