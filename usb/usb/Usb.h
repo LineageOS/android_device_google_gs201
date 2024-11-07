@@ -93,6 +93,7 @@ struct Usb : public BnUsb {
 
     // Report usb data session event and data incompliance warnings
     std::unique_ptr<UsbDataSessionMonitor> mUsbDataSessionMonitor;
+    bool mIntHubEnabled;
     // Usb Overheat object for push suez event
     UsbOverheatEvent mOverheat;
     // Temperature when connected
