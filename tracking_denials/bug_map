@@ -20,6 +20,7 @@ pixelstats_vendor block_device dir b/369540701
 platform_app vendor_fw_file dir b/377811773
 platform_app vendor_rild_prop file b/377811773
 priv_app audio_config_prop file b/379246129
+priv_app metadata_file dir b/383438008
 ramdump ramdump capability b/369475655
 rfsd vendor_cbd_prop file b/317734397
 shell sysfs_net file b/329380891
