@@ -33,3 +33,4 @@ allow hal_usb_impl usb_device:dir r_dir_perms;
 # For monitoring usb sysfs attributes
 allow hal_usb_impl sysfs_wakeup:dir search;
 allow hal_usb_impl sysfs_wakeup:file r_file_perms;
+allow hal_usb_impl sysfs_udc:file r_file_perms;
