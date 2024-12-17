@@ -4,6 +4,7 @@ dump_display sysfs file b/350831939
 dump_modem sscoredump_vendor_data_coredump_file dir b/361726277
 dump_modem sscoredump_vendor_data_logcat_file dir b/361726277
 dumpstate unlabeled file b/350832009
+hal_camera_default aconfig_storage_metadata_file dir b/383013727
 hal_face_default traced_producer_socket sock_file b/305600808
 hal_power_default hal_power_default capability b/237492146
 hal_sensors_default property_socket sock_file b/373755350
