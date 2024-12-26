@@ -22,6 +22,30 @@
       },
       "revId": "16d2085a0cc44e6ab4a2d6d82787be081ab1b2bf",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd3501f0_41a08d09",
+        "filename": "rro_overlays/TetheringOverlay/res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2024-12-26T20:09:26Z",
+      "side": 1,
+      "message": "maybe, but it was set in PixelTetheringOverlay2021 anyway.",
+      "parentUuid": "53972fd6_24e1f127",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "16d2085a0cc44e6ab4a2d6d82787be081ab1b2bf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
