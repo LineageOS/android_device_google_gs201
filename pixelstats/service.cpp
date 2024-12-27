@@ -107,8 +107,7 @@ const struct SysfsCollector::SysfsPaths sysfs_paths = {
 
 const struct UeventListener::UeventPaths ueventPaths = {
         .AudioUevent = "/devices/virtual/amcs/amcs",
-        .TypeCPartnerUevent = "PRODUCT_TYPE=",
-        .FwUpdatePath = ""
+        .TypeCPartnerUevent = "PRODUCT_TYPE="
 };
 
 int main() {
