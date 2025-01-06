@@ -1,3 +1,4 @@
+# File containing sepolicies for GCA-Eng & GCA-Next.
 userdebug_or_eng(`
 	# Allows camera app to access the GXP device and properties.
 	allow debug_camera_app gxp_device:chr_file rw_file_perms;
@@ -9,4 +10,7 @@ userdebug_or_eng(`
 	# Allows GCA-Eng to find and access the EdgeTPU.
 	allow debug_camera_app edgetpu_app_service:service_manager find;
 	allow debug_camera_app edgetpu_device:chr_file { getattr read write ioctl map };
+
+	# Allows tachyon_service to communicate with GCA-Eng via binder.
+	binder_call(edgetpu_tachyon_server, debug_camera_app);
 ')
