@@ -25,7 +25,7 @@ include device/google/gs-common/thermal/dump/thermal.mk
 include device/google/gs-common/thermal/thermal_hal/device.mk
 include device/google/gs-common/pixel_metrics/pixel_metrics.mk
 include device/google/gs-common/performance/perf.mk
-include device/google/gs-common/display/dump.mk
+include device/google/gs-common/display/dump_exynos_display.mk
 include device/google/gs-common/camera/dump.mk
 include device/google/gs-common/gxp/gxp.mk
 include device/google/gs-common/gps/dump/log.mk
@@ -217,6 +217,9 @@ endif
 # Use for GRIL
 USES_LASSEN_MODEM := true
 $(call soong_config_set, vendor_ril_google_feature, use_lassen_modem, true)
+ifneq ($(BOARD_WITHOUT_RADIO),true)
+$(call soong_config_set_bool,grilservice,use_google_qns,true)
+endif
 
 ifeq ($(USES_GOOGLE_DIALER_CARRIER_SETTINGS),true)
 USE_GOOGLE_DIALER := true
