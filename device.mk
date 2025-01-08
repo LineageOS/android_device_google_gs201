@@ -74,6 +74,7 @@ PRODUCT_SOONG_NAMESPACES += \
 	device/google/gs201 \
 	device/google/gs201/powerstats \
 	vendor/google_devices/common/chre/host/hal \
+	vendor/google_devices/gs201/proprietary/debugpolicy \
 	vendor/google/whitechapel/tools \
 	vendor/google/interfaces \
 	vendor/google_nos/host/android \
