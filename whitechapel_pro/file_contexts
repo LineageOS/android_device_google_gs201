@@ -1,7 +1,6 @@
 # Binaries
 /vendor/bin/dmd                                                             u:object_r:dmd_exec:s0
 /vendor/bin/modem_logging_control                                           u:object_r:modem_logging_control_exec:s0
-/vendor/bin/sced                                                            u:object_r:sced_exec:s0
 /vendor/bin/vcd                                                             u:object_r:vcd_exec:s0
 /vendor/bin/chre                                                            u:object_r:chre_exec:s0
 /vendor/bin/cbd                                                             u:object_r:cbd_exec:s0
