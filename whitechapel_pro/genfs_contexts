@@ -360,3 +360,6 @@ genfscon sysfs /devices/platform/10940000.spi/spi_master/spi5/spi5.0/nstandby   
 
 # WLC
 genfscon sysfs /devices/platform/10da0000.hsi2c/i2c-15/15-003c                  u:object_r:sysfs_wlc:s0
+
+# USB
+genfscon sysfs /devices/platform/11210000.usb/11210000.dwc3/udc/11210000.dwc3/state   u:object_r:sysfs_udc:s0

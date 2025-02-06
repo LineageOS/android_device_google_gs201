@@ -6,6 +6,8 @@ dump_modem sscoredump_vendor_data_logcat_file dir b/361726277
 dumpstate unlabeled file b/350832009
 hal_bluetooth_synabtlinux device chr_file b/386303831
 hal_camera_default aconfig_storage_metadata_file dir b/383013727
+hal_drm_widevine system_userdir_file dir b/393956479
+hal_drm_widevine widevine_sys_vendor_prop file b/393956479
 hal_face_default traced_producer_socket sock_file b/305600808
 hal_power_default hal_power_default capability b/237492146
 hal_sensors_default property_socket sock_file b/373755350
@@ -13,7 +15,9 @@ hal_sensors_default sysfs file b/336451433
 incidentd debugfs_wakeup_sources file b/282626428
 incidentd incidentd anon_inode b/282626428
 init init capability b/379206608
+init-display-sh kmsg_device chr_file b/388949662
 insmod-sh insmod-sh key b/336451874
+insmod-sh kmsg_device chr_file b/388949536
 insmod-sh vendor_edgetpu_debugfs dir b/385858933
 kernel dm_device blk_file b/319403445
 kernel kernel capability b/336451113
@@ -25,7 +29,6 @@ priv_app audio_config_prop file b/379246129
 priv_app metadata_file dir b/383438008
 ramdump ramdump capability b/369475655
 ramdump_app default_prop file b/386148928
-ramdump_app privapp_data_file lnk_file b/385858800
 rfsd vendor_cbd_prop file b/317734397
 shell sysfs_net file b/329380891
 ssr_detector_app default_prop file b/359428005
