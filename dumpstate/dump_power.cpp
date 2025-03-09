@@ -43,9 +43,19 @@ int getCommandOutput(const char *cmd, std::string *output) {
     return 0;
 }
 bool isValidFile(const char *file) {
-    if (!access(file, R_OK)) {
-        return false;
+    FILE *fp = fopen(file, "r");
+    if (fp != NULL) {
+        fclose(fp);
+        return true;
     }
+    return false;
+}
+bool isValidDir(const char *directory) {
+    DIR *dir = opendir(directory);
+    if (dir == NULL)
+        return false;
+
+    closedir(dir);
     return true;
 }
 bool isUserBuild() {
@@ -122,8 +132,8 @@ void dumpPowerSupplyStats() {
             {"Power supply property gcpm", "/sys/class/power_supply/gcpm/uevent"},
             {"Power supply property gcpm_pps", "/sys/class/power_supply/gcpm_pps/uevent"},
             {"Power supply property main-charger", "/sys/class/power_supply/main-charger/uevent"},
-            {"Power supply property dc-mains", "/sys/class/power_supply/dc-mains/uevent"},
-            {"Power supply property tcpm", "/sys/class/power_supply/tcpm-source-psy-8-0025/uevent"},
+            {"Power supply property pca94xx-mains", "/sys/class/power_supply/pca94xx-mains/uevent"},
+            {"Power supply property tcpm", "/sys/class/power_supply/tcpm-source-psy-i2c-max77759tcpc/uevent"},
             {"Power supply property usb", "/sys/class/power_supply/usb/uevent"},
             {"Power supply property wireless", "/sys/class/power_supply/wireless/uevent"},
     };
@@ -133,35 +143,40 @@ void dumpPowerSupplyStats() {
 }
 void dumpMaxFg() {
     const char *maxfgLoc = "/sys/class/power_supply/maxfg";
+    const char *maxfgDualLoc = "/sys/class/power_supply/maxfg_base";
     const char *maxfg [][2] = {
             {"Power supply property maxfg", "/sys/class/power_supply/maxfg/uevent"},
             {"m5_state", "/sys/class/power_supply/maxfg/m5_model_state"},
-            {"maxfg", "/dev/logbuffer_maxfg"},
-            {"maxfg", "/dev/logbuffer_maxfg_monitor"},
+            {"maxfg registers", "/sys/class/power_supply/maxfg/registers_dump"},
+            {"maxfg logbuffer", "/dev/logbuffer_maxfg"},
+            {"maxfg_monitor logbuffer", "/dev/logbuffer_maxfg_monitor"},
     };
-    const char *maxfgFlip [][2] = {
+    const char *maxfgDual [][2] = {
             {"Power supply property maxfg_base", "/sys/class/power_supply/maxfg_base/uevent"},
-            {"Power supply property maxfg_flip", "/sys/class/power_supply/maxfg_flip/uevent"},
+            {"Power supply property maxfg_secondary", "/sys/class/power_supply/maxfg_secondary/uevent"},
+            {"maxfg_base registers", "/sys/class/power_supply/maxfg_base/registers_dump"},
+            {"maxfg_secondary registers", "/sys/class/power_supply/maxfg_secondary/registers_dump"},
             {"m5_state", "/sys/class/power_supply/maxfg_base/m5_model_state"},
-            {"maxfg_base", "/dev/logbuffer_maxfg_base"},
-            {"maxfg_flip", "/dev/logbuffer_maxfg_flip"},
-            {"maxfg_base", "/dev/logbuffer_maxfg_base_monitor"},
-            {"maxfg_flip", "/dev/logbuffer_maxfg_flip_monitor"},
+            {"maxfg_base logbuffer", "/dev/logbuffer_maxfg_base"},
+            {"maxfg_secondary logbuffer", "/dev/logbuffer_maxfg_secondary"},
+            {"maxfg_base logbuffer", "/dev/logbuffer_maxfg_base_monitor"},
+            {"maxfg_secondary logbuffer", "/dev/logbuffer_maxfg_secondary_monitor"},
+            {"dual_batt logbuffer", "/dev/logbuffer_dual_batt"},
     };
     const char *maxfgHistoryName = "Maxim FG History";
     const char *maxfgHistoryDir = "/dev/maxfg_history";
     std::string content;
-    if (isValidFile(maxfgLoc)) {
+    if (isValidDir(maxfgLoc)) {
         for (const auto &row : maxfg) {
             dumpFileContent(row[0], row[1]);
         }
-    } else {
-        for (const auto &row : maxfgFlip) {
+    } else if (isValidDir(maxfgDualLoc)){
+        for (const auto &row : maxfgDual) {
             dumpFileContent(row[0], row[1]);
         }
-    }
-    if (isValidFile(maxfgHistoryDir)) {
-        dumpFileContent(maxfgHistoryName, maxfgHistoryDir);
+        if (isValidFile(maxfgHistoryDir)) {
+            dumpFileContent(maxfgHistoryName, maxfgHistoryDir);
+        }
     }
 }
 void dumpPowerSupplyDock() {
@@ -184,65 +199,60 @@ void dumpLogBufferTcpm() {
         printTitle(tcpmLogTitle);
 }
 void dumpTcpc() {
-    int ret;
-    const char* max77759TcpcHead = "TCPC";
-    const char* i2cSubDirMatch = "i2c-";
-    const char* directory = "/sys/devices/platform/10d60000.hsi2c/";
-    const char* max77759Tcpc [][2] {
-            {"registers:", "/i2c-max77759tcpc/registers"},
-            {"frs:", "/i2c-max77759tcpc/frs"},
-            {"auto_discharge:", "/i2c-max77759tcpc/auto_discharge"},
-            {"bcl2_enabled:", "/i2c-max77759tcpc/bcl2_enabled"},
-            {"cc_toggle_enable:", "/i2c-max77759tcpc/cc_toggle_enable"},
-            {"containment_detection:", "/i2c-max77759tcpc/containment_detection"},
-            {"containment_detection_status:", "/i2c-max77759tcpc/containment_detection_status"},
+    const char* max77759TcpcHead = "TCPC Device Attributes";
+    const char* directory = "/sys/class/typec/port0/device";
+    const char* max77759Tcpc [] {
+            "auto_discharge",
+            "bc12_enabled",
+            "cc_toggle_enable",
+            "contaminant_detection",
+            "contaminant_detection_status",
+            "frs",
+            "irq_hpd_count",
+            "manual_disable_vbus",
+            "non_compliant_reasons",
+            "sbu_pullup",
+            "update_sdp_enum_timeout",
+            "usb_limit_accessory_current",
+            "usb_limit_accessory_enable",
+            "usb_limit_sink_current",
+            "usb_limit_sink_enable",
+            "usb_limit_source_enable",
     };
-    std::vector<std::string> files;
+
     std::string content;
+    std::string tcpcRegistersPath(std::string(directory) + "/registers");
+
+    dumpFileContent("TCPC Registers", tcpcRegistersPath.c_str());
+
     printTitle(max77759TcpcHead);
-    ret = getFilesInDir(directory, &files);
-    if (ret < 0) {
-        for (auto &tcpcVal : max77759Tcpc)
-            printf("%s\n", tcpcVal[0]);
-        return;
+
+    for (auto& tcpcVal : max77759Tcpc) {
+        std::string filename = std::string(directory) + "/" + std::string(tcpcVal);
+        printf("%s: ", tcpcVal);
+        android::base::ReadFileToString(filename, &content);
+        if (!content.empty() && (content.back() == '\n' || content.back() == '\r'))
+            content.pop_back();
+        printf("%s\n", content.c_str());
     }
-    for (auto &file : files) {
-        for (auto &tcpcVal : max77759Tcpc) {
-            printf("%s ", tcpcVal[0]);
-            if (std::string::npos == std::string(file).find(i2cSubDirMatch)) {
-                continue;
-            }
-            std::string fileName = directory + file + "/" + std::string(tcpcVal[1]);
-            if (!android::base::ReadFileToString(fileName, &content)) {
-                continue;
-            }
-            printf("%s\n", content.c_str());
-        }
-    }
+    printf("\n");
 }
+
 void dumpPdEngine() {
-    const char* pdEngine [][2] {
-            {"PD Engine", "/dev/logbuffer_usbpd"},
-            {"PPS-google_cpm", "/dev/logbuffer_cpm"},
-            {"PPS-dc", "/dev/logbuffer_pca9468"},
+    const char* pdEngine [][3] {
+            {"TCPC logbuffer", "/dev/logbuffer_usbpd"},
+            {"pogo_transport logbuffer", "/dev/logbuffer_pogo_transport"},
+            {"PPS-google_cpm logbuffer", "/dev/logbuffer_cpm"},
+            {"PPS-pca9468 logbuffer", "/dev/logbuffer_pca9468"},
     };
     for (const auto &row : pdEngine) {
         dumpFileContent(row[0], row[1]);
     }
 }
-void dumpWc68() {
-    const char* wc68Title = "WC68";
-    const char* wc68File = "/dev/logbuffer_wc68";
-    dumpFileContent(wc68Title, wc68File);
-}
-void dumpLn8411() {
-    const char* ln8411Title = "LN8411";
-    const char* ln8411File = "/dev/logbuffer_ln8411";
-    dumpFileContent(ln8411Title, ln8411File);
-}
 void dumpBatteryHealth() {
     const char* batteryHealth [][2] {
             {"Battery Health", "/sys/class/power_supply/battery/health_index_stats"},
+            {"Battery Health SoC Residency", "/sys/class/power_supply/battery/swelling_data"},
             {"BMS", "/dev/logbuffer_ssoc"},
             {"TTF", "/dev/logbuffer_ttf"},
             {"TTF details", "/sys/class/power_supply/battery/ttf_details"},
@@ -281,7 +291,7 @@ void dumpBatteryDefend() {
         sort(files.begin(), files.end());
         for (auto &file : files) {
             fileLocation = std::string(config[1]) + std::string(file);
-            if (!android::base::ReadFileToString(fileLocation, &content)) {
+            if (!android::base::ReadFileToString(fileLocation, &content) || content.empty()) {
                 content = "\n";
             }
             printf("%s: %s", file.c_str(), content.c_str());
@@ -291,15 +301,150 @@ void dumpBatteryDefend() {
         files.clear();
     }
 }
+void dumpBatteryCaretaker() {
+    const char* aacpConfig [][3] {
+            {"AACP Version",
+                    "/sys/devices/platform/google,battery/power_supply/battery/", "aacp_"},
+            {"AACR Config",
+                    "/sys/devices/platform/google,battery/power_supply/battery/", "aacr_"},
+            {"AAFV Config",
+                    "/sys/devices/platform/google,battery/power_supply/battery/", "aafv_"},
+            {"AACT Config",
+                    "/sys/devices/platform/google,battery/power_supply/battery/", "aact_"},
+            {"AACC",
+                    "/sys/devices/platform/google,battery/power_supply/battery/", "aacc"},
+    };
+    std::vector<std::string> files;
+    struct dirent *entry;
+    std::string content;
+    std::string fileLocation;
+    for (auto &config : aacpConfig) {
+        DIR *dir = opendir(config[1]);
+        if (dir == NULL)
+            continue;
+        printTitle(config[0]);
+        while ((entry = readdir(dir)) != NULL) {
+            if (std::string(entry->d_name).find(config[2]) != std::string::npos &&
+                    strncmp(config[2], entry->d_name, strlen(config[2])) == 0) {
+                files.push_back(entry->d_name);
+            }
+        }
+        closedir(dir);
+        sort(files.begin(), files.end());
+        for (auto &file : files) {
+            fileLocation = std::string(config[1]) + std::string(file);
+            if (!android::base::ReadFileToString(fileLocation, &content) || content.empty()) {
+                content = "\n";
+            }
+            printf("%s: %s", file.c_str(), content.c_str());
+            if (content.back() != '\n')
+                printf("\n");
+        }
+        files.clear();
+    }
+}
+void printValuesOfDirectory(const char *directory, std::string debugfs, const char *strMatch) {
+    std::vector<std::string> files;
+    auto info = directory;
+    std::string content;
+    struct dirent *entry;
+    DIR *dir = opendir(debugfs.c_str());
+    if (dir == NULL)
+        return;
+
+    printTitle((debugfs + std::string(strMatch) + "/" + std::string(info)).c_str());
+    while ((entry = readdir(dir)) != NULL)
+        if (std::string(entry->d_name).find(strMatch) != std::string::npos)
+            files.push_back(entry->d_name);
+    closedir(dir);
+
+    sort(files.begin(), files.end());
+
+    for (auto &file : files) {
+        std::string fileDirectory = debugfs + file;
+        std::string fileLocation = fileDirectory + "/" + std::string(info);
+        if (!android::base::ReadFileToString(fileLocation, &content)) {
+            content = "\n";
+        }
+
+        printf("%s:\n%s", fileDirectory.c_str(), content.c_str());
+
+        if (content.back() != '\n')
+            printf("\n");
+    }
+    files.clear();
+}
+void dumpChg() {
+    const std::string pmic_bus = "/sys/devices/platform/10d60000.hsi2c/i2c-13/13-0066";
+    const char* chg_reg_dump_file = "/sys/class/power_supply/main-charger/device/registers_dump";
+    const std::string chg_name_cmd = "/sys/class/power_supply/main-charger/device/name";
+    const std::string pmic_name_cmd = pmic_bus + "/name";
+    const std::string pmic_reg_dump_file = pmic_bus + "/registers_dump";
+    const std::string reg_dump_str = " registers dump";
+    const char* chgConfig [][2] {
+        {"DC_registers dump", "/sys/class/power_supply/pca94xx-mains/device/registers_dump"},
+    };
+    std::string chg_name;
+    std::string pmic_name;
+
+    printf("\n");
+
+    int ret = android::base::ReadFileToString(chg_name_cmd, &chg_name);
+    if (ret && !chg_name.empty()) {
+        chg_name.erase(chg_name.length() - 1); // remove new line
+        const std::string chg_reg_dump_title = chg_name + reg_dump_str;
+
+        /* CHG reg dump */
+        dumpFileContent(chg_reg_dump_title.c_str(), chg_reg_dump_file);
+    }
+
+    ret = android::base::ReadFileToString(pmic_name_cmd, &pmic_name);
+    if (ret && !pmic_name.empty()) {
+        pmic_name.erase(pmic_name.length() - 1); // remove new line
+        const std::string pmic_reg_dump_title = pmic_name + reg_dump_str;
+
+        /* PMIC reg dump */
+        dumpFileContent(pmic_reg_dump_title.c_str(), pmic_reg_dump_file.c_str());
+    }
+
+    for (auto &config : chgConfig) {
+        dumpFileContent(config[0], config[1]);
+    }
+}
+void dumpChgUserDebug() {
+    const std::string debugfs = "/d/";
+    const char *maxFgDir = "/d/maxfg";
+    const char *maxFgStrMatch = "maxfg";
+    const char *maxBaseFgDir = "/d/maxfg_base";
+    const char *maxBaseFgStrMatch = "maxfg_base";
+    const char *chgTblName = "Charging table dump";
+    const char *chgTblDir = "/d/google_battery/chg_raw_profile";
+
+    const char *maxFgInfo [] {
+            "fg_model",
+            "algo_ver",
+            "model_ok",
+    };
+
+    if (isUserBuild())
+        return;
+
+    dumpFileContent(chgTblName, chgTblDir);
+
+    if (isValidDir(maxFgDir)) {
+        for (auto & directory : maxFgInfo) {
+            printValuesOfDirectory(directory, debugfs, maxFgStrMatch);
+        }
+    } else if (isValidDir(maxBaseFgDir)) {
+        for (auto & directory : maxFgInfo) {
+            printValuesOfDirectory(directory, debugfs, maxBaseFgStrMatch);
+        }
+    }
+}
 void dumpBatteryEeprom() {
     const char *title = "Battery EEPROM";
     const char *files[] {
-            "/sys/devices/platform/10970000.hsi2c/i2c-4/4-0050/eeprom",
-            "/sys/devices/platform/10970000.hsi2c/i2c-5/5-0050/eeprom",
-            "/sys/devices/platform/10da0000.hsi2c/i2c-6/6-0050/eeprom",
-            "/sys/devices/platform/10da0000.hsi2c/i2c-7/7-0050/eeprom",
-            "/sys/devices/platform/10c90000.hsi2c/i2c-7/7-0050/eeprom",
-            "/sys/devices/platform/10c90000.hsi2c/i2c-6/6-0050/eeprom",
+            "/sys/devices/platform/10da0000.hsi2c/i2c-15/15-0050/eeprom",
     };
     std::string result;
     std::string xxdCmd;
@@ -325,7 +470,7 @@ void dumpChargerStats() {
     std::string content;
     struct dirent *entry;
     dumpFileContent(chgStatsTitle, chgStatsLocation);
-    if (!isUserBuild())
+    if (isUserBuild())
         return;
     for (auto &stat : chargerStats) {
         DIR *dir = opendir(stat[1]);
@@ -370,7 +515,7 @@ void dumpGvoteables() {
     std::string content;
     std::vector<std::string> files;
     int ret;
-    if (!isUserBuild())
+    if (isUserBuild())
         return;
     ret = getFilesInDir(directory, &files);
     if (ret < 0)
@@ -658,10 +803,11 @@ int main() {
     dumpLogBufferTcpm();
     dumpTcpc();
     dumpPdEngine();
-    dumpWc68();
-    dumpLn8411();
     dumpBatteryHealth();
     dumpBatteryDefend();
+    dumpBatteryCaretaker();
+    dumpChg();
+    dumpChgUserDebug();
     dumpBatteryEeprom();
     dumpChargerStats();
     dumpWlcLogs();

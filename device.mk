@@ -219,6 +219,9 @@ endif
 # Use for GRIL
 USES_LASSEN_MODEM := true
 $(call soong_config_set, vendor_ril_google_feature, use_lassen_modem, true)
+ifneq ($(BOARD_WITHOUT_RADIO),true)
+$(call soong_config_set_bool,grilservice,use_google_qns,true)
+endif
 
 ifeq ($(USES_GOOGLE_DIALER_CARRIER_SETTINGS),true)
 USE_GOOGLE_DIALER := true
@@ -392,6 +395,10 @@ PRODUCT_COPY_FILES += \
 	device/google/gs201/disable_contaminant_detection.sh:$(TARGET_COPY_OUT_VENDOR)/bin/hw/disable_contaminant_detection.sh
 
 include device/google/gs-common/insmod/insmod.mk
+
+# Insmod config files
+PRODUCT_COPY_FILES += \
+	$(call find-copy-subdir-files,init.insmod.*.cfg,$(TARGET_KERNEL_DIR),$(TARGET_COPY_OUT_VENDOR_DLKM)/etc)
 
 # For creating dtbo image
 PRODUCT_HOST_PACKAGES += \
@@ -959,9 +966,6 @@ USE_EARLY_SEND_DEVICE_INFO := true
 ifneq ($(BOARD_WITHOUT_RADIO),true)
 $(call inherit-product-if-exists, vendor/samsung_slsi/telephony/$(BOARD_USES_SHARED_VENDOR_TELEPHONY)/common/device-vendor.mk)
 
-# modem_svc_sit daemon
-PRODUCT_PACKAGES += modem_svc_sit
-
 # modem logging binary/configs
 PRODUCT_PACKAGES += modem_logging_control
 
@@ -1104,7 +1108,7 @@ PRODUCT_SOONG_NAMESPACES += \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/nnapi_stable_aidl \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/aidl \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/hal \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/tachyon/api \
+	vendor/google_devices/gs201/proprietary/gchips/tpu/tachyon/tachyon_apis \
 	vendor/google_devices/gs201/proprietary/gchips/tpu/tachyon/service
 # TPU firmware
 PRODUCT_PACKAGES += edgetpu-janeiro.fw
@@ -1169,12 +1173,19 @@ include device/google/gs201/dumpstate/item.mk
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs201/device_framework_matrix_product.xml
 
 # Preopt SystemUI
+ifneq ($(RELEASE_SYSTEMUI_USE_SPEED_PROFILE), true)
 PRODUCT_DEXPREOPT_SPEED_APPS += SystemUIGoogle  # For internal
-PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI  # For AOSP
+PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI        # For AOSP
+endif
 
-# Compile SystemUI on device with `speed`.
+# Set on-device compilation mode for SystemUI.
+ifeq ($(RELEASE_SYSTEMUI_USE_SPEED_PROFILE), true)
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.systemuicompilerfilter=speed-profile
+else
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.systemuicompilerfilter=speed
+endif
 
 # Keymint configuration
 PRODUCT_COPY_FILES += \
