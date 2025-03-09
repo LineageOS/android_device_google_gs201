@@ -8,3 +8,6 @@ allow google_camera_app vendor_fw_file:dir search;
 # Allows GCA to find and access the EdgeTPU.
 allow google_camera_app edgetpu_app_service:service_manager find;
 allow google_camera_app edgetpu_device:chr_file { getattr read write ioctl map };
+
+# Allows tachyon service to communicate with google_camera_app via binder.
+binder_call(edgetpu_tachyon_server, google_camera_app);

@@ -5,7 +5,6 @@
 /vendor/bin/vcd                                                             u:object_r:vcd_exec:s0
 /vendor/bin/chre                                                            u:object_r:chre_exec:s0
 /vendor/bin/cbd                                                             u:object_r:cbd_exec:s0
-/vendor/bin/modem_svc_sit                                                   u:object_r:modem_svc_sit_exec:s0
 /vendor/bin/rfsd                                                            u:object_r:rfsd_exec:s0
 /vendor/bin/bipchmgr                                                        u:object_r:bipchmgr_exec:s0
 /vendor/bin/storageproxyd                                                   u:object_r:tee_exec:s0
@@ -83,7 +82,7 @@
 /dev/janeiro                                                                u:object_r:edgetpu_device:s0
 /dev/bigocean                                                               u:object_r:video_device:s0
 /dev/goodix_fp                                                              u:object_r:fingerprint_device:s0
-/dev/stmvl53l1_ranging                                                      u:object_r:rls_device:s0
+/dev/ispolin_ranging                                                        u:object_r:rls_device:s0
 /dev/watchdog0                                                              u:object_r:watchdog_device:s0
 /dev/mali0                                                                  u:object_r:gpu_device:s0
 /dev/logbuffer_usbpd                                                        u:object_r:logbuffer_device:s0

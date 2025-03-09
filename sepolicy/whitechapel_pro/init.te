@@ -19,3 +19,14 @@ allow init sysfs_scsi_devices_0000:file w_file_perms;
 # Workaround for b/193113005 that modem_img unlabeled after disable-verity
 dontaudit init overlayfs_file:file rename;
 dontaudit init overlayfs_file:chr_file unlink;
+
+# /system_ext/bin/convert_to_ext4.sh is a script to convert an f2fs
+# filesystem into an ext4 filesystem. This script is executed on
+# debuggable devices only. As it is a one-shot script which
+# has run in permissive mode since 2022, we transition to the
+# su domain to avoid unnecessarily polluting security policy
+# with rules which are never enforced.
+# This script was added in b/239632964
+userdebug_or_eng(`
+  domain_auto_trans(init, convert-to-ext4-sh_exec, su)
+')
