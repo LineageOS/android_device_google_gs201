@@ -902,3 +902,14 @@ on property:persist.device_config.vendor_system_native.restricted_cpuset=*
     write /dev/cpuset/restricted/cpus ${persist.device_config.vendor_system_native.restricted_cpuset:-0-3}
 on property:persist.device_config.vendor_system_native.camera-daemon_cpuset=*
     write /dev/cpuset/camera-daemon/cpus ${persist.device_config.vendor_system_native.camera-daemon_cpuset:-0-7}
+
+# Battery health
+on property:persist.vendor.pulsar.opt_out=1
+    write /sys/class/power_supply/battery/aacp_opt_out 1
+
+on property:persist.vendor.pulsar.opt_out=0
+    write /sys/class/power_supply/battery/aacp_opt_out 0
+
+# NFC
+on post-fs-data
+    mkdir /data/vendor/nfc 0770 nfc nfc
