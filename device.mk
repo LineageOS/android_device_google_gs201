@@ -35,7 +35,6 @@ include device/google/gs-common/gear/dumpstate/aidl.mk
 include device/google/gs-common/widevine/widevine.mk
 include device/google/gs-common/sota_app/factoryota.mk
 include device/google/gs-common/misc_writer/misc_writer.mk
-include device/google/gs-common/gyotaku_app/gyotaku.mk
 include device/google/gs-common/bootctrl/bootctrl_aidl.mk
 include device/google/gs-common/betterbug/betterbug.mk
 ifneq ($(filter cheetah felix panther, $(TARGET_PRODUCT)),)
@@ -96,35 +95,6 @@ ifneq ($(BOARD_WITHOUT_RADIO),true)
 # Include vendor telephony soong namespace
 PRODUCT_SOONG_NAMESPACES += \
 	vendor/samsung_slsi/telephony/$(BOARD_USES_SHARED_VENDOR_TELEPHONY)
-endif
-
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-#Set IKE logs to verbose for WFC
-PRODUCT_PROPERTY_OVERRIDES += log.tag.IKE=VERBOSE
-
-#Set Shannon IMS logs to debug
-PRODUCT_PROPERTY_OVERRIDES += log.tag.SHANNON_IMS=DEBUG
-
-#Set Shannon QNS logs to debug
-PRODUCT_PROPERTY_OVERRIDES += log.tag.ShannonQNS=DEBUG
-PRODUCT_PROPERTY_OVERRIDES += log.tag.ShannonQNS-ims=DEBUG
-PRODUCT_PROPERTY_OVERRIDES += log.tag.ShannonQNS-emergency=DEBUG
-PRODUCT_PROPERTY_OVERRIDES += log.tag.ShannonQNS-mms=DEBUG
-PRODUCT_PROPERTY_OVERRIDES += log.tag.ShannonQNS-xcap=DEBUG
-PRODUCT_PROPERTY_OVERRIDES += log.tag.ShannonQNS-HC=DEBUG
-
-# Modem userdebug
-include device/google/gs201/modem/userdebug.mk
-endif
-
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-# b/36703476: Set default log size to 1M
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.logd.size=1M
-# b/114766334: persist all logs by default rotating on 30 files of 1MiB
-PRODUCT_PROPERTY_OVERRIDES += \
-	logd.logpersistd=logcatd \
-	logd.logpersistd.size=30
 endif
 
 # From system.property
@@ -370,12 +340,6 @@ PRODUCT_COPY_FILES += \
 	device/google/gs201/storage/6.1/init.gs201.storage.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.gs201.storage.rc
 endif
 
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_COPY_FILES += \
-	device/google/gs201/conf/init.debug.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.debug.rc \
-	device/google/gs201/conf/init.check_ap_pd_auth.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.check_ap_pd_auth.sh
-endif
-
 # Recovery files
 PRODUCT_COPY_FILES += \
 	device/google/gs201/conf/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.gs201.rc
@@ -406,14 +370,6 @@ PRODUCT_HOST_PACKAGES += \
 	mkdtimg
 
 # CHRE
-## tools
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += \
-	chre_power_test_client \
-	chre_test_client \
-	chre_aidl_hal_client
-endif
-
 ## HAL
 include device/google/gs-common/chre/hal.mk
 PRODUCT_COPY_FILES += \
@@ -491,13 +447,6 @@ ifneq ($(DISABLE_TELEPHONY_EUICC),true)
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.euicc.mep.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.euicc.mep.xml
 endif
-
-# default usb debug functions
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.vendor.usb.usbradio.config=dm
-endif
-
 
 PRODUCT_COPY_FILES += \
 	device/google/gs201/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
@@ -605,12 +554,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
         ConnectivityOverlay
 
-PRODUCT_PACKAGES_ENG += \
-	f2fs_io \
-	check_f2fs \
-	f2fs.fibmap \
-	dump.f2fs
-
 # Storage dump
 include device/google/gs-common/storage/storage.mk
 
@@ -635,9 +578,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 ifeq (,$(filter true, $(BOARD_WITHOUT_DTLS)))
 include device/google/gs-common/dauntless/gsc.mk
 endif
-
-PRODUCT_PACKAGES_ENG += \
-	WvInstallKeybox
 
 # Copy Camera HFD Setfiles
 #PRODUCT_COPY_FILES += \
@@ -689,10 +629,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.slsi_platform=1 \
 	debug.hwc.winupdate=1
-
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += displaycolor_service
-endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.sf.disable_backpressure=0 \
@@ -768,11 +704,6 @@ PRODUCT_PACKAGES += wpa_supplicant.conf
 
 WIFI_PRIV_CMD_UPDATE_MBO_CELL_STATUS := enabled
 
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += wpa_cli
-PRODUCT_PACKAGES += hostapd_cli
-endif
-
 ####################################
 ## VIDEO
 ####################################
@@ -843,13 +774,6 @@ $(call inherit-product, system/core/trusty/trusty-base.mk)
 # Trusty dump
 include device/google/gs-common/trusty/trusty.mk
 
-# Trusty unit test and code coverage tool
-PRODUCT_PACKAGES_ENG += \
-   trusty-ut-ctrl \
-   tipc-test \
-   trusty_stats_test \
-   trusty-coverage-controller \
-
 # Trusty Secure DPU Daemon
 PRODUCT_PACKAGES += \
 	securedpud.slider
@@ -871,15 +795,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.frp.pst=/dev/block/by-name/frp
 
 # System props to enable Bluetooth Quality Report (BQR) feature
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PRODUCT_PROPERTIES += \
-	persist.bluetooth.bqr.event_mask?=262174 \
-	persist.bluetooth.bqr.min_interval_ms=500
-else
 PRODUCT_PRODUCT_PROPERTIES += \
 	persist.bluetooth.bqr.event_mask?=30 \
 	persist.bluetooth.bqr.min_interval_ms=500
-endif
 
 #VNDK
 PRODUCT_PACKAGES += \
@@ -915,12 +833,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	Iwlan
 
-#Iwlan test app for eng builds
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += \
-	IwlanTestApp
-endif
-
 PRODUCT_PACKAGES += \
 	whitelist \
 	libstagefright_hdcp \
@@ -938,9 +850,6 @@ ifneq ($(BOARD_WITHOUT_RADIO),true)
 $(call inherit-product-if-exists, vendor/samsung_slsi/telephony/$(BOARD_USES_SHARED_VENDOR_TELEPHONY)/shannon-ims/device-vendor.mk)
 
 PRODUCT_PACKAGES += ShannonIms
-
-PRODUCT_PACKAGES_ENG += \
-	preinstalled-packages-product-gs201-device-debug.xml
 
 PRODUCT_PACKAGES += ShannonRcs
 endif
@@ -979,13 +888,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.sys.modem.logging.enable=true
 
 # Enable silent CP crash handling
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.vendor.ril.crash_handling_mode=1
-else
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.ril.crash_handling_mode=2
-endif
 
 # Add support dual SIM mode
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -1023,13 +927,6 @@ PRODUCT_COPY_FILES += \
 	device/google/$(TARGET_BOARD_PLATFORM)/radio/config/Pixel_stability.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/modem/Pixel_stability.cfg \
 	device/google/$(TARGET_BOARD_PLATFORM)/radio/config/Pixel_stability.nprf:$(TARGET_COPY_OUT_VENDOR)/etc/modem/Pixel_stability.nprf \
 
-# Vibrator Diag
-PRODUCT_PACKAGES_ENG += \
-	diag-vibrator \
-	diag-vibrator-cs40l25a \
-	diag-vibrator-drv2624 \
-	$(NULL)
-
 PRODUCT_PACKAGES += \
 	android.hardware.health-service.gs201 \
 	android.hardware.health-service.gs201_recovery \
@@ -1065,22 +962,6 @@ endif
 # See b/148807371 for reference
 PRODUCT_PACKAGES += vndservicemanager
 PRODUCT_PACKAGES += vndservice
-
-## TinyTools, debug tool and cs35l41 speaker calibration tool for Audio
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += \
-	tinyplay \
-	tinycap \
-	tinymix \
-	tinypcminfo \
-	tinyhostless \
-	cplay \
-	aoc_hal \
-	aoc_tuning_inft \
-	mahal_test \
-	ma_aoc_tuning_test \
-	crus_sp_cal
-endif
 
 PRODUCT_PACKAGES += \
 	google.hardware.media.c2@1.0-service \
@@ -1164,8 +1045,6 @@ USES_RADIOEXT_V1_5 = true
 # Wifi ext
 include hardware/google/pixel/wifi_ext/device.mk
 
-# Battery Stats Viewer
-PRODUCT_PACKAGES_ENG += BatteryStatsViewer
 include device/google/gs201/dumpstate/item.mk
 
 # Install product specific framework compatibility matrix
