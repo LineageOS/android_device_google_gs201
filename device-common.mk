@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-ifneq ($(BOARD_WITHOUT_RADIO),true)
--include vendor/google_devices/gs201/proprietary/telephony/device-vendor.mk
-endif
 include device/google/gs201/device.mk
 
 ifneq ($(BOARD_WITHOUT_RADIO),true)
