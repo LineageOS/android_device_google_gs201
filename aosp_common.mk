@@ -49,7 +49,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 endif
 
 #$(call inherit-product, device/google/gs201/device.mk)
-#$(call inherit-product-if-exists, vendor/google_devices/gs201/proprietary/device-vendor.mk)
 
 # TODO: fix
 # PRODUCT_RESTRICT_VENDOR_FILES := all

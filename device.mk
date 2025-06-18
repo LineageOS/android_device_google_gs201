@@ -65,21 +65,10 @@ endif
 
 PRODUCT_SOONG_NAMESPACES += \
 	hardware/google/av \
-	hardware/google/gchips \
-	hardware/google/gchips/gralloc4 \
-	hardware/google/graphics/common \
-	hardware/google/graphics/gs201 \
 	hardware/google/interfaces \
 	hardware/google/pixel \
 	device/google/gs201 \
-	device/google/gs201/powerstats \
-	vendor/google_devices/common/chre/host/hal \
-	vendor/google_devices/gs201/proprietary/debugpolicy \
-	vendor/google/whitechapel/tools \
-	vendor/google/interfaces \
-	vendor/google_nos/host/android \
-	vendor/google_nos/test/system-test-harness \
-	vendor/google/camera
+	device/google/gs201/powerstats
 
 LOCAL_KERNEL := $(TARGET_KERNEL_DIR)/Image.lz4
 
@@ -91,12 +80,6 @@ endif
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.oem_unlock_supported=1
-
-ifneq ($(BOARD_WITHOUT_RADIO),true)
-# Include vendor telephony soong namespace
-PRODUCT_SOONG_NAMESPACES += \
-	vendor/samsung_slsi/telephony/$(BOARD_USES_SHARED_VENDOR_TELEPHONY)
-endif
 
 # From system.property
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -184,7 +167,6 @@ USE_LASSEN_OEMHOOK := true
 # The "power-anomaly-sitril" is added into PRODUCT_SOONG_NAMESPACES when
 # $(USE_LASSEN_OEMHOOK) is true and $(BOARD_WITHOUT_RADIO) is not true.
 ifneq ($(BOARD_WITHOUT_RADIO),true)
-    PRODUCT_SOONG_NAMESPACES += vendor/google/tools/power-anomaly-sitril
     $(call soong_config_set,sitril,use_lassen_oemhook_with_radio,true)
 endif
 
@@ -219,9 +201,6 @@ ifeq ($(USE_SWIFTSHADER),true)
 else
 	TARGET_USES_VULKAN = true
 endif
-
-PRODUCT_SOONG_NAMESPACES += \
-	vendor/arm/mali/valhall
 
 $(call soong_config_set,pixel_mali,soc,$(TARGET_BOARD_PLATFORM))
 
@@ -316,9 +295,6 @@ DEVICE_PACKAGE_OVERLAYS += device/google/gs201/overlay
 
 # This device is shipped with 33 (Android T)
 PRODUCT_SHIPPING_API_LEVEL := 33
-
-# RKP VINTF
--include vendor/google_nos/host/android/hals/keymaster/aidl/strongbox/RemotelyProvisionedComponent-citadel.mk
 
 # Enforce the Product interface
 PRODUCT_PRODUCT_VNDK_VERSION := current
@@ -780,9 +756,6 @@ PRODUCT_PACKAGES += \
 	securedpud.slider
 
 # Trusty Metrics Daemon
-PRODUCT_SOONG_NAMESPACES += \
-	vendor/google/trusty/common
-
 PRODUCT_PACKAGES += \
 	trusty_metricsd
 
@@ -847,9 +820,6 @@ PRODUCT_PACKAGES += \
 	vts.bin
 
 ifneq ($(BOARD_WITHOUT_RADIO),true)
-# This will be called only if IMSService is building with source code for dev branches.
-$(call inherit-product-if-exists, vendor/samsung_slsi/telephony/$(BOARD_USES_SHARED_VENDOR_TELEPHONY)/shannon-ims/device-vendor.mk)
-
 PRODUCT_PACKAGES += ShannonIms
 
 PRODUCT_PACKAGES += ShannonRcs
@@ -871,12 +841,7 @@ USE_SE_HIDL := true
 # Using Early Send Device Info
 USE_EARLY_SEND_DEVICE_INFO := true
 
-#$(call inherit-product, vendor/google_devices/telephony/common/device-vendor.mk)
-#$(call inherit-product, vendor/google_devices/gs201/proprietary/device-vendor.mk)
-
 ifneq ($(BOARD_WITHOUT_RADIO),true)
-$(call inherit-product-if-exists, vendor/samsung_slsi/telephony/$(BOARD_USES_SHARED_VENDOR_TELEPHONY)/common/device-vendor.mk)
-
 # modem logging binary/configs
 PRODUCT_PACKAGES += modem_logging_control
 
@@ -907,10 +872,7 @@ endif
 
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
-#$(call inherit-product, hardware/google_devices/exynos5/exynos5.mk)
-#$(call inherit-product-if-exists, hardware/google_devices/gs201/gs201.mk)
-#$(call inherit-product-if-exists, vendor/google_devices/common/exynos-vendor.mk)
-#$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4375/device-bcm.mk)
+
 include device/google/gs-common/sensors/sensors.mk
 $(call soong_config_set,usf,target_soc,gs201)
 
@@ -937,9 +899,6 @@ PRODUCT_PACKAGES += \
 include device/google/gs-common/audio/hidl_gs201.mk
 
 ## AoC soong
-PRODUCT_SOONG_NAMESPACES += \
-        vendor/google/whitechapel/aoc
-
 $(call soong_config_set,aoc,target_soc,$(TARGET_BOARD_PLATFORM))
 $(call soong_config_set,aoc,target_product,$(TARGET_PRODUCT))
 
@@ -983,16 +942,7 @@ PRODUCT_PROPERTY_OVERRIDES += persist.vendor.enable.thermal.genl=true
 include device/google/gs-common/edgetpu/edgetpu.mk
 # Config variables for TPU chip on device.
 $(call soong_config_set,edgetpu_config,chip,janeiro)
-# Include the edgetpu targets defined the namespaces below into the final image.
-PRODUCT_SOONG_NAMESPACES += \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/metrics \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/tflite_delegate \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/darwinn_logging_service \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/nnapi_stable_aidl \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/aidl \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/hal \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/tachyon/tachyon_apis \
-	vendor/google_devices/gs201/proprietary/gchips/tpu/tachyon/service
+
 # TPU firmware
 PRODUCT_PACKAGES += edgetpu-janeiro.fw
 
