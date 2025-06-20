@@ -973,7 +973,7 @@ PRODUCT_PACKAGES += \
 	libgc2_utils
 
 ## Start packet router
-include device/google/gs101/telephony/pktrouter.mk
+include device/google/gs-common/telephony/pktrouter.mk
 
 # Thermal HAL
 PRODUCT_PROPERTY_OVERRIDES += persist.vendor.enable.thermal.genl=true
