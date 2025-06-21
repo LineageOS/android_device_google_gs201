@@ -41,6 +41,7 @@ ifneq ($(filter %_cheetah %_felix %_panther, $(TARGET_PRODUCT)),)
   include device/google/gs-common/bcmbt/dump/dumplog.mk
 endif
 include device/google/gs-common/fingerprint/fingerprint.mk
+include device/google/gs-common/nfc/nfc.mk
 
 TARGET_BOARD_PLATFORM := gs201
 
