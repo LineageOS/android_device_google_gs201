@@ -4,8 +4,10 @@ dump_display sysfs file b/350831939
 dump_modem sscoredump_vendor_data_coredump_file dir b/361726277
 dump_modem sscoredump_vendor_data_logcat_file dir b/361726277
 dumpstate unlabeled file b/350832009
+hal_audio_default hal_audio_default binder b/395745737
 hal_bluetooth_synabtlinux device chr_file b/386303831
 hal_camera_default aconfig_storage_metadata_file dir b/383013727
+hal_contexthub_default hal_bluetooth_service service_manager b/396573096
 hal_drm_widevine system_userdir_file dir b/393956479
 hal_drm_widevine widevine_sys_vendor_prop file b/393956479
 hal_face_default traced_producer_socket sock_file b/305600808
@@ -23,6 +25,8 @@ kernel dm_device blk_file b/319403445
 kernel kernel capability b/336451113
 kernel tmpfs chr_file b/321731318
 pixelstats_vendor block_device dir b/369540701
+pixelstats_vendor chre_socket sock_file b/400298488
+platform_app bluetooth_lea_mode_prop file b/402595629
 platform_app vendor_fw_file dir b/377811773
 platform_app vendor_rild_prop file b/377811773
 priv_app audio_config_prop file b/379246129
