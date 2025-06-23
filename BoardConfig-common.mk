@@ -22,7 +22,7 @@ TARGET_SOC := gs201
 TARGET_SOC_NAME := google
 
 USES_DEVICE_GOOGLE_GS201 := true
-$(call soong_config_set,CitadelProvision,target_soc,gs201)
+$(call soong_config_set,googleDeviceConfig,target_soc,gs201)
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-2a
@@ -46,7 +46,6 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 BOARD_KERNEL_CMDLINE += dyndbg=\"func alloc_contig_dump_pages +p\"
 BOARD_KERNEL_CMDLINE += earlycon=exynos4210,0x10A00000 console=ttySAC0,115200 androidboot.console=ttySAC0 printk.devkmsg=on
 BOARD_KERNEL_CMDLINE += cma_sysfs.experimental=Y
-BOARD_KERNEL_CMDLINE += cgroup_disable=memory
 BOARD_KERNEL_CMDLINE += rcupdate.rcu_expedited=1 rcu_nocbs=all rcutree.enable_rcu_lazy
 BOARD_KERNEL_CMDLINE += stack_depot_disable=off page_pinner=on
 BOARD_KERNEL_CMDLINE += swiotlb=1024
