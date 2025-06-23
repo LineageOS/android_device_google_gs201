@@ -212,6 +212,10 @@ genfscon sysfs /devices/platform/google,battery/power_supply/battery            
 genfscon sysfs /devices/platform/google,cpm                                     u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/google,charger                                 u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/10d60000.hsi2c                                 u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /class/power_supply/wireless/device/version                      u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /class/power_supply/wireless/device/status                       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /class/power_supply/wireless/device/fw_rev                       u:object_r:sysfs_batteryinfo:s0
+
 genfscon sysfs /devices/pseudo_0/adapter0/host1/target1:0:0/1:0:0:0/block/sde   u:object_r:sysfs_devices_block:s0
 
 # P22 battery
@@ -275,6 +279,9 @@ genfscon sysfs /devices/platform/odm/odm:btbcm/wakeup                           
 genfscon sysfs /devices/platform/sound-aoc/wakeup                                                                           u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1c2c0000.drmdsim/1c2c0000.drmdsim.0/wakeup                                                 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1c2d0000.drmdsim/1c2d0000.drmdsim.0/wakeup                                                 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/odm/odm:fps_touch_handler/power/wakeup                                                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/odm/odm:fps_touch_handler/wakeup                                                           u:object_r:sysfs_wakeup:s0
+
 
 #SecureElement
 genfscon sysfs /devices/platform/181c0000.spi/spi_master/spi17/spi17.0/st33spi u:object_r:sysfs_st33spi:s0
@@ -353,3 +360,6 @@ genfscon sysfs /devices/platform/10940000.spi/spi_master/spi5/spi5.0/nstandby   
 
 # WLC
 genfscon sysfs /devices/platform/10da0000.hsi2c/i2c-15/15-003c                  u:object_r:sysfs_wlc:s0
+
+# USB
+genfscon sysfs /devices/platform/11210000.usb/11210000.dwc3/udc/11210000.dwc3/state   u:object_r:sysfs_udc:s0
