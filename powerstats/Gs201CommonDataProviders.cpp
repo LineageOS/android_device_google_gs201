@@ -69,17 +69,20 @@ class PlaceholderEnergyConsumer : public PowerStats::IEnergyConsumer {
     }
     std::pair<EnergyConsumerType, std::string> getInfo() override { return {kType, kName}; }
 
-    std::optional<EnergyConsumerResult> getEnergyConsumed() override {
+    std::optional<EnergyConsumerResult> getEnergyConsumed(
+            const std::vector<EnergyMeasurement> &energyData) override {
         int64_t totalEnergyUWs = 0;
         int64_t timestampMs = 0;
         if (mChannelId != -1) {
-            std::vector<EnergyMeasurement> measurements;
-            if (mPowerStats->readEnergyMeter({mChannelId}, &measurements).isOk()) {
-                for (const auto &m : measurements) {
-                    totalEnergyUWs += m.energyUWs;
-                    timestampMs = m.timestampMs;
+            int found = 0;
+            for (const auto &e : energyData) {
+                if (mChannelId == e.id) {
+                    totalEnergyUWs += e.energyUWs;
+                    timestampMs = e.timestampMs;
+                    found++;
                 }
-            } else {
+            }
+            if (found == 0) {
                 LOG(ERROR) << "Failed to read energy meter";
                 return {};
             }
