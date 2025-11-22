@@ -47,8 +47,3 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 ifneq ($(BOARD_WITHOUT_RADIO),true)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 endif
-
-#$(call inherit-product, device/google/gs201/device.mk)
-
-# TODO: fix
-# PRODUCT_RESTRICT_VENDOR_FILES := all

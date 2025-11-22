@@ -25,15 +25,10 @@ BOARD_HOSTAPD_PRIVATE_LIB := //hardware/qcom/wlan/wcn6740/qcwcn/wpa_supplicant_8
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_HOSTAPD_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-CONFIG_IEEE80211AX := true
-# BOARD_HAS_QCOM_WLAN := true
-# CONFIG_ACS := true
 
 # Wifi interface combination - {1 STA + 1 of (P2P or NAN)} or {1 AP}
 WIFI_HAL_INTERFACE_COMBINATIONS := {{{STA}, 1}, {{P2P, NAN}, 1}}, {{{AP}, 1}}
 WIFI_HIDL_FEATURE_AWARE := true
-WIFI_FEATURE_WIFI_EXT_HAL := true
-WIFI_FEATURE_IMU_DETECTION := true
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 # Avoid Wifi reset on MAC Address change
 # WIFI_AVOID_IFACE_RESET_MAC_CHANGE := true
@@ -50,6 +45,3 @@ PRODUCT_COPY_FILES += \
 
 # Add BOARD_WLAN_CHIP to soong_config
 $(call soong_config_set,qcom_wifi,board_wlan_chip,wcn6740)
-
-# Add WIFI_FEATURE_IMU_DETECTION to soong_config
-$(call soong_config_set,wifi,feature_imu_detection,$(WIFI_FEATURE_IMU_DETECTION))
