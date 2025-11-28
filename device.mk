@@ -5,36 +5,110 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-include device/google/gs-common/device.mk
-include device/google/gs-common/gs_watchdogd/watchdog.mk
-include device/google/gs-common/ramdump_and_coredump/ramdump_and_coredump.mk
-include device/google/gs-common/soc/soc.mk
-include device/google/gs-common/soc/freq.mk
+# Voice packs for Text-To-Speech
+PRODUCT_COPY_FILES += \
+    device/google/gs-common/tts/ja-jp/ja-jp-x-multi-r55.zvoice:$(TARGET_COPY_OUT_PRODUCT)/tts/google/ja-jp/ja-jp-x-multi-r55.zvoice \
+    device/google/gs-common/tts/fr-fr/fr-fr-x-multi-r57.zvoice:$(TARGET_COPY_OUT_PRODUCT)/tts/google/fr-fr/fr-fr-x-multi-r57.zvoice \
+    device/google/gs-common/tts/de-de/de-de-x-multi-r57.zvoice:$(TARGET_COPY_OUT_PRODUCT)/tts/google/de-de/de-de-x-multi-r57.zvoice \
+    device/google/gs-common/tts/it-it/it-it-x-multi-r54.zvoice:$(TARGET_COPY_OUT_PRODUCT)/tts/google/it-it/it-it-x-multi-r54.zvoice \
+    device/google/gs-common/tts/es-es/es-es-x-multi-r56.zvoice:$(TARGET_COPY_OUT_PRODUCT)/tts/google/es-es/es-es-x-multi-r56.zvoice
+
+PRODUCT_SOONG_NAMESPACES += \
+    device/google/gs-common/powerstats
+
+# Disable OMX
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.media.omx=0
+
+# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.software.ipsec_tunnel_migration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnel_migration.xml
+
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += \
+    device/google/gs-common/vintf/framework_compatibility_matrix.xml
+
+# Platform watchdogd
+PRODUCT_PACKAGES += gs_watchdogd
+PRODUCT_SOONG_NAMESPACES += \
+    device/google/gs-common/gs_watchdogd
+
+# sscoredump
+PRODUCT_PROPERTY_OVERRIDES += vendor.debug.ssrdump.type=sscoredump
+
+# SoC
+PRODUCT_PACKAGES += dump_soc
+
+# Modem
 ifneq ($(BOARD_WITHOUT_RADIO),true)
-  include device/google/gs-common/modem/modem.mk
+PRODUCT_PACKAGES += dump_modem
+PRODUCT_PACKAGES += dump_modemlog
 endif
-include device/google/gs-common/aoc/aoc.mk
-include device/google/gs-common/thermal/dump/thermal.mk
-include device/google/gs-common/thermal/thermal_hal/device.mk
-include device/google/gs-common/pixel_metrics/pixel_metrics.mk
-include device/google/gs-common/performance/perf.mk
-include device/google/gs-common/display/dump_exynos_display.mk
-include device/google/gs-common/camera/dump.mk
-include device/google/gs-common/gxp/gxp.mk
-include device/google/gs-common/gps/dump/log.mk
-include device/google/gs-common/radio/dump.mk
-include device/google/gs-common/umfw_stat/umfw_stat.mk
-include device/google/gs-common/gear/dumpstate/aidl.mk
-include device/google/gs-common/widevine/widevine.mk
-include device/google/gs-common/sota_app/factoryota.mk
-include device/google/gs-common/misc_writer/misc_writer.mk
-include device/google/gs-common/bootctrl/bootctrl_aidl.mk
-include device/google/gs-common/betterbug/betterbug.mk
-ifneq ($(filter %_cheetah %_felix %_panther, $(TARGET_PRODUCT)),)
-  include device/google/gs-common/bcmbt/dump/dumplog.mk
-endif
-include device/google/gs-common/fingerprint/fingerprint.mk
-include device/google/gs-common/nfc/nfc.mk
+
+# AoC
+PRODUCT_PACKAGES += dump_aoc
+
+# If AoC Daemon is not present on this build, load firmware at boot via rc
+PRODUCT_COPY_FILES += \
+    device/google/gs-common/aoc/conf/init.aoc.daemon.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.aoc.rc
+
+# Trusty
+PRODUCT_PACKAGES += dump_trusty.sh
+
+# Storage
+PRODUCT_PACKAGES += dump_storage
+
+# Thermal
+PRODUCT_PACKAGES += dump_thermal.sh
+
+PRODUCT_PACKAGES += android.hardware.thermal-service.pixel
+
+# Thermal utils
+PRODUCT_PACKAGES += thermal_symlinks
+
+# Performance
+PRODUCT_PACKAGES += dump_perf
+
+# Ensure enough free space to create zram backing device
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.zram_backing_device_min_free_mb=1536
+
+#include device/google/gs-common/pixel_metrics/pixel_metrics.mk
+PRODUCT_PACKAGES += dump_pixel_metrics
+
+#include device/google/gs-common/soc/freq.mk
+PRODUCT_PACKAGES += dump_devfreq
+
+#include device/google/gs-common/display/dump_exynos_display.mk
+PRODUCT_PACKAGES += dump_exynos_display
+
+#include device/google/gs-common/gear/dumpstate/aidl.mk
+PRODUCT_PACKAGES += android.hardware.dumpstate-service
+
+#include device/google/gs-common/widevine/widevine.mk
+PRODUCT_PACKAGES += \
+    android.hardware.drm-service.clearkey
+
+#include device/google/gs-common/misc_writer/misc_writer.mk
+PRODUCT_PACKAGES += \
+    misc_writer
+
+#include device/google/gs-common/bootctrl/bootctrl_aidl.mk
+PRODUCT_PACKAGES += \
+    android.hardware.boot-service.default-pixel \
+    android.hardware.boot-service.default_recovery-pixel
+
+PRODUCT_SOONG_NAMESPACES += device/google/gs-common/bootctrl/aidl
+
+#include device/google/gs-common/fingerprint/fingerprint.mk
+PRODUCT_PACKAGES += dump_fingerprint
+
+# Add UmfwStat product packages.
+PRODUCT_PACKAGES += dump_umfw_stat
+PRODUCT_PACKAGES += umfw_stat_tool
+
+PRODUCT_PACKAGES += dump_power
 
 TARGET_BOARD_PLATFORM := gs201
 
@@ -147,7 +221,8 @@ include hardware/google/pixel/PixelLogger/PixelLogger.mk
 # HWUI
 TARGET_USES_VULKAN = true
 
-include device/google/gs-common/gpu/gpu.mk
+#include device/google/gs-common/gpu/gpu.mk
+PRODUCT_PACKAGES += gpu_probe
 
 # Install the OpenCL ICD Loader
 PRODUCT_SOONG_NAMESPACES += external/OpenCL-ICD-Loader
@@ -222,7 +297,9 @@ PRODUCT_PACKAGES += \
 	fstab.gs201-fips.vendor_ramdisk
 
 # Shell scripts
-include device/google/gs-common/insmod/insmod.mk
+PRODUCT_PACKAGES += \
+    insmod.sh \
+    init.common.cfg
 
 # Insmod config files
 PRODUCT_COPY_FILES += \
@@ -234,7 +311,7 @@ PRODUCT_HOST_PACKAGES += \
 
 # CHRE
 ## hal
-include device/google/gs-common/chre/hal.mk
+PRODUCT_PACKAGES += android.hardware.contexthub-service.generic
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.context_hub.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.context_hub.xml
 
@@ -304,24 +381,37 @@ PRODUCT_PROPERTY_OVERRIDES += aaudio.mmap_policy=2
 PRODUCT_PROPERTY_OVERRIDES += aaudio.mmap_exclusive_policy=2
 PRODUCT_PROPERTY_OVERRIDES += aaudio.hw_burst_min_usec=2000
 
-# WideVine modules
-include device/google/gs201/widevine/device.mk
+#include device/google/gs-common/camera/lyric.mk
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/google/camera
 
-include device/google/gs-common/camera/lyric.mk
+# Init-time log settings for Google 3A
+PRODUCT_PACKAGES += libg3a_standalone_gabc_rc
+PRODUCT_PACKAGES += libg3a_standalone_gaf_rc
+PRODUCT_PACKAGES += libg3a_standalone_ghawb_rc
+
+PRODUCT_PACKAGES += lyric_preview_dis_xml
+
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += \
+    device/google/gs-common/camera/device_framework_matrix_product.xml
+
+DEVICE_MATRIX_FILE += \
+    device/google/gs-common/camera/compatibility_matrix.xml
 
 # Connectivity
 PRODUCT_PACKAGES += \
         ConnectivityOverlay
-
-# Storage dump
-include device/google/gs-common/storage/storage.mk
 
 # Storage health HAL
 PRODUCT_PACKAGES += \
 	android.hardware.health.storage-service.default
 
 # Battery Mitigation
-include device/google/gs-common/battery_mitigation/bcl.mk
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.battery_mitigation.aidl.enable=true
+
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/battery_mitigation/compatibility_matrix.xml
+
 # storage pixelstats
 -include hardware/google/pixel/pixelstats/device.mk
 
@@ -332,9 +422,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 
 # Enforce generic ramdisk allow list
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
-
-# Titan-M
-include device/google/gs-common/dauntless/gsc.mk
 
 # WiFi
 PRODUCT_COPY_FILES += \
@@ -436,12 +523,7 @@ PRODUCT_PACKAGES += wpa_supplicant.conf
 
 WIFI_PRIV_CMD_UPDATE_MBO_CELL_STATUS := enabled
 
-# 1. Codec 2.0
-# for settings used by different C2 hal
-include device/google/gs-common/mediacodec/common/mediacodec_common.mk
-# for Exynos C2 Hal
-include device/google/gs-common/mediacodec/samsung/mediacodec_samsung.mk
-
+# Video
 PRODUCT_PROPERTY_OVERRIDES += \
        debug.c2.use_dmabufheaps=1 \
        media.c2.dmabuf.padding=512 \
@@ -465,9 +547,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Trusty (KM, GK, Storage)
 $(call inherit-product, system/core/trusty/trusty-storage.mk)
 $(call inherit-product, system/core/trusty/trusty-base.mk)
-
-# Trusty dump
-include device/google/gs-common/trusty/trusty.mk
 
 # Storage: for factory reset protection feature
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -525,12 +604,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.radio.multisim_switch_support=true
 
-include device/google/gs-common/gps/brcm/device.mk
+PRODUCT_PACKAGES += \
+    android.hardware.location.gps.prebuilt.xml
 endif
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 
-include device/google/gs-common/sensors/sensors.mk
+PRODUCT_PACKAGES += dump_sensors
 
 PRODUCT_COPY_FILES += \
 	device/google/gs201/default-permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions.xml \
@@ -541,7 +621,34 @@ PRODUCT_PACKAGES += \
 	android.hardware.health-service.gs201_recovery \
 
 # Audio HAL Server & Default Implementations
-include device/google/gs-common/audio/hidl_gs201.mk
+DEVICE_MANIFEST_FILE += device/google/gs-common/audio/hidl/manifest.xml
+
+# Audio HAL configurations
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration_7_0.xml \
+    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration_7_0.xml \
+    frameworks/av/services/audiopolicy/config/hearing_aid_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/hearing_aid_audio_policy_configuration_7_0.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration_7_0.xml
+
+# Audio HAL Server & Default Implementations
+PRODUCT_PACKAGES += \
+    android.hardware.audio.service \
+    android.hardware.audio@7.1-impl \
+    android.hardware.audio.effect@7.0-impl \
+    android.hardware.soundtrigger@2.3-impl \
+    android.hardware.bluetooth.audio-impl
+
+# Audio HAL libraries
+PRODUCT_PACKAGES += \
+    audio.usb.default \
+    audio.usbv2.default \
+    audio.bluetooth.default \
+    audio.r_submix.default
+
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/audio/hidl/device_framework_matrix_product.xml
 
 ## Audio properties
 ifneq (,$(filter %tangorpro, $(TARGET_PRODUCT)))
@@ -564,13 +671,18 @@ PRODUCT_PACKAGES += vndservicemanager
 PRODUCT_PACKAGES += vndservice
 
 ## Start packet router
-include device/google/gs-common/telephony/pktrouter.mk
+PRODUCT_PROPERTY_OVERRIDES += vendor.pktrouter=1
 
 # Thermal HAL
 PRODUCT_PROPERTY_OVERRIDES += persist.vendor.enable.thermal.genl=true
 
 # EdgeTPU
-include device/google/gs-common/edgetpu/edgetpu.mk
+# Tflite Darwinn delegate property
+PRODUCT_VENDOR_PROPERTIES += vendor.edgetpu.tflite_delegate.force_disable_io_coherency=0
+
+# Edgetpu CPU scheduler property
+PRODUCT_VENDOR_PROPERTIES += vendor.edgetpu.cpu_scheduler.policy=FIFO
+PRODUCT_VENDOR_PROPERTIES += vendor.edgetpu.cpu_scheduler.priority=99
 
 # A/B support
 PRODUCT_PACKAGES += \
@@ -614,8 +726,6 @@ include hardware/google/pixel/common/pixel-common-device.mk
 # Wifi ext
 include hardware/google/pixel/wifi_ext/device.mk
 
-include device/google/gs201/dumpstate/item.mk
-
 # Install product specific framework compatibility matrix
 # (TODO: b/169535506) This includes the FCM for system_ext and product partition.
 # It must be split into the FCM of each partition.
@@ -633,8 +743,8 @@ PRODUCT_VENDOR_PROPERTIES += ro.crypto.metadata_init_delete_all_keys.enabled?=tr
 include hardware/google/pixel/HardwareInfo/HardwareInfo.mk
 
 # Touch service
-include device/google/gs-common/touch/twoshay/aidl_gs101.mk
-include device/google/gs-common/touch/twoshay/twoshay.mk
+DEVICE_MANIFEST_FILE += device/google/gs-common/touch/twoshay/aidl/manifest_gs101.xml
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/touch/twoshay/aidl/compatibility_matrix_gs101.xml
 
 # Allow longer timeout for incident report generation in bugreport
 # Overriding in /product partition instead of /vendor intentionally,
