@@ -1,5 +1,7 @@
 #
 # SPDX-FileCopyrightText: 2011 The Android Open-Source Project
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-FileCopyrightText: The Calyx Institute
 # SPDX-License-Identifier: Apache-2.0
 #
 
@@ -187,6 +189,10 @@ PRODUCT_VENDOR_PROPERTIES += ro.surface_flinger.prime_shader_cache.ultrahdr=1
 # Device Manifest, Device Compatibility Matrix for Treble
 DEVICE_MANIFEST_FILE := \
 	device/google/gs201/manifest.xml
+ifneq ($(BOARD_WITHOUT_RADIO),true)
+DEVICE_MANIFEST_FILE += \
+	device/google/gs201/manifest_radio_ds.xml
+endif
 
 DEVICE_MANIFEST_FILE += \
 	device/google/gs201/manifest_media.xml
@@ -195,6 +201,7 @@ DEVICE_MATRIX_FILE := \
 	device/google/gs201/compatibility_matrix.xml
 
 DEVICE_PACKAGE_OVERLAYS += device/google/gs201/overlay
+DEVICE_PACKAGE_OVERLAYS += device/google/gs201/overlay-lineage
 
 # This device is shipped with 33 (Android T)
 PRODUCT_SHIPPING_API_LEVEL := 33
@@ -634,3 +641,37 @@ include device/google/gs-common/touch/twoshay/twoshay.mk
 # since it can't be overridden from /vendor.
 PRODUCT_PRODUCT_PROPERTIES += \
 	dumpstate.strict_run=false
+
+# AiAi Config
+PRODUCT_COPY_FILES += \
+    device/google/zuma/allowlist_com.google.android.as.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/allowlist_com.google.android.as.xml
+
+# Camera
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.vendor.camera.extensions.package=com.google.android.apps.camera.services \
+    ro.vendor.camera.extensions.service=com.google.android.apps.camera.services.extensions.service.PixelExtensions
+
+# Google Assistant
+PRODUCT_PRODUCT_PROPERTIES += ro.opa.eligible_device=true
+
+# Lineage Health
+include hardware/google/pixel/lineage_health/device.mk
+
+$(call soong_config_set,lineage_health,charging_control_supports_deadline,true)
+$(call soong_config_set,lineage_health,charging_control_supports_limit,true)
+$(call soong_config_set,lineage_health,charging_control_supports_toggle,false)
+
+# Linker config
+PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
+    device/google/zuma/linker.config.json
+
+# Parts
+PRODUCT_PACKAGES += \
+    GoogleParts
+
+# Tethering
+PRODUCT_PACKAGES += \
+    TetheringOverlay
+
+# Touch
+include hardware/google/pixel/touch/device.mk

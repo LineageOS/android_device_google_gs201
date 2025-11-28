@@ -3,4 +3,9 @@
         <name>android.hardware.boot</name>
         <fqname>IBootControl/default</fqname>
     </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.keymint</name>
+        <version>3</version>
+        <fqname>IRemotelyProvisionedComponent/strongbox</fqname>
+    </hal>
 </manifest>
