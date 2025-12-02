@@ -243,7 +243,26 @@ endif
 BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/system_dlkm.modules.load 2>/dev/null))
 BOARD_SYSTEM_KERNEL_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/, $(notdir $(BOARD_SYSTEM_KERNEL_MODULES_LOAD)))
 
-include device/google/gs201/sepolicy/gs201-sepolicy.mk
+# SEPolicy
+BOARD_VENDOR_SEPOLICY_DIRS += \
+    hardware/google/pixel-sepolicy/googlebattery \
+    hardware/google/pixel-sepolicy/input \
+    hardware/google/pixel-sepolicy/powerstats \
+    device/google/gs201/sepolicy/certificates \
+    device/google/gs201/sepolicy/recovery \
+    device/google/gs201/sepolicy/vendor
+
+PRODUCT_PRIVATE_SEPOLICY_DIRS += \
+    device/google/gs201/sepolicy/product/private
+
+PRODUCT_PUBLIC_SEPOLICY_DIRS += \
+    device/google/gs201/sepolicy/product/public
+
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
+    device/google/gs201/sepolicy/system_ext/private
+
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
+    device/google/gs201/sepolicy/system_ext/public
 
 # Battery options
 BOARD_KERNEL_CMDLINE += at24.write_timeout=100

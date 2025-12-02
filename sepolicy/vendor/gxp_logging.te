@@ -1,0 +1,15 @@
+type gxp_logging, domain;
+type gxp_logging_exec, exec_type, file_type, vendor_file_type;
+
+binder_call(gxp_logging, system_server)
+
+binder_use(gxp_logging)
+
+get_prop(gxp_logging, vendor_gxp_prop)
+
+init_daemon_domain(gxp_logging)
+
+allow gxp_logging fwk_stats_service:service_manager find;
+allow gxp_logging gxp_device:chr_file rw_file_perms;
+allow gxp_logging sysfs_gxp:dir search;
+allow gxp_logging sysfs_gxp:file rw_file_perms;

@@ -1,0 +1,11 @@
+type vendor_telephony_debug_app, domain;
+
+app_domain(vendor_telephony_debug_app)
+
+binder_call(vendor_telephony_debug_app, rild)
+
+set_prop(vendor_telephony_debug_app, vendor_rild_prop)
+set_prop(vendor_telephony_debug_app, vendor_telephony_app_prop)
+
+allow vendor_telephony_debug_app app_api_service:service_manager find;
+allow vendor_telephony_debug_app hal_exynos_rild_hwservice:hwservice_manager find;

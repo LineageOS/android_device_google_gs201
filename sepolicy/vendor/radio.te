@@ -1,0 +1,9 @@
+binder_call(radio, hal_audio_default)
+
+set_prop(radio, telephony_ril_prop)
+
+allow radio hal_audio_ext_hwservice:hwservice_manager find;
+allow radio proc_vendor_sched:dir r_dir_perms;
+allow radio proc_vendor_sched:file w_file_perms;
+allow radio radio_vendor_data_file:dir rw_dir_perms;
+allow radio radio_vendor_data_file:file create_file_perms;

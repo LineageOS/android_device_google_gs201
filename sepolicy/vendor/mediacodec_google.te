@@ -1,0 +1,22 @@
+type mediacodec_google, domain;
+type mediacodec_google_exec, exec_type, file_type, vendor_file_type;
+
+crash_dump_fallback(mediacodec_google)
+
+hal_client_domain(mediacodec_google, hal_codec2)
+hal_client_domain(mediacodec_google, hal_graphics_allocator)
+
+hal_server_domain(mediacodec_google, hal_codec2)
+
+init_daemon_domain(mediacodec_google)
+
+vndbinder_use(mediacodec_google)
+
+allow mediacodec_google dmabuf_system_heap_device:chr_file r_file_perms;
+allow mediacodec_google dmabuf_system_secure_heap_device:chr_file r_file_perms;
+allow mediacodec_google gpu_device:chr_file rw_file_perms;
+allow mediacodec_google video_device:chr_file rw_file_perms;
+
+neverallow mediacodec_google domain:{ rawip_socket tcp_socket udp_socket } *;
+neverallow mediacodec_google file_type:file execute_no_trans;
+neverallow mediacodec_google fs_type:file execute_no_trans;
