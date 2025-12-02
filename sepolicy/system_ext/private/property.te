@@ -1,0 +1,5 @@
+system_internal_prop(repair_mode_init_prop)
+
+system_restricted_prop(telephony_modem_prop)
+
+system_vendor_config_prop(fingerprint_ghbm_prop)

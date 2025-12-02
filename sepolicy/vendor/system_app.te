@@ -1,0 +1,3 @@
+binder_call(system_app, hal_wireless_charger)
+
+allow system_app hal_wireless_charger_service:service_manager find;

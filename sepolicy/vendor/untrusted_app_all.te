@@ -1,0 +1,4 @@
+allow untrusted_app_all edgetpu_app_service:service_manager find;
+allow untrusted_app_all edgetpu_device:chr_file { getattr ioctl map read write };
+
+dontaudit untrusted_app_all proc_vendor_sched:dir search;
