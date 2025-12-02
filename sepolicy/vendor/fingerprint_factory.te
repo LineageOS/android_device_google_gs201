@@ -1,0 +1,4 @@
+type fingerprint_factory_service, service_manager_type;
+type fingerprint_factory_service_exec, exec_type, file_type, vendor_file_type;
+
+init_daemon_domain(fingerprint_factory_service)

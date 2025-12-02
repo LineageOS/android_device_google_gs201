@@ -1,0 +1,4 @@
+binder_call(hal_bluetooth_btlinux, vendor_cccdktimesync_app)
+
+allow hal_bluetooth_btlinux aoc_device:chr_file { getattr open read write };
+allow hal_bluetooth_btlinux device:dir r_dir_perms;
