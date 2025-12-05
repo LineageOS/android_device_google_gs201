@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2021 The Android Open Source Project
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<manifest version="9.0" type="device" target-level="7">
+    <hal format="hidl">
+        <name>android.hardware.audio</name>
+        <transport>hwbinder</transport>
+        <fqname>@7.1::IDevicesFactory/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.audio.effect</name>
+        <transport>hwbinder</transport>
+        <fqname>@7.0::IEffectsFactory/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.boot</name>
+        <fqname>IBootControl/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.media.c2</name>
+        <fqname>IComponentStore/default1</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.media.c2</name>
+        <fqname>IComponentStore/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.keymint</name>
+        <version>3</version>
+        <fqname>IRemotelyProvisionedComponent/strongbox</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.soundtrigger</name>
+        <transport>hwbinder</transport>
+        <fqname>@2.3::ISoundTriggerHw/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input</name>
+        <version>6</version>
+        <fqname>ITouchContextService/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input</name>
+        <version>6</version>
+        <fqname>ITwoshayFileDumpService/touchflow_default</fqname>
+        <fqname>ITwoshayFileDumpService/twoshay</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.google.audiometricext</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IAudioMetricExt/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.google.whitechapel.audio.audioext</name>
+        <transport>hwbinder</transport>
+        <fqname>@4.0::IAudioExt/default</fqname>
+    </hal>
+</manifest>

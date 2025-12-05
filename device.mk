@@ -15,9 +15,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnel_migration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnel_migration.xml
 
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += \
-    device/google/gs-common/vintf/framework_compatibility_matrix.xml
-
 # sscoredump
 PRODUCT_PROPERTY_OVERRIDES += vendor.debug.ssrdump.type=sscoredump
 
@@ -201,20 +198,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 # b/295257834 Add HDR shaders to SurfaceFlinger's pre-warming cache
 PRODUCT_VENDOR_PROPERTIES += ro.surface_flinger.prime_shader_cache.ultrahdr=1
 
-# Device Manifest, Device Compatibility Matrix for Treble
-DEVICE_MANIFEST_FILE := \
-	device/google/gs201/manifest.xml
-ifneq ($(BOARD_WITHOUT_RADIO),true)
-DEVICE_MANIFEST_FILE += \
-	device/google/gs201/manifest_radio_ds.xml
-endif
-
-DEVICE_MANIFEST_FILE += \
-	device/google/gs201/manifest_media.xml
-
-DEVICE_MATRIX_FILE := \
-	device/google/gs201/compatibility_matrix.xml
-
 DEVICE_PACKAGE_OVERLAYS += device/google/gs201/overlay
 DEVICE_PACKAGE_OVERLAYS += device/google/gs201/overlay-lineage
 
@@ -320,12 +303,6 @@ PRODUCT_PROPERTY_OVERRIDES += aaudio.hw_burst_min_usec=2000
 PRODUCT_SOONG_NAMESPACES += \
     hardware/google/camera
 
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += \
-    device/google/gs-common/camera/device_framework_matrix_product.xml
-
-DEVICE_MATRIX_FILE += \
-    device/google/gs-common/camera/compatibility_matrix.xml
-
 # Connectivity
 PRODUCT_PACKAGES += \
         ConnectivityOverlay
@@ -337,8 +314,6 @@ PRODUCT_PACKAGES += \
 # Battery Mitigation
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.battery_mitigation.aidl.enable=true
-
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/battery_mitigation/compatibility_matrix.xml
 
 # storage pixelstats
 -include hardware/google/pixel/pixelstats/device.mk
@@ -546,9 +521,6 @@ PRODUCT_PACKAGES += \
 	android.hardware.health-service.gs201 \
 	android.hardware.health-service.gs201_recovery \
 
-# Audio HAL Server & Default Implementations
-DEVICE_MANIFEST_FILE += device/google/gs-common/audio/hidl/manifest.xml
-
 # Audio HAL configurations
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration_7_0.xml \
@@ -573,8 +545,6 @@ PRODUCT_PACKAGES += \
     audio.usbv2.default \
     audio.bluetooth.default \
     audio.r_submix.default
-
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/audio/hidl/device_framework_matrix_product.xml
 
 ## Audio properties
 ifneq (,$(filter %tangorpro, $(TARGET_PRODUCT)))
@@ -652,11 +622,6 @@ include hardware/google/pixel/common/pixel-common-device.mk
 # Wifi ext
 include hardware/google/pixel/wifi_ext/device.mk
 
-# Install product specific framework compatibility matrix
-# (TODO: b/169535506) This includes the FCM for system_ext and product partition.
-# It must be split into the FCM of each partition.
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs201/device_framework_matrix_product.xml
-
 # Keymint configuration
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml \
@@ -667,10 +632,6 @@ PRODUCT_VENDOR_PROPERTIES += ro.crypto.metadata_init_delete_all_keys.enabled?=tr
 
 # Hardware Info
 include hardware/google/pixel/HardwareInfo/HardwareInfo.mk
-
-# Touch service
-DEVICE_MANIFEST_FILE += device/google/gs-common/touch/twoshay/aidl/manifest_gs101.xml
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/touch/twoshay/aidl/compatibility_matrix_gs101.xml
 
 # Allow longer timeout for incident report generation in bugreport
 # Overriding in /product partition instead of /vendor intentionally,
@@ -711,3 +672,13 @@ PRODUCT_PACKAGES += \
 
 # Touch
 include hardware/google/pixel/touch/device.mk
+
+# VINTF
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    device/google/gs201/vintf/vendor_framework_compatibility_matrix.xml
+DEVICE_MANIFEST_FILE += \
+    device/google/gs201/vintf/manifest.xml
+DEVICE_MATRIX_FILE += \
+    device/google/gs201/vintf/compatibility_matrix.xml
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += \
+    device/google/gs201/vintf/device_framework_matrix_product.xml
