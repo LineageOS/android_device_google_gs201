@@ -1,5 +1,11 @@
-<compatibility-matrix version="1.0" type="framework" level="7">
-    <hal format="hidl" optional="true">
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2021 The Android Open Source Project
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<compatibility-matrix version="9.0" type="framework" level="7">
+    <hal format="hidl">
         <name>android.vendor.samsung_slsi.telephony.hardware.radio</name>
         <version>1.1</version>
         <interface>
@@ -8,7 +14,7 @@
             <instance>slot2</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
+    <hal format="hidl">
         <name>com.fingerprints42.extension</name>
         <version>1.0</version>
         <interface>
@@ -40,9 +46,24 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl" optional="true">
-      <name>com.google.face.debug</name>
-      <version>3-4</version>
+    <hal format="aidl">
+        <name>com.google.edgetpu</name>
+        <version>2</version>
+        <interface>
+            <name>IEdgeTpuVendorService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.edgetpu.dba</name>
+        <interface>
+            <name>IDevice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.face.debug</name>
+        <version>3-4</version>
         <interface>
             <name>IDebugHost</name>
             <instance>default</instance>
@@ -52,39 +73,48 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl" optional="true">
-      <name>com.google.edgetpu</name>
+    <hal format="aidl">
+        <name>com.google.flood</name>
         <version>2</version>
         <interface>
-            <name>IEdgeTpuVendorService</name>
+            <name>IFloodService</name>
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl" optional="true">
-        <name>com.google.edgetpu.dba</name>
-        <version>1</version>
-        <interface>
-            <name>IDevice</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>com.google.edgetpu.tachyon</name>
-        <version>1</version>
-        <interface>
-            <name>IComputeService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-      <name>com.google.hardware.pixel.display</name>
-        <version>13-16</version>
+    <hal format="aidl">
+        <name>com.google.hardware.pixel.display</name>
+        <version>16</version>
         <interface>
             <name>IDisplay</name>
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl" optional="true">
+    <hal format="aidl">
+        <name>com.google.input</name>
+        <version>2-6</version>
+        <interface>
+            <name>ITouchContextService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input</name>
+        <version>6</version>
+        <interface>
+            <name>ITwoshayFileDumpService</name>
+            <instance>touchflow_default</instance>
+            <instance>touchflow_outer</instance>
+            <instance>twoshay</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.pixel.camera.connectivity.hal.provider</name>
+        <interface>
+            <name>ICameraProvider</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
         <name>hardware.qorvo.uwb</name>
         <version>2</version>
         <interface>
@@ -92,7 +122,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
+    <hal format="hidl">
         <name>vendor.goodix.hardware.biometrics.fingerprint</name>
         <version>2.1</version>
         <interface>
@@ -100,15 +130,30 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl" optional="true">
+    <hal format="hidl">
+        <name>vendor.google.audiometricext</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAudioMetricExt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.battery_mitigation</name>
+        <interface>
+            <name>IBatteryMitigation</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
         <name>vendor.google.google_battery</name>
-        <version>2-4</version>
+        <version>4</version>
         <interface>
             <name>IGoogleBattery</name>
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
+    <hal format="hidl">
         <name>vendor.google.radioext</name>
         <version>1.5</version>
         <interface>
@@ -116,7 +161,15 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl" optional="true">
+    <hal format="hidl">
+        <name>vendor.google.whitechapel.audio.audioext</name>
+        <version>4.0</version>
+        <interface>
+            <name>IAudioExt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
         <name>vendor.google.wifi_ext</name>
         <version>2-4</version>
         <interface>
@@ -124,7 +177,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
+    <hal format="hidl">
         <name>vendor.samsung_slsi.telephony.hardware.oemservice</name>
         <version>1.0</version>
         <interface>
@@ -134,7 +187,7 @@
             <instance>sced0</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
+    <hal format="hidl">
         <name>vendor.samsung_slsi.telephony.hardware.radioExternal</name>
         <version>1.1</version>
         <interface>
