@@ -1,9 +1,15 @@
+not_recovery(`
 binder_call(uwb_vendor_app, hal_uwb_vendor_default)
+')
 
 get_prop(uwb_vendor_app, vendor_secure_element_prop)
 
+not_recovery(`
 hal_client_domain(uwb_vendor_app, hal_uwb_vendor)
+')
 
 set_prop(uwb_vendor_app, vendor_uwb_calibration_country_code)
 
+not_recovery(`
 allow uwb_vendor_app hal_uwb_vendor_service:service_manager find;
+')

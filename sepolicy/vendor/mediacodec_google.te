@@ -17,6 +17,7 @@ allow mediacodec_google dmabuf_system_secure_heap_device:chr_file r_file_perms;
 allow mediacodec_google gpu_device:chr_file rw_file_perms;
 allow mediacodec_google video_device:chr_file rw_file_perms;
 
-neverallow mediacodec_google domain:{ rawip_socket tcp_socket udp_socket } *;
+neverallow mediacodec_google { domain userdebug_or_eng(`-su') }:tcp_socket *;
+neverallow mediacodec_google domain:{ rawip_socket udp_socket } *;
 neverallow mediacodec_google file_type:file execute_no_trans;
 neverallow mediacodec_google fs_type:file execute_no_trans;
