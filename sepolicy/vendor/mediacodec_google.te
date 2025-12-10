@@ -1,12 +1,12 @@
 type mediacodec_google, domain;
 type mediacodec_google_exec, exec_type, file_type, vendor_file_type;
 
-crash_dump_fallback(mediacodec_google)
-
 hal_client_domain(mediacodec_google, hal_codec2)
 hal_client_domain(mediacodec_google, hal_graphics_allocator)
 
 hal_server_domain(mediacodec_google, hal_codec2)
+
+crash_dump_fallback(mediacodec_google)
 
 init_daemon_domain(mediacodec_google)
 

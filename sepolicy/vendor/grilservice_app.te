@@ -2,13 +2,13 @@ type grilservice_app, domain;
 
 app_domain(grilservice_app)
 
+hal_client_domain(grilservice_app, hal_power_stats)
+
 binder_call(grilservice_app, hal_audiometricext_default)
 binder_call(grilservice_app, hal_bluetooth_btlinux)
 binder_call(grilservice_app, hal_radioext_default)
 binder_call(grilservice_app, hal_wifi_ext)
 binder_call(grilservice_app, rild)
-
-hal_client_domain(grilservice_app, hal_power_stats)
 
 r_dir_file(grilservice_app, sysfs_irq)
 

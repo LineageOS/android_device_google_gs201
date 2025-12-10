@@ -1,8 +1,8 @@
+hal_client_domain(hal_thermal_default, hal_power)
+
 binder_call(hal_thermal_default, servicemanager)
 
 get_prop(hal_thermal_default, vendor_thermal_prop)
-
-hal_client_domain(hal_thermal_default, hal_power)
 
 r_dir_file(hal_thermal_default, sysfs_iio_devices)
 r_dir_file(hal_thermal_default, sysfs_odpm)

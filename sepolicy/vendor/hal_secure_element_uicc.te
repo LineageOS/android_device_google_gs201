@@ -1,9 +1,9 @@
 type hal_secure_element_uicc, domain;
 type hal_secure_element_uicc_exec, exec_type, file_type, vendor_file_type;
 
-binder_call(hal_secure_element_uicc, rild)
-
 hal_server_domain(hal_secure_element_uicc, hal_secure_element)
+
+binder_call(hal_secure_element_uicc, rild)
 
 init_daemon_domain(hal_secure_element_uicc)
 
