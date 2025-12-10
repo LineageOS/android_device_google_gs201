@@ -1,0 +1,8 @@
+app_domain(vendor_rcs_app)
+
+net_domain(vendor_rcs_app)
+
+typeattribute vendor_rcs_app coredomain;
+
+allow vendor_rcs_app app_api_service:service_manager find;
+allow vendor_rcs_app radio_service:service_manager find;

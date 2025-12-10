@@ -6,6 +6,7 @@ persist.vendor.camera.pbcs.debug. u:object_r:vendor_camera_pbcs_debug_prop:s0
 persist.vendor.cbd. u:object_r:vendor_cbd_prop:s0
 persist.vendor.config. u:object_r:vendor_persist_config_default_prop:s0
 persist.vendor.display. u:object_r:vendor_display_prop:s0
+persist.vendor.fingerprint. u:object_r:vendor_fingerprint_prop:s0
 persist.vendor.gps. u:object_r:vendor_gps_prop:s0
 persist.vendor.ims. u:object_r:vendor_imssvc_prop:s0
 persist.vendor.intelligence u:object_r:vendor_intelligence_prop:s0
