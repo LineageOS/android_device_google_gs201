@@ -714,6 +714,12 @@ PRODUCT_PACKAGES += \
     TelecomOverlayProductGs201 \
     TelephonyProviderOverlayProductGs201
 
+ifneq ($(TARGET_IS_TABLET),true)
+PRODUCT_PACKAGES += \
+    LineageSdkOverlayGs201 \
+    SettingsOverlayGs201
+endif
+
 # Parts
 PRODUCT_PACKAGES += \
     GoogleParts
