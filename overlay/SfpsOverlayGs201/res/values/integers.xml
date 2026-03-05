@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Minimum display time (in millis) for help messages in fingerprint enrollment. -->
+    <integer name="enrollment_help_minimum_time_display">250</integer>
+
+    <!-- Minimum display time (in millis) for progress messages in fingerprint enrollment. -->
+    <integer name="enrollment_progress_minimum_time_display">250</integer>
+
+    <!-- The time (in millis) to wait to collect messages in fingerprint enrollment before displaying it. -->
+    <integer name="enrollment_collect_time">100</integer>
+</resources>

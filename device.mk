@@ -189,9 +189,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 # b/295257834 Add HDR shaders to SurfaceFlinger's pre-warming cache
 PRODUCT_VENDOR_PROPERTIES += ro.surface_flinger.prime_shader_cache.ultrahdr=1
 
-DEVICE_PACKAGE_OVERLAYS += device/google/gs201/overlay
-DEVICE_PACKAGE_OVERLAYS += device/google/gs201/overlay-lineage
-
 # This device is shipped with 33 (Android T)
 PRODUCT_SHIPPING_API_LEVEL := 33
 
@@ -293,10 +290,6 @@ PRODUCT_PROPERTY_OVERRIDES += aaudio.hw_burst_min_usec=2000
 # Camera
 PRODUCT_SOONG_NAMESPACES += \
     hardware/google/camera
-
-# Connectivity
-PRODUCT_PACKAGES += \
-        ConnectivityOverlay
 
 # Storage health HAL
 PRODUCT_PACKAGES += \
@@ -449,9 +442,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PRODUCT_PROPERTIES += \
 	persist.bluetooth.bqr.event_mask?=30 \
 	persist.bluetooth.bqr.min_interval_ms=500
-
-PRODUCT_ENFORCE_RRO_TARGETS := \
-	framework-res
 
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -648,6 +638,35 @@ $(call soong_config_set_bool,lineage_health,charging_control_supports_toggle,fal
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
     device/google/gs201/linker.config.json
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    device/google/gs201/overlay-lineage
+
+PRODUCT_PACKAGES += \
+    EuiccSupportPixelOverlay \
+    FrameworkResOverlayProductGs201 \
+    FrameworkResOverlayVendorGs201 \
+    GlanceableHubConfigOverlay \
+    GlanceableHubSettingsConfigOverlay \
+    GlanceableHubSettingsConfigOverlay2022 \
+    GlanceableHubSysuiConfigOverlay \
+    GoogleConfigOverlay \
+    GooglePermissionControllerSafetyCenterOverlay \
+    PixelConfigOverlay2019 \
+    PixelConfigOverlay2021 \
+    PixelConfigOverlayCommon \
+    PixelConnectivityOverlay2023_midyear \
+    PixelNfcOverlayCommon \
+    PixelTetheringOverlay2021 \
+    SettingsGoogleOverlayProductGs201 \
+    SettingsProviderOverlayProductGs201 \
+    SystemUIGoogleOverlayProductGs201 \
+    SystemUIGoogleOverlayVendorGs201 \
+    TeleServiceOverlayProductGs201 \
+    TeleServiceOverlayVendorGs201 \
+    TelecomOverlayProductGs201 \
+    TelephonyProviderOverlayProductGs201
+
 # Parts
 PRODUCT_PACKAGES += \
     GoogleParts
@@ -655,10 +674,6 @@ PRODUCT_PACKAGES += \
 # Properties
 TARGET_PRODUCT_PROP += device/google/gs201/product.prop
 TARGET_SYSTEM_EXT_PROP += device/google/gs201/system_ext.prop
-
-# Tethering
-PRODUCT_PACKAGES += \
-    TetheringOverlay
 
 # Touch
 include hardware/google/pixel/touch/device.mk

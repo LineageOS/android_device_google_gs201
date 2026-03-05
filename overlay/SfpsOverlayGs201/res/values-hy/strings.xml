@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Title shown for work menu item that launches fingerprint settings or enrollment [CHAR LIMIT=22] -->
+    <string name="security_settings_work_fingerprint_preference_title">Մատնահետքով ապակողպում աշխատանքի համար</string>
+
+    <!-- Introduction description message shown in fingerprint enrollment introduction screen in setup wizard. [CHAR LIMIT=NONE]-->
+    <string name="security_settings_fingerprint_v2_enroll_introduction_footer_message_2">Մատնահետքով ապակողպումը ստեղծում է ձեր մատնահետքի եզակի նմուշը՝ նույնականացման ժամանակ ձեզ ճանաչելու համար։ Կարգավորման ժամանակ նմուշը ստեղծելու համար պետք է լուսանկարեք ձեր մատնահետքը տարբեր դիրքերից։</string>
+
+    <!-- Introduction title shown in fingerprint enrollment dialog to locate the sensor [CHAR LIMIT=29] -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_title">Հպեք սնուցման կոճակին</string>
+
+    <!-- Message shown in fingerprint enrollment dialog to locate the sensor -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_message">Մատնահետքի սկաները սնուցման կոճակի վրա է։\n\nԹեթևակի հպեք կոճակին՝ առանց այն սեղմելու։</string>
+
+    <!-- Title shown in fingerprint enrollment dialog to repeat touching the fingerprint sensor [CHAR LIMIT=40] -->
+    <string name="security_settings_fingerprint_enroll_repeat_title">Բարձրացրեք մատը, ապա հպեք։ Ամեն անգամ թեթևակի շարժեք:</string>
+
+    <!-- Dialog title for dialog which shows when user touches the icon on the screen, instead of the sensor at the back [CHAR LIMIT=45] -->
+    <string name="security_settings_fingerprint_enroll_touch_dialog_title">Հպեք սկաներին</string>
+
+    <!-- Dialog message for dialog which shows when user touches the icon on the screen, instead of the sensor at the back [CHAR LIMIT=NONE] -->
+    <string name="security_settings_fingerprint_enroll_touch_dialog_message">Մատնահետքերի սկաները սնուցման կոճակի վրա է։</string>
+
+    <!-- Title for suggested actions for settings up a fingerprint lock [CHAR LIMIT=46] -->
+    <string name="suggested_fingerprint_lock_settings_title">Օգտագործել մատնահետքով ապակողպումը</string>
+
+    <!-- Message shown in SFPS enrollment dialog to locate the sensor (default) [CHAR LIMIT=NONE]-->
+    <string name="security_settings_sfps_enroll_find_sensor_message">Մատնահետքերի սկաները սնուցման կոճակի վրա է։ Այն հեռախոսի կողքի ավելի կարճ կոճակն է։</string>
+</resources>

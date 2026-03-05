@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Title shown for work menu item that launches fingerprint settings or enrollment [CHAR LIMIT=22] -->
+    <string name="security_settings_work_fingerprint_preference_title">ୱାର୍କ ପାଇଁ ଫିଙ୍ଗରପ୍ରିଣ୍ଟ ଅନଲକ</string>
+
+    <!-- Introduction title shown in fingerprint enrollment dialog to locate the sensor [CHAR LIMIT=29] -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_title">ପାୱାର ବଟନକୁ ସ୍ପର୍ଶ କରନ୍ତୁ</string>
+
+    <!-- Message shown in fingerprint enrollment dialog to locate the sensor -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_message">ଟିପଚିହ୍ନ ସେନ୍ସର ପାୱାର ବଟନରେ ଅଛି।\n\nବଟନକୁ ତଳକୁ ନ ଦବାଇ ଏହାକୁ ଧୀରେ ସ୍ପର୍ଶ କରନ୍ତୁ।</string>
+
+    <!-- Title shown in fingerprint enrollment dialog to repeat touching the fingerprint sensor [CHAR LIMIT=40] -->
+    <string name="security_settings_fingerprint_enroll_repeat_title">ଉଠାନ୍ତୁ, ତା\'ପରେ ସ୍ପର୍ଶ କରନ୍ତୁ। ପ୍ରତ୍ୟେକ ଥର ଆପଣଙ୍କ ଆଙ୍ଗୁଠିକୁ ସାମାନ୍ୟ ମୁଭ କରନ୍ତୁ।</string>
+
+    <!-- Dialog title for dialog which shows when user touches the icon on the screen, instead of the sensor at the back [CHAR LIMIT=45] -->
+    <string name="security_settings_fingerprint_enroll_touch_dialog_title">ଏହା ପରିବର୍ତ୍ତେ ସେନ୍ସରକୁ ସ୍ପର୍ଶ କରନ୍ତୁ</string>
+
+    <!-- Dialog message for dialog which shows when user touches the icon on the screen, instead of the sensor at the back [CHAR LIMIT=NONE] -->
+    <string name="security_settings_fingerprint_enroll_touch_dialog_message">ଟିପଚିହ୍ନ ସେନ୍ସର ପାୱାର ବଟନରେ ଅଛି।</string>
+
+    <!-- Title for suggested actions for settings up a fingerprint lock [CHAR LIMIT=46] -->
+    <string name="suggested_fingerprint_lock_settings_title">ଫିଙ୍ଗରପ୍ରିଣ୍ଟ ଅନଲକ ବ୍ୟବହାର କରନ୍ତୁ</string>
+
+    <!-- Message shown in SFPS enrollment dialog to locate the sensor (default) [CHAR LIMIT=NONE]-->
+    <string name="security_settings_sfps_enroll_find_sensor_message">ଟିପଚିହ୍ନ ସେନ୍ସର ପାୱାର ବଟନରେ ଅଛି। ଏହା ଫୋନର ପାର୍ଶ୍ୱରେ ଥିବା ଛୋଟ ବଟନ ଅଟେ।</string>
+</resources>

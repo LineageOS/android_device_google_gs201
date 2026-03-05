@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Title shown for work menu item that launches fingerprint settings or enrollment [CHAR LIMIT=22] -->
+    <string name="security_settings_work_fingerprint_preference_title">ការដោះសោ​ដោយប្រើ​ស្នាមម្រាមដៃសម្រាប់ការងារ</string>
+
+    <!-- Introduction description message shown in fingerprint enrollment introduction screen in setup wizard. [CHAR LIMIT=NONE]-->
+    <string name="security_settings_fingerprint_v2_enroll_introduction_footer_message_2">ការដោះសោ​ដោយស្កេន​ស្នាមម្រាមដៃបង្កើតគំរូស្នាមម្រាមដៃ​របស់អ្នក​ខុសប្លែកពីគេ ដើម្បីផ្ទៀងផ្ទាត់​ថាជាអ្នក។ ដើម្បីបង្កើត​គំរូស្នាមម្រាមដៃនេះ​ក្នុងអំឡុងពេល​រៀបចំ អ្នកនឹងត្រូវ​ថតរូបស្នាមម្រាមដៃ​របស់អ្នក​ពីផ្នែកខុសៗគ្នា។</string>
+
+    <!-- Introduction title shown in fingerprint enrollment dialog to locate the sensor [CHAR LIMIT=29] -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_title">ចុចប៊ូតុង​ថាមពល</string>
+
+    <!-- Message shown in fingerprint enrollment dialog to locate the sensor -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_message">ឧបករណ៍​ចាប់ស្នាមម្រាមដៃ​មាននៅលើប៊ូតុង​ថាមពល។\n\nចុចប៊ូតុងថ្នមៗ​ដោយមិនចាំ​បាច់សង្កត់វានោះទេ។</string>
+
+    <!-- Title shown in fingerprint enrollment dialog to repeat touching the fingerprint sensor [CHAR LIMIT=40] -->
+    <string name="security_settings_fingerprint_enroll_repeat_title">ដកចេញ រួចហើយប៉ះ​។ រំកិល​ម្រាមដៃរបស់អ្នកបន្តិច​ក្នុង​មួយលើកៗ។</string>
+
+    <!-- Dialog title for dialog which shows when user touches the icon on the screen, instead of the sensor at the back [CHAR LIMIT=45] -->
+    <string name="security_settings_fingerprint_enroll_touch_dialog_title">ប៉ះសេនស័រជំនួសវិញ</string>
+
+    <!-- Dialog message for dialog which shows when user touches the icon on the screen, instead of the sensor at the back [CHAR LIMIT=NONE] -->
+    <string name="security_settings_fingerprint_enroll_touch_dialog_message">សេនស័រចាប់ស្នាមម្រាមដៃ​ស្ថិតនៅលើប៊ូតុង​ថាមពល។</string>
+
+    <!-- Title for suggested actions for settings up a fingerprint lock [CHAR LIMIT=46] -->
+    <string name="suggested_fingerprint_lock_settings_title">ប្រើការដោះសោ​ដោយប្រើស្នាម​ម្រាមដៃ</string>
+
+    <!-- Message shown in SFPS enrollment dialog to locate the sensor (default) [CHAR LIMIT=NONE]-->
+    <string name="security_settings_sfps_enroll_find_sensor_message">សេនស័រចាប់ស្នាមម្រាមដៃ​ស្ថិតនៅលើប៊ូតុង​ថាមពល។ វាជាប៊ូតុងខ្លីនៅចំហៀងទូរសព្ទ។</string>
+</resources>

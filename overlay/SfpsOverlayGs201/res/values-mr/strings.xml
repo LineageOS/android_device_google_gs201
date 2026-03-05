@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Title shown for work menu item that launches fingerprint settings or enrollment [CHAR LIMIT=22] -->
+    <string name="security_settings_work_fingerprint_preference_title">कार्य प्रोफाइलसाठी फिंगरप्रिंट अनलॉक</string>
+
+    <!-- Introduction description message shown in fingerprint enrollment introduction screen in setup wizard. [CHAR LIMIT=NONE]-->
+    <string name="security_settings_fingerprint_v2_enroll_introduction_footer_message_2">ते तुम्हीच आहात याची पडताळणी करण्यासाठी फिंगरप्रिंट अनलॉक हे तुमच्या फिंगरप्रिंटचे युनिक मॉडेल तयार करते. सेटअपदरम्यान हे फिंगरप्रिंट मॉडेल तयार करण्यासाठी, तुम्ही तुमच्या फिंगरप्रिंटच्या वेगवेगळ्या स्थितीमधील इमेज घ्याल.</string>
+
+    <!-- Introduction title shown in fingerprint enrollment dialog to locate the sensor [CHAR LIMIT=29] -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_title">पॉवर बटणला स्पर्श करा</string>
+
+    <!-- Message shown in fingerprint enrollment dialog to locate the sensor -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_message">पॉवर बटणवर फिंगरप्रिंट सेन्सर आहे.\n\n बटण खाली न दाबता त्याला हलकेच स्पर्श करा.</string>
+
+    <!-- Title shown in fingerprint enrollment dialog to repeat touching the fingerprint sensor [CHAR LIMIT=40] -->
+    <string name="security_settings_fingerprint_enroll_repeat_title">उचला, त्यानंतर स्पर्श करा. प्रत्येक वेळी तुमचे बोट किंचित हलवा.</string>
+
+    <!-- Dialog title for dialog which shows when user touches the icon on the screen, instead of the sensor at the back [CHAR LIMIT=45] -->
+    <string name="security_settings_fingerprint_enroll_touch_dialog_title">त्याऐवजी सेन्सरला हात लावा</string>
+
+    <!-- Dialog message for dialog which shows when user touches the icon on the screen, instead of the sensor at the back [CHAR LIMIT=NONE] -->
+    <string name="security_settings_fingerprint_enroll_touch_dialog_message">फिंगरप्रिंट सेन्सर पॉवर बटणावर आहे.</string>
+
+    <!-- Title for suggested actions for settings up a fingerprint lock [CHAR LIMIT=46] -->
+    <string name="suggested_fingerprint_lock_settings_title">फिंगरप्रिंट अनलॉक वापरा</string>
+
+    <!-- Message shown in SFPS enrollment dialog to locate the sensor (default) [CHAR LIMIT=NONE]-->
+    <string name="security_settings_sfps_enroll_find_sensor_message">फिंगरप्रिंट सेन्सर हे पॉवर बटणावर आहे. हे फोनच्या बाजूला असलेले लहान बटण आहे.</string>
+</resources>

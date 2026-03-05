@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- If true, allows rotation resolver service to help resolve screen rotation. -->
+    <bool name="config_allowRotationResolver">false</bool>
+
+    <!--  Maximum number of supported switchable users (excluding Guests & Demo users).
+          Does not include profiles. See {@link UserManager#getMaxSwitchableUsers()} for details.
+
+          Setting to 1 disables multiple switchable users (e.g. secondary users).
+
+          To limit the number of any particular user type (whether switchable or not), set the
+          appropriate maximum in {@link com.android.internal.R.xml#config_user_types}.
+
+         Note: If > 1, it is expected that UserManager.USER_TYPE_FULL_SECONDARY users are supported
+         on the device (at least for testing purposes, even if in practice the UI really only allows
+         other switchable types, such as restricted profiles or guests, to be created).
+         -->
+    <integer name="config_multiuserMaximumUsers">4</integer>
+
+    <!-- Whether UI for multi user should be shown.
+         Note: If true, it is expected that secondary users are supported on the device (at least
+         for testing purposes, even if in practice the UI really only allows other switchable
+         types, such as restricted profiles or guests, to be created).
+         @deprecated  Use config_multiuserMaximumUsers instead.
+         This config will likely be removed in the future; config_multiuserMaximumUsers, which now
+         only applies to full users, not profiles, should be updated accordingly as needed.
+         TODO(b/435521983): Remove this since it's now made redundant by config_multiuserMaximumUsers
+         -->
+    <bool name="config_enableMultiUserUI">true</bool>
+
+    <!-- If true, show multiuser switcher by default unless the user specifically disables it. -->
+    <bool name="config_showUserSwitcherByDefault">true</bool>
+
+    <!-- Whether enabling rotation compat policy for immersive apps that prevents auto rotation
+         into non-optimal screen orientation while in fullscreen. This is needed because immersive
+         apps, such as games, are often not optimized for all orientations and can have a poor UX
+         when rotated. Additionally, some games rely on sensors for the gameplay so users can
+         trigger such rotations accidentally when auto rotation is on.
+         Applicable only if ignoreOrientationRequest is enabled. -->
+    <bool name="config_letterboxIsDisplayRotationImmersiveAppCompatPolicyEnabled">true</bool>
+
+    <!-- Aspect ratio of letterboxing for fixed orientation. Values <= 1.0 will be ignored.
+         Note: Activity min/max aspect ratio restrictions will still be respected.
+         Therefore this override can control the maximum screen area that can be occupied by
+         the app in the letterbox mode. -->
+    <item name="config_fixedOrientationLetterboxAspectRatio" format="float" type="dimen">1.333</item>
+
+    <!-- Corners radius for activity presented the letterbox mode. Values < 0 enable rounded
+         corners with radius equal to min between device bottom corner radii. Default 0 value turns
+         off rounded corners logic in LetterboxUiController. -->
+    <integer name="config_letterboxActivityCornersRadius">-1</integer>
+
+    <!-- Vertical position of a center of the letterboxed app window.
+        0 corresponds to the upper side of the screen and 1 to the lower side. If given value < 0
+        or > 1 it is ignored and for non-tabletop mode central position is used (0.5); for
+         tabletop mode top (0.0) is used. -->
+    <item name="config_letterboxVerticalPositionMultiplier" format="float" type="dimen">0.5</item>
+
+    <!-- Whether horizontal reachability repositioning is allowed for letterboxed fullscreen apps.
+    -->
+    <bool name="config_letterboxIsHorizontalReachabilityEnabled">true</bool>
+
+    <!-- Whether vertical reachability repositioning is allowed for letterboxed fullscreen apps. -->
+    <bool name="config_letterboxIsVerticalReachabilityEnabled">true</bool>
+
+    <!-- Whether should ignore app requested orientation in response to an app
+         calling Activity#setRequestedOrientation. See
+         LetterboxUiController#shouldIgnoreRequestedOrientation for details. -->
+    <bool name="config_letterboxIsPolicyForIgnoringRequestedOrientationEnabled">true</bool>
+
+    <!-- Whether displaying letterbox education is enabled for letterboxed fullscreen apps. -->
+    <bool name="config_letterboxIsEducationEnabled">true</bool>
+
+    <!-- Whether using split screen aspect ratio as a default aspect ratio for unresizable apps. -->
+    <bool name="config_letterboxIsSplitScreenAspectRatioForUnresizableAppsEnabled">true</bool>
+
+    <!-- Whether the specific behaviour for translucent activities letterboxing is enabled.
+         TODO(b/255532890) Enable when ignoreOrientationRequest is set -->
+    <bool name="config_letterboxIsEnabledForTranslucentActivities">true</bool>
+
+    <!-- Whether per-app user aspect ratio override settings is enabled -->
+    <bool name="config_appCompatUserAppAspectRatioSettingsIsEnabled">true</bool>
+
+    <!-- Whether per-app fullscreen override option is allowed in user aspect ratio settings -->
+    <bool name="config_appCompatUserAppAspectRatioFullscreenIsEnabled">true</bool>
+
+    <!-- Whether sending compat fake focus for split screen resumed activities is enabled.
+         Needed because some game engines wait to get focus before drawing the content of
+         the app which isn't guaranteed by default in multi-window modes. -->
+    <bool name="config_isCompatFakeFocusEnabled">true</bool>
+
+    <!-- Whether camera compat treatment is enabled for issues caused by orientation mismatch
+        between camera buffers and an app window. This includes force rotation of fixed
+        orientation activities connected to the camera in fullscreen and showing a tooltip in
+        split screen. -->
+    <bool name="config_isWindowManagerCameraCompatTreatmentEnabled">true</bool>
+</resources>
