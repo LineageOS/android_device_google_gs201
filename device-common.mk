@@ -5,7 +5,7 @@
 
 include device/google/gs201/device.mk
 
-ifneq ($(BOARD_WITHOUT_RADIO),true)
+ifneq ($(TARGET_IS_TABLET),true)
 # Telephony
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.carrierlock.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.carrierlock.xml

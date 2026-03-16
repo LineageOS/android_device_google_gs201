@@ -16,7 +16,7 @@ PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
 # All components inherited here go to system_ext image
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_system_ext.mk)
-ifneq ($(BOARD_WITHOUT_RADIO),true)
+ifneq ($(TARGET_IS_TABLET),true)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
 endif
 
@@ -24,7 +24,7 @@ endif
 # All components inherited here go to product image
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_product.mk)
-ifneq ($(BOARD_WITHOUT_RADIO),true)
+ifneq ($(TARGET_IS_TABLET),true)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_product.mk)
 endif
 
@@ -33,6 +33,6 @@ endif
 #
 # TODO(b/136525499): move *_vendor.mk into the vendor makefile later
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
-ifneq ($(BOARD_WITHOUT_RADIO),true)
+ifneq ($(TARGET_IS_TABLET),true)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 endif
