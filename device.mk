@@ -686,9 +686,6 @@ PRODUCT_PACKAGES += \
 endif
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    device/google/gs201/overlay-lineage
-
 PRODUCT_PACKAGES += \
     EuiccSupportPixelOverlay \
     FrameworkResOverlayProductGs201 \
@@ -719,6 +716,12 @@ PRODUCT_PACKAGES += \
     LineageSdkOverlayGs201 \
     SettingsOverlayGs201
 endif
+
+PRODUCT_PACKAGES += \
+    FrameworkResOverlayLineageGs201 \
+    LineageSdkOverlayRestartGs201 \
+    SettingsOverlayBatteryGs201 \
+    SimpleDeviceConfigOverlayGs201
 
 # Parts
 PRODUCT_PACKAGES += \
