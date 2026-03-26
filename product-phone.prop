@@ -1,0 +1,15 @@
+# Bluetooth
+bluetooth.device.class_of_device=90,66,12
+persist.bluetooth.a2dp_aac.vbr_supported=true
+
+# Cutout
+ro.support_hide_display_cutout=true
+
+# EUICC
+euicc.seamless_transfer_enabled_in_non_qs=true
+
+# Quick start
+ro.quick_start.oem_id=00e0
+
+# Radio
+persist.radio.multisim.config=dsds

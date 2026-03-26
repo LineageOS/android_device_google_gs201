@@ -426,38 +426,13 @@ PRODUCT_PACKAGES += \
 
 # Properties
 TARGET_PRODUCT_PROP += device/google/gs201/product.prop
+ifneq ($(TARGET_IS_TABLET),true)
+TARGET_PRODUCT_PROP += device/google/gs201/product-phone.prop
+endif
 TARGET_SYSTEM_EXT_PROP += device/google/gs201/system_ext.prop
 TARGET_VENDOR_PROP += device/google/gs201/vendor.prop
-
 ifneq ($(TARGET_IS_TABLET),true)
-# Audio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.media_vol_steps=25
-
-# Bluetooth
-PRODUCT_PRODUCT_PROPERTIES += \
-    bluetooth.device.class_of_device=90,65,16
-
-# Radio
-PRODUCT_PRODUCT_PROPERTIES += \
-    persist.radio.multisim.config=dsds
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.cbd.modem_removable="1" \
-    ro.vendor.cbd.modem_type="s5100sit" \
-    ro.vendor.sys.modem.logging.loc=/data/vendor/slog \
-    persist.vendor.radio.multisim_switch_support=true \
-    persist.vendor.ril.crash_handling_mode=2 \
-    persist.vendor.sys.modem.logging.br_num=5 \
-    persist.vendor.sys.modem.logging.enable=true
-else
-# Audio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.media_vol_steps=20
-
-# Bluetooth
-PRODUCT_PRODUCT_PROPERTIES += \
-    bluetooth.device.class_of_device=90,66,12
+TARGET_VENDOR_PROP += device/google/gs201/vendor-phone.prop
 endif
 
 # SecureElement

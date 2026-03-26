@@ -1,0 +1,32 @@
+# Audio
+persist.vendor.audio.cca.enabled=false
+ro.config.media_vol_steps=25
+
+# Camera
+persist.vendor.camera.front_720P_always_binning=true
+
+# DCK
+ro.gms.dck.se_capability=1
+
+# Media
+ro.odm.build.media_performance_class=33
+
+# Radio
+ro.vendor.cbd.modem_removable=1
+ro.vendor.cbd.modem_type=s5100sit
+ro.vendor.sys.modem.logging.loc=/data/vendor/slog
+persist.vendor.radio.multisim_switch_support=true
+persist.vendor.ril.crash_handling_mode=2
+persist.vendor.ril.ecc.use.xml=1
+persist.vendor.ril.support_nr_ds=1
+persist.vendor.ril.use_radio_hal=2.0
+persist.vendor.sys.modem.logging.br_num=5
+persist.vendor.sys.modem.logging.enable=true
+ro.vendor.config.build_carrier=europen
+vendor.rild.libpath=libsitril.so
+
+# SurfaceFlinger
+ro.surface_flinger.ignore_hdr_camera_layers=true
+
+# USB
+ro.usb.uvc.enabled=true

@@ -9,6 +9,9 @@ ro.config.vc_call_vol_steps=7
 # Battery
 vendor.battery_mitigation.aidl.enable=true
 
+# Camera
+persist.vendor.camera.exif_reveal_make_model=true
+
 # Codec2
 debug.c2.use_dmabufheaps=1
 debug.stagefright.c2-poolmask=1507328
@@ -22,7 +25,12 @@ ro.vendor.gpu.dataspace=1
 debug.hwc.winupdate=1
 debug.slsi_platform=1
 ro.vendor.ddk.set.afbc=1
+vendor.display.lbe.supported=1
 vendor.hwc.dpp.downscale=2
+
+# DRM
+drm.service.enabled=true
+media.mediadrmservice.enable=true
 
 # EdgeTPU
 vendor.edgetpu.cpu_scheduler.policy=FIFO
@@ -122,6 +130,9 @@ persist.vendor.enable.thermal.genl=true
 # Watchdog
 framework_watchdog.fatal_count=3
 framework_watchdog.fatal_window.second=600
+
+# ZRAM
+vendor.zram.size=3g
 
 # Zygote
 zygote.critical_window.minute=10
