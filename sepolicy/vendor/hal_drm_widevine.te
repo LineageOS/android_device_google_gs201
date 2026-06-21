@@ -1,5 +1,6 @@
 type hal_drm_widevine, domain;
 type hal_drm_widevine_exec, exec_type, file_type, vendor_file_type;
+type mediadrm_vendor_data_file, data_file_type, file_type;
 
 hal_server_domain(hal_drm_widevine, hal_drm)
 

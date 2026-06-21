@@ -1,0 +1,2 @@
+type init-check_ap_pd_auth-sh, domain;
+type init-check_ap_pd_auth-sh_exec, exec_type, file_type, vendor_file_type;

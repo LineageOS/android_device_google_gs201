@@ -1,5 +1,6 @@
 type gxp_logging, domain;
 type gxp_logging_exec, exec_type, file_type, vendor_file_type;
+type sysfs_gxp, fs_type, sysfs_type;
 
 binder_call(gxp_logging, system_server)
 

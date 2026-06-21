@@ -271,7 +271,6 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
     hardware/google/pixel-sepolicy/input \
     hardware/google/pixel-sepolicy/powerstats \
     device/google/gs201/sepolicy/certificates \
-    device/google/gs201/sepolicy/recovery \
     device/google/gs201/sepolicy/vendor
 
 PRODUCT_PRIVATE_SEPOLICY_DIRS += \

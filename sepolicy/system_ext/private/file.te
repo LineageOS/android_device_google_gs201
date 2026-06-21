@@ -1,2 +1,0 @@
-type repair_mode_metadata_config_file, file_type, mlstrustedobject;
-type uwb_vendor_data_file, app_data_file_type, data_file_type, file_type;

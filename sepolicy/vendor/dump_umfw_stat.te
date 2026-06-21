@@ -1,5 +1,7 @@
 pixel_bugreport(dump_umfw_stat)
 
+type vendor_umfw_stat_tool, file_type, vendor_file_type;
+
 allow dump_umfw_stat aoc_device:chr_file rw_file_perms;
 allow dump_umfw_stat device:dir r_dir_perms;
 allow dump_umfw_stat vendor_shell_exec:file execute_no_trans;

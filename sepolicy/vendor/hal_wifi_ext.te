@@ -1,3 +1,5 @@
+type updated_wifi_firmware_data_file, data_file_type, file_type;
+
 binder_call(hal_wifi_ext, grilservice_app)
 
 set_prop(hal_wifi_ext, vendor_wifi_version)

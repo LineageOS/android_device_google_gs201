@@ -1,3 +1,7 @@
+type proc_vendor_mm, fs_type, proc_type;
+type sysfs_exynos_pcie_stats, fs_type, sysfs_type;
+type sysfs_pca, fs_type, sysfs_type;
+
 binder_call(pixelstats_vendor, stats_service_server)
 
 binder_use(pixelstats_vendor)
@@ -29,8 +33,8 @@ allow pixelstats_vendor kernel:dir search;
 allow pixelstats_vendor kernel:file r_file_perms;
 allow pixelstats_vendor logbuffer_device:chr_file r_file_perms;
 allow pixelstats_vendor mitigation_vendor_data_file:dir search;
-allow pixelstats_vendor mitigation_vendor_data_file:file { read write };
 allow pixelstats_vendor mitigation_vendor_data_file:file rw_file_perms;
+allow pixelstats_vendor mitigation_vendor_data_file:file { read write };
 allow pixelstats_vendor mnt_vendor_file:dir search;
 allow pixelstats_vendor proc_meminfo:file r_file_perms;
 allow pixelstats_vendor proc_pressure_cpu:file r_file_perms;

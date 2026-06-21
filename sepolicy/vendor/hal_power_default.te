@@ -1,0 +1,25 @@
+type sysfs_camera, fs_type, sysfs_type;
+type sysfs_em_profile, fs_type, sysfs_type;
+type sysfs_fabric, fs_type, sysfs_type;
+type sysfs_pakills, fs_type, sysfs_type;
+
+hal_client_domain(hal_power_default, hal_thermal)
+
+r_dir_file(hal_power_default, sysfs_vendor_mm)
+
+set_prop(hal_power_default, vendor_camera_prop)
+
+allow hal_power_default hal_thermal_service:service_manager find;
+allow hal_power_default sysfs_camera:file rw_file_perms;
+allow hal_power_default sysfs_display:file rw_file_perms;
+allow hal_power_default sysfs_em_profile:file rw_file_perms;
+allow hal_power_default sysfs_fabric:file rw_file_perms;
+allow hal_power_default sysfs_fs_f2fs:dir r_dir_perms;
+allow hal_power_default sysfs_fs_f2fs:dir search;
+allow hal_power_default sysfs_fs_f2fs:file rw_file_perms;
+allow hal_power_default sysfs_gpu:file rw_file_perms;
+allow hal_power_default sysfs_pakills:dir r_dir_perms;
+allow hal_power_default sysfs_pakills:file rw_file_perms;
+allow hal_power_default sysfs_scsi_devices_0000:file rw_file_perms;
+allow hal_power_default sysfs_trusty:file rw_file_perms;
+allow hal_power_default sysfs_vendor_mm:file rw_file_perms;
