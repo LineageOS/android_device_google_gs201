@@ -21,10 +21,12 @@
     </hal>
     <hal format="aidl">
         <name>android.hardware.media.c2</name>
+        <version>2</version>
         <fqname>IComponentStore/default1</fqname>
     </hal>
     <hal format="aidl">
         <name>android.hardware.media.c2</name>
+        <version>2</version>
         <fqname>IComponentStore/default</fqname>
     </hal>
     <hal format="aidl">
@@ -39,12 +41,12 @@
     </hal>
     <hal format="aidl">
         <name>com.google.input</name>
-        <version>6</version>
+        <version>8</version>
         <fqname>ITouchContextService/default</fqname>
     </hal>
     <hal format="aidl">
         <name>com.google.input</name>
-        <version>6</version>
+        <version>8</version>
         <fqname>ITwoshayFileDumpService/touchflow_default</fqname>
         <fqname>ITwoshayFileDumpService/twoshay</fqname>
     </hal>
