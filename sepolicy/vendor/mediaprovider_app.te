@@ -1,0 +1,7 @@
+recovery_only(`
+allow mediaprovider_app app_data_file:dir create_dir_perms;
+allow mediaprovider_app app_data_file:file create_file_perms;
+
+allowxperm mediaprovider_app app_data_file:file ioctl FS_IOC_MEASURE_VERITY;
+allowxperm mediaprovider_app privapp_data_file:file ioctl FS_IOC_MEASURE_VERITY;
+')
