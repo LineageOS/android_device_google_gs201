@@ -1,0 +1,3 @@
+neverallow { domain -vold -casefolding_remover } media_userdir_file:dir { add_name remove_name write };
+neverallow { domain -vold -casefolding_remover } system_userdir_file:dir { add_name remove_name write };
+neverallow { domain -vold -casefolding_remover } vendor_userdir_file:dir { add_name remove_name write };

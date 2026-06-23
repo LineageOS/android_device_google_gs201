@@ -1,0 +1,6 @@
+neverallow { mlstrustedsubject -adbd -artd -installd -runas -system_server -zygote } app_data_file:dir { getattr read search };
+neverallow { mlstrustedsubject -adbd -artd -installd -runas -system_server -zygote } privapp_data_file:dir { getattr read search };
+neverallow { mlstrustedsubject -artd -installd } app_data_file:dir { no_w_dir_perms append audit_access execmod execute ioctl lock map mounton open quotaon relabelto unlink watch watch_mount watch_reads watch_sb watch_with_perm };
+neverallow { mlstrustedsubject -artd -installd } app_data_file:file { no_x_file_perms audit_access create entrypoint execmod link mounton open quotaon relabelfrom relabelto rename setattr unlink watch watch_mount watch_reads watch_sb watch_with_perm };
+neverallow { mlstrustedsubject -artd -installd } privapp_data_file:dir { no_w_dir_perms append audit_access execmod execute ioctl lock map mounton open quotaon relabelto unlink watch watch_mount watch_reads watch_sb watch_with_perm };
+neverallow { mlstrustedsubject -artd -installd } privapp_data_file:file { no_x_file_perms audit_access create entrypoint execmod link mounton open quotaon relabelfrom relabelto rename setattr unlink watch watch_mount watch_reads watch_sb watch_with_perm };

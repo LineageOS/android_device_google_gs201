@@ -1,3 +1,5 @@
+type hal_audio_ext_service, hal_service_type, service_manager_type;
+
 hal_client_domain(grilservice_app, hal_power_stats)
 
 binder_call(grilservice_app, hal_audiometricext_default)
@@ -9,6 +11,7 @@ binder_call(grilservice_app, rild)
 r_dir_file(grilservice_app, sysfs_irq)
 
 allow grilservice_app app_api_service:service_manager find;
+allow grilservice_app hal_audio_ext_service:service_manager find;
 allow grilservice_app hal_audiometricext_hwservice:hwservice_manager find;
 allow grilservice_app hal_bluetooth_coexistence_hwservice:hwservice_manager find;
 allow grilservice_app hal_exynos_rild_hwservice:hwservice_manager find;

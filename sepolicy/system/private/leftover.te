@@ -1,0 +1,2 @@
+neverallow * { fs_type -contextmount_type }:filesystem relabelto;
+neverallow { domain -unconstrained_vsock_violators -virtualizationmanager_domain -early_virtmgr_domain -traced -adbd_common -aisealhostservice -compos_fd_server -virtualizationservice -vmlauncher_app } *:vsock_socket { accept bind connect create };

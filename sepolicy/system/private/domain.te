@@ -1,0 +1,2 @@
+neverallow * rootfs:file { append create link relabelto rename setattr unlink write };
+neverallow { domain -apexd -init -kernel -ueventd -vold } self:global_capability_class_set mknod;

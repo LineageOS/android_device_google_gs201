@@ -1,0 +1,1 @@
+neverallow fsck_untrusted self:global_capability_class_set { setgid setuid sys_admin };
