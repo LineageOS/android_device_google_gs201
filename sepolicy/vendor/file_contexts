@@ -1,6 +1,5 @@
 /(vendor|system/vendor)/lib(64)?/hw/mapper\.pixel\.so u:object_r:same_process_hal_file:s0
 /data/nfc(/.*)? u:object_r:nfc_data_file:s0
-/data/per_boot(/.*)? u:object_r:per_boot_file:s0
 /data/vendor/audio(/.*)? u:object_r:audio_vendor_data_file:s0
 /data/vendor/camera(/.*)? u:object_r:vendor_camera_data_file:s0
 /data/vendor/chre(/.*)? u:object_r:chre_data_file:s0
@@ -18,6 +17,7 @@
 /data/vendor/mitigation(/.*)? u:object_r:mitigation_vendor_data_file:s0
 /data/vendor/modem_stat(/.*)? u:object_r:modem_stat_data_file:s0
 /data/vendor/nfc(/.*)? u:object_r:vendor_nfc_vendor_data_file:s0
+/data/vendor/powerhal(/.*)? u:object_r:powerhal_vendor_data_file:s0
 /data/vendor/powerstats(/.*)? u:object_r:powerstats_vendor_data_file:s0
 /data/vendor/radio(/.*)? u:object_r:radio_vendor_data_file:s0
 /data/vendor/ramdump(/.*)? u:object_r:ramdump_vendor_data_file:s0
@@ -40,6 +40,7 @@
 /dev/acd-aocx_tapout[0-9]* u:object_r:aoc_device:s0
 /dev/acd-audio_ap_offload_rx u:object_r:aoc_device:s0
 /dev/acd-audio_ap_offload_tx u:object_r:aoc_device:s0
+/dev/acd-audio_blueflax u:object_r:aoc_device:s0
 /dev/acd-audio_bulk_rx u:object_r:aoc_device:s0
 /dev/acd-audio_bulk_tx u:object_r:aoc_device:s0
 /dev/acd-audio_dcdoff_ref u:object_r:aoc_device:s0
@@ -81,6 +82,7 @@
 /dev/battery_history u:object_r:battery_history_device:s0
 /dev/bbd_pwrstat u:object_r:power_stats_device:s0
 /dev/bigocean u:object_r:video_device:s0
+/dev/block/by-name/fips u:object_r:fips_block_device:s0
 /dev/block/by-name/userdata_exp.* u:object_r:userdata_exp_block_device:s0
 /dev/block/platform/14700000\.ufs/by-name/abl_[ab] u:object_r:custom_ab_block_device:s0
 /dev/block/platform/14700000\.ufs/by-name/bl1_[ab] u:object_r:custom_ab_block_device:s0
@@ -130,8 +132,9 @@
 /dev/g2d u:object_r:graphics_device:s0
 /dev/goodix_fp u:object_r:fingerprint_device:s0
 /dev/gsc0 u:object_r:citadel_device:s0
+/dev/gvdu u:object_r:vdu_device:s0
 /dev/gxp u:object_r:gxp_device:s0
-/dev/ispolin_ranging u:object_r:rls_device:s0
+/dev/ispolin_ranging u:object_r:lwis_device:s0
 /dev/janeiro u:object_r:edgetpu_device:s0
 /dev/logbuffer_bd u:object_r:logbuffer_device:s0
 /dev/logbuffer_cpif u:object_r:logbuffer_device:s0
@@ -204,6 +207,7 @@
 /dev/ttyGS[0-3] u:object_r:serial_device:s0
 /dev/ttySAC0 u:object_r:tty_device:s0
 /dev/ttySAC18 u:object_r:hci_attach_dev:s0
+/dev/ufs-bsg. u:object_r:ufs_bsg_device:s0
 /dev/umts_boot0 u:object_r:radio_device:s0
 /dev/umts_dm0 u:object_r:radio_device:s0
 /dev/umts_ipc0 u:object_r:radio_device:s0
@@ -227,6 +231,7 @@
 /mnt/vendor/persist/uwb(/.*)? u:object_r:persist_uwb_file:s0
 /mnt/vendor/ramdump(/.*)? u:object_r:ramdump_vendor_mnt_file:s0
 /sys/devices/platform/[0-9a-z]+\.ufs/pixel/enable_pixel_ufs_logging u:object_r:sysfs_scsi_devices_0000:s0
+/sys/devices/platform/[0-9a-z]+\.ufs/pixel/read_boost u:object_r:sysfs_scsi_devices_0000:s0
 /vendor/bin/CitadelProvision u:object_r:citadel_provision_exec:s0
 /vendor/bin/aocd u:object_r:aocd_exec:s0
 /vendor/bin/aocdump u:object_r:aocdump_exec:s0
@@ -239,6 +244,7 @@
 /vendor/bin/dump/dump_camera u:object_r:dump_camera_exec:s0
 /vendor/bin/dump/dump_devfreq u:object_r:dump_devfreq_exec:s0
 /vendor/bin/dump/dump_display_userdebug\.sh u:object_r:dump_exynos_display_userdebug_exec:s0
+/vendor/bin/dump/dump_dwc3\.sh u:object_r:dump_dwc3_exec:s0
 /vendor/bin/dump/dump_exynos_display u:object_r:dump_exynos_display_exec:s0
 /vendor/bin/dump/dump_fingerprint u:object_r:dump_fingerprint_exec:s0
 /vendor/bin/dump/dump_gps u:object_r:dump_gps_exec:s0
@@ -260,7 +266,6 @@
 /vendor/bin/dump/dump_umfw_stat u:object_r:dump_umfw_stat_exec:s0
 /vendor/bin/dumpsys u:object_r:vendor_dumpsys:s0
 /vendor/bin/flood\.control\.hal u:object_r:flood_control_exec:s0
-/vendor/bin/gpu_probe u:object_r:gpu_probe_exec:s0
 /vendor/bin/hw/android\.hardware\.authsecret-service\.citadel u:object_r:hal_authsecret_citadel_exec:s0
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.goodix u:object_r:hal_fingerprint_default_exec:s0
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.fpc u:object_r:fingerprint_factory_service_exec:s0
@@ -296,6 +301,7 @@
 /vendor/bin/hw/android\.hardware\.weaver-service\.citadel u:object_r:hal_weaver_citadel_exec:s0
 /vendor/bin/hw/android\.hardware\.weaver@1\.0-service\.citadel u:object_r:hal_weaver_citadel_exec:s0
 /vendor/bin/hw/battery_mitigation u:object_r:battery_mitigation_exec:s0
+/vendor/bin/hw/block_queue_depth u:object_r:block_queue_depth_exec:s0
 /vendor/bin/hw/citadel_updater u:object_r:citadel_updater:s0
 /vendor/bin/hw/citadeld u:object_r:citadeld_exec:s0
 /vendor/bin/hw/com\.google\.edgetpu.dba-service u:object_r:edgetpu_dba_server_exec:s0
@@ -305,6 +311,7 @@
 /vendor/bin/hw/init_citadel u:object_r:init_citadel_exec:s0
 /vendor/bin/hw/rild_exynos u:object_r:rild_exec:s0
 /vendor/bin/hw/samsung\.hardware\.media\.c2@1\.2-service u:object_r:mediacodec_samsung_exec:s0
+/vendor/bin/hw/usboffmode u:object_r:usboffmode_exec:s0
 /vendor/bin/hw/vendor\.google\.audiometricext@1\.0-service-vendor u:object_r:hal_audiometricext_default_exec:s0
 /vendor/bin/hw/vendor\.google\.edgetpu_vendor_service@1\.0-service u:object_r:edgetpu_vendor_server_exec:s0
 /vendor/bin/hw/vendor\.google\.radioext@1\.0-service u:object_r:hal_radioext_default_exec:s0
@@ -341,6 +348,7 @@
 /vendor/bin/wfc-pkt-router u:object_r:pktrouter_exec:s0
 /vendor/etc/aoc(/.*)? u:object_r:aoc_audio_file:s0
 /vendor/firmware(/.*)? u:object_r:vendor_fw_file:s0
+/vendor/lib(64)?/aconfig_gpu_flags_c_lib\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/android\.frameworks\.stats-V1-ndk\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/android\.frameworks\.stats-V2-ndk\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/arm\.graphics-V1-ndk\.so u:object_r:same_process_hal_file:s0
@@ -351,6 +359,7 @@
 /vendor/lib(64)?/libOpenCL-pixel\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libOpenCL\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/lib_aion_buffer\.so u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libaconfig_storage_read_api_cc\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libdrm\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libgpudataproducer\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libgxp\.so u:object_r:same_process_hal_file:s0
@@ -358,7 +367,7 @@
 /vendor/lib(64)?/libprotobuf-cpp-lite-(\d+\.){2,3}so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/pixel-power-ext-V1-ndk\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/vendor-pixelatoms-cpp\.so u:object_r:same_process_hal_file:s0
-/vendor/lib64/com\.google\.edgetpu_app_service-V[1-6]-ndk\.so u:object_r:same_process_hal_file:s0
+/vendor/lib64/com\.google\.edgetpu_app_service-V([1-9]|10)-ndk\.so u:object_r:same_process_hal_file:s0
 /vendor/lib64/com\.google\.edgetpu_vendor_service-V[1-2]-ndk\.so u:object_r:same_process_hal_file:s0
 /vendor/lib64/libedgetpu_client\.google\.so u:object_r:same_process_hal_file:s0
 /vendor/lib64/libedgetpu_tachyon\.google\.so u:object_r:same_process_hal_file:s0

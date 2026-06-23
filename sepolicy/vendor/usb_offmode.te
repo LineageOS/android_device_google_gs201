@@ -1,0 +1,8 @@
+type usboffmode, domain;
+type usboffmode_exec, exec_type, file_type, vendor_file_type;
+
+init_daemon_domain(usboffmode)
+
+allow usboffmode self:netlink_kobject_uevent_socket { bind create getopt read setopt };
+allow usboffmode sysfs_batteryinfo:dir search;
+allow usboffmode sysfs_batteryinfo:file rw_file_perms;

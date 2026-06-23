@@ -1,1 +1,2 @@
 system_internal_prop(repair_mode_init_prop)
+system_internal_prop(system_ssrdump_prop)
