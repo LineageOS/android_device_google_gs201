@@ -11,12 +11,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnel_migration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnel_migration.xml
 
-# Thermal
-PRODUCT_PACKAGES += android.hardware.thermal-service.pixel
-
-# Thermal utils
-PRODUCT_PACKAGES += thermal_symlinks
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
@@ -129,10 +123,6 @@ endif
 
 # IRQ rebalancing.
 include hardware/google/pixel/rebalance_interrupts/rebalance_interrupts.mk
-
-# PowerStats HAL
-PRODUCT_PACKAGES += \
-	android.hardware.power.stats-service.pixel
 
 # Camera
 PRODUCT_SOONG_NAMESPACES += \
