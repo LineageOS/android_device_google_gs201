@@ -21,6 +21,9 @@ media.c2.dmabuf.padding=512
 media.c2.hal.selection=aidl
 ro.vendor.gpu.dataspace=1
 
+# Dalvik
+dalvik.vm.enable_time_based_gc_trigger=true
+
 # Display
 debug.hwc.winupdate=1
 debug.slsi_platform=1
@@ -44,7 +47,15 @@ ro.crypto.metadata_init_delete_all_keys.enabled=true
 ro.frp.pst=/dev/block/by-name/frp
 
 # Graphics
+debug.renderengine.graphite_preview_optin=true
 graphics.gpu.profiler.support=true
+graphics.gpu.profiler.support.gpu_counters.groups=true
+graphics.gpu.profiler.support.gpu_counters.period=true
+graphics.gpu.profiler.support.gpu_counters.zeroes_optimization=true
+graphics.gpu.profiler.support.gpu_counters=true
+graphics.gpu.profiler.support.gpu_frequency=true
+graphics.gpu.profiler.support.render_stages.queue_submit=true
+graphics.gpu.profiler.support.render_stages=true
 ro.egl.blobcache.multifile=true
 ro.egl.blobcache.multifile_limit=33554432
 ro.hardware.egl=mali
@@ -127,12 +138,16 @@ telephony.active_modems.max_count=2
 # Thermal
 persist.vendor.enable.thermal.genl=true
 
+# USB
+ro.usb.data_protection.disable_when_locked.supported=true
+ro.usb.uvc.enabled=true
+
 # Watchdog
 framework_watchdog.fatal_count=3
 framework_watchdog.fatal_window.second=600
 
 # ZRAM
-vendor.zram.size=3g
+vendor.zram.size=50p
 
 # Zygote
 zygote.critical_window.minute=10
