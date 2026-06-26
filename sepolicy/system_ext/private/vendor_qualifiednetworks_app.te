@@ -1,4 +1,4 @@
-type vendor_qualifiednetworks_app, domain;
+type vendor_qualifiednetworks_app, coredomain, domain;
 
 app_domain(vendor_qualifiednetworks_app)
 
