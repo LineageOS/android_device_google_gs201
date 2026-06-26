@@ -13,5 +13,6 @@ allow init ram_device:blk_file w_file_perms;
 allow init sysfs_scsi_devices_0000:file w_file_perms;
 allow init userdata_exp_block_device:blk_file write;
 
+dontaudit init debugfs_bootreceiver_tracing:dir write;
 dontaudit init overlayfs_file:chr_file unlink;
 dontaudit init overlayfs_file:file rename;
