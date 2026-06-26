@@ -396,7 +396,6 @@ PRODUCT_PACKAGES += \
     SystemUIGoogleOverlayVendorGs201 \
     TeleServiceOverlayProductGs201 \
     TeleServiceOverlayVendorGs201 \
-    TelecomOverlayProductGs201 \
     TelephonyProviderOverlayProductGs201
 
 ifneq ($(TARGET_IS_TABLET),true)

@@ -11,5 +11,5 @@
     <bool name="config_honor_data_retry_timer_for_emergency_network">true</bool>
 
     <!-- Telephony qualified networks service package name to bind to by default. -->
-    <string name="config_qualified_networks_service_package">com.android.qns</string>
+    <string name="config_qualified_networks_service_package" translatable="false">com.android.qns</string>
 </resources>
