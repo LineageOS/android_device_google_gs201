@@ -1,4 +1,4 @@
-type vendor_ims_remote_app, domain;
+type vendor_ims_remote_app, coredomain, domain;
 
 app_domain(vendor_ims_remote_app)
 

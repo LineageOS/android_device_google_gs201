@@ -7,6 +7,7 @@ init_daemon_domain(insmod-sh)
 set_prop(insmod-sh, vendor_device_prop)
 
 allow insmod-sh debugfs_mgm:dir search;
+allow insmod-sh kernel:key search;
 allow insmod-sh kernel:process setsched;
 allow insmod-sh kmsg_debug_device:chr_file rw_file_perms;
 allow insmod-sh self:capability sys_module;
@@ -20,3 +21,4 @@ allow insmod-sh vendor_regmap_debugfs:dir search;
 allow insmod-sh vendor_toolbox_exec:file execute_no_trans;
 
 dontaudit insmod-sh proc_cmdline:file r_file_perms;
+dontaudit insmod-sh vendor_usb_debugfs:dir search;

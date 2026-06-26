@@ -2,6 +2,8 @@ app_domain(uwb_vendor_app)
 
 type uwb_vendor_data_file, app_data_file_type, data_file_type, file_type;
 
+typeattribute uwb_vendor_app coredomain;
+
 not_recovery(`
 allow uwb_vendor_app app_api_service:service_manager find;
 allow uwb_vendor_app nfc_service:service_manager find;

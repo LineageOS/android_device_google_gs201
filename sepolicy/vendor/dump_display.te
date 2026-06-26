@@ -8,3 +8,5 @@ allow dump_exynos_display sysfs_display:file r_file_perms;
 allow dump_exynos_display vendor_displaycolor_service:service_manager find;
 allow dump_exynos_display vendor_dumpsys:file execute_no_trans;
 allow dump_exynos_display vendor_shell_exec:file execute_no_trans;
+
+dontaudit dump_exynos_display debugfs:lnk_file read;
