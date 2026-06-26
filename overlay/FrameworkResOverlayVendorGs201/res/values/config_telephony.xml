@@ -16,11 +16,11 @@
 
     <!-- IWLAN data service package name to bind to by default. If none is specified in an overlay,
          an empty string is passed in -->
-    <string name="config_wlan_data_service_package">com.google.android.iwlan</string>
+    <string name="config_wlan_data_service_package" translatable="false">com.google.android.iwlan</string>
 
     <!-- IWLAN network service package name to bind to by default. If none is specified in an
          overlay, an empty string is passed in -->
-    <string name="config_wlan_network_service_package">com.google.android.iwlan</string>
+    <string name="config_wlan_network_service_package" translatable="false">com.google.android.iwlan</string>
 
     <!-- Whether to enable APDU sender optimization i.e. a logical channel is opened and
          kept open for multiple APDU commands within one session.-->
