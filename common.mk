@@ -110,10 +110,16 @@ endif
 PRODUCT_PACKAGES += android.hardware.sensors-service.multihal
 
 # USB HAL
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/google/pixel/pixelstats \
+    hardware/google/pixel/usb
+
 PRODUCT_PACKAGES += \
 	android.hardware.usb-service
 PRODUCT_PACKAGES += \
 	android.hardware.usb.gadget-service
+PRODUCT_PACKAGES += \
+	usb_accessory_utils
 
 # MIDI feature
 PRODUCT_COPY_FILES += \
