@@ -25,4 +25,7 @@
     <!-- Whether to enable APDU sender optimization i.e. a logical channel is opened and
          kept open for multiple APDU commands within one session.-->
     <bool name="euicc_optimize_apdu_sender">true</bool>
+
+    <!-- Whether to wait for carrier config loaded before using operator name to publish from modem. -->
+    <bool name="config_update_operator_name_after_carrier_config_loaded">true</bool>
 </resources>
