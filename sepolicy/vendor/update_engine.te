@@ -1,2 +1,5 @@
 allow update_engine custom_ab_block_device:blk_file rw_file_perms;
 allow update_engine modem_block_device:blk_file rw_file_perms;
+allow update_engine userdata_exp_block_device:blk_file { getattr ioctl open read };
+
+allowxperm update_engine userdata_exp_block_device:blk_file ioctl { BLKGETSIZE64 BLKIOMIN BLKALIGNOFF };
