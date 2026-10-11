@@ -1,0 +1,14 @@
+type hal_plat_security, domain;
+type hal_plat_security_exec, exec_type, file_type, vendor_file_type;
+type hal_plat_security_service, hal_service_type, protected_service, service_manager_type;
+
+add_service(hal_plat_security, hal_plat_security_service)
+add_service(hal_plat_security, hal_timestamp_service)
+
+binder_use(hal_plat_security)
+
+get_prop(hal_plat_security, vendor_plat_security_prop)
+
+init_daemon_domain(hal_plat_security)
+
+allow hal_plat_security tee_device:chr_file rw_file_perms;

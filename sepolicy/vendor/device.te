@@ -11,6 +11,7 @@ type modem_userdata_block_device, dev_type;
 type persist_block_device, dev_type;
 type pktrouter_device, dev_type;
 type radio_test_device, dev_type;
+type rls_device, dev_type;
 type sg_device, dev_type;
 type st54spi_device, dev_type;
 type thermal_link_device, dev_type;

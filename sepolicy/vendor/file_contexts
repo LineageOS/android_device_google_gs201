@@ -6,6 +6,7 @@
 /data/vendor/edgetpu(/.*)? u:object_r:edgetpu_vendor_service_data_file:s0
 /data/vendor/fingerprint(/.*)? u:object_r:fingerprint_vendor_data_file:s0
 /data/vendor/firmware/wifi(/.*)? u:object_r:updated_wifi_firmware_data_file:s0
+/data/vendor/gxp(/.*)? u:object_r:gxp_vendor_data_file:s0
 /data/vendor/hal_neuralnetworks_darwinn(/.*)? u:object_r:hal_neuralnetworks_darwinn_data_file:s0
 /data/vendor/intelligence(/.*)? u:object_r:intelligence_data_file:s0
 /data/vendor/log(/.*)? u:object_r:vendor_log_file:s0
@@ -314,6 +315,7 @@
 /vendor/bin/hw/usboffmode u:object_r:usboffmode_exec:s0
 /vendor/bin/hw/vendor\.google\.audiometricext@1\.0-service-vendor u:object_r:hal_audiometricext_default_exec:s0
 /vendor/bin/hw/vendor\.google\.edgetpu_vendor_service@1\.0-service u:object_r:edgetpu_vendor_server_exec:s0
+/vendor/bin/hw/vendor\.google\.plat_security-service u:object_r:hal_plat_security_exec:s0
 /vendor/bin/hw/vendor\.google\.radioext@1\.0-service u:object_r:hal_radioext_default_exec:s0
 /vendor/bin/hw/vendor\.google\.wireless_charger@1\.3-service-vendor u:object_r:hal_wlc_exec:s0
 /vendor/bin/init\.camera\.set-interrupts-ownership u:object_r:init-camera-set-interrupts-ownership_exec:s0
@@ -327,7 +329,6 @@
 /vendor/bin/ramdump u:object_r:ramdump_exec:s0
 /vendor/bin/ramdump32 u:object_r:ramdump_exec:s0
 /vendor/bin/rfsd u:object_r:rfsd_exec:s0
-/vendor/bin/rlsservice u:object_r:rlsservice_exec:s0
 /vendor/bin/sg_read_buffer u:object_r:sg_util_exec:s0
 /vendor/bin/sscoredump u:object_r:sscoredump_exec:s0
 /vendor/bin/storage_init\.sh u:object_r:storage_init_exec:s0
