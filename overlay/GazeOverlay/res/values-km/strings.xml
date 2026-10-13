@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Text shown on a toggle which disables/enables face unlock, depending if the gaze supported. [CHAR LIMIT=30] -->
+    <string name="security_settings_face_settings_gaze">តម្រូវឱ្យយកចិត្តទុកដាក់លើអេក្រង់</string>
+
+    <!-- Text shown on the details of a toggle which disables/enables face unlock, depending if the gaze supported. [CHAR LIMIT=70] -->
+    <string name="security_settings_face_settings_gaze_details">ដើម្បីដោះសោ អ្នកត្រូវតែមើលទូរសព្ទអ្នក។ ដើម្បីទទួលបានលទ្ធផលល្អបំផុត សូមដោះវ៉ែនតាចេញ។</string>
+</resources>

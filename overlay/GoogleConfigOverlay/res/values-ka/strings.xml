@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">სახით განბლოკვა</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">გთხოვთ, ხელახლა დაარეგისტრიროთ თქვენი სახე</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">სახით განბლოკვამ შეიძლება არ იმუშაოს, სანამ ხელახლა არ დარეგისტრირდებით</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>სერტიფიკატს ვადა გაუვიდა</item>
+        <item>სენსორი დროებით გათიშულია</item>
+        <item>კალიბრაციის შეცდომა</item>
+        <item>სახით განბლოკვა მიუწვდომელია. ტელეფონი გადახურებულია.</item>
+        <item>სახით განბლოკვა ხელახლა უნდა დაყენდეს</item>
+        <item>დაარეგულირეთ განათება და დაიჭირეთ მყარად</item>
+    </string-array>
+</resources>

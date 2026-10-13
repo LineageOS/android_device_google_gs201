@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Text shown on a toggle which disables/enables face unlock, depending if the gaze supported. [CHAR LIMIT=30] -->
+    <string name="security_settings_face_settings_gaze">화면 시선 감지 필요</string>
+
+    <!-- Text shown on the details of a toggle which disables/enables face unlock, depending if the gaze supported. [CHAR LIMIT=70] -->
+    <string name="security_settings_face_settings_gaze_details">잠금 해제하려면 휴대전화를 바라봐야 합니다. 최상의 결과를 얻으려면 선글라스를 벗으세요.</string>
+</resources>

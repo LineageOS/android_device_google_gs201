@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Отклучување со лик</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Повторно регистрирајте го ликот</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">„Отклучување со лик“ можеби нема да работи додека повторно не се регистрирате</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Сертификатот е истечен</item>
+        <item>Сензорот е привремено оневозможен</item>
+        <item>Грешка при калибрацијата</item>
+        <item>„Отклучување со лик“ е недостапна. Телефонот е претопол.</item>
+        <item>„Отклучување со лик“ треба да се постави повторно</item>
+        <item>Приспособете го осветлувањето и држете го уредот мирно</item>
+    </string-array>
+</resources>

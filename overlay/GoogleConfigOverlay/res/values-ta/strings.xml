@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">முகம் காட்டித் திறத்தல்</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">உங்கள் முகத்தை மீண்டும் பதிவுசெய்யுங்கள்</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">மீண்டும் பதிவுசெய்யாத வரை முகம் காட்டித் திறத்தல் அம்சம் வேலை செய்யாமல் போகக்கூடும்</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>சான்றிதழ் காலாவதியாகிவிட்டது</item>
+        <item>சென்சார் தற்காலிகமாக ஆஃப் செய்யப்பட்டுள்ளது</item>
+        <item>ஒன்றிணைப்பதில் பிழை</item>
+        <item>முகம் காட்டித் திறத்தல் அம்சம் இல்லை. மொபைல் மிகவும் சூடாக உள்ளது.</item>
+        <item>முகம் காட்டித் திறத்தல் அம்சம் மீண்டும் அமைக்கப்பட வேண்டும்</item>
+        <item>லைட்டிங்கைச் சரிசெய்து அசைக்காமல் பிடிக்கவும்</item>
+    </string-array>
+</resources>

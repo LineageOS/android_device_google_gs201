@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">မျက်နှာပြလော့ခ်ဖွင့်ခြင်း</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">သင့်မျက်နှာကို ပြန်လည်စာရင်းသွင်းပါ</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">သင်ပြန်လည် စာရင်းမသွင်းမချင်း မျက်နှာပြလော့ခ်ဖွင့်ခြင်းကို အသုံးပြု၍မရနိုင်ပါ</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>အသိအမှတ်ပြုလက်မှတ် သက်တမ်းကုန်သွားပါပြီ</item>
+        <item>အာရုံခံကိရိယာကို ယာယီပိတ်ထားသည်</item>
+        <item>စံကိုက်ချိန်ညှိခြင်း အမှားအယွင်း</item>
+        <item>မျက်နှာပြလော့ခ်ဖွင့်ခြင်း မရနိုင်ပါ။ ဖုန်းအလွန်ပူနေသည်။</item>
+        <item>မျက်နှာပြလော့ခ်ဖွင့်ခြင်းကို ထပ်မံ စနစ်ထည့်သွင်းရန် လိုအပ်သည်</item>
+        <item>အလင်းချိန်ညှိပြီး ငြိမ်ငြိမ်ကိုင်ထားပါ</item>
+    </string-array>
+</resources>

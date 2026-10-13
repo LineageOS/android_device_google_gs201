@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">ಫೇಸ್ ಅನ್‌ಲಾಕ್</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">ನಿಮ್ಮ ಮುಖವನ್ನು ಮರುನೋಂದಾಯಿಸಿ</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">ನೀವು ಮುಖವನ್ನು ಮರುನೋಂದಣಿ ಮಾಡುವವರೆಗೆ ಫೇಸ್ ಅನ್‌ಲಾಕ್ ಕಾರ್ಯನಿರ್ವಹಿಸದಿರಬಹುದು</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>ಪ್ರಮಾಣಪತ್ರದ ಅವಧಿ ಮುಗಿದಿದೆ</item>
+        <item>ಸೆನ್ಸರ್ ಅನ್ನು ತಾತ್ಕಾಲಿಕವಾಗಿ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</item>
+        <item>ಕ್ಯಾಲಿಬರೇಶನ್ ದೋಷ ಎದುರಾಗಿದೆ</item>
+        <item>ಫೇಸ್ ಅನ್‌ಲಾಕ್ ಲಭ್ಯವಿಲ್ಲ. ಫೋನ್ ತುಂಬಾ ಬಿಸಿಯಾಗಿದೆ.</item>
+        <item>ಫೇಸ್ ಅನ್‌ಲಾಕ್ ಅನ್ನು ಪುನಃ ಸೆಟಪ್ ಮಾಡಬೇಕಾಗಿದೆ</item>
+        <item>ಲೈಟಿಂಗ್ ಅಡ್ಜಸ್ಟ್ ಮಾಡಿ ಮತ್ತು ಸ್ಥಿರವಾಗಿ ಹಿಡಿದುಕೊಳ್ಳಿ</item>
+    </string-array>
+</resources>

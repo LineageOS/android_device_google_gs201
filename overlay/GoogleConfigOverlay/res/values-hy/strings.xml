@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Դեմքով ապակողպում</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Նորից սկանավորեք ձեր դեմքը</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Դեմքով ապակողպումը կարող է չաշխատել, մինչև որ նորից չսկանավորեք ձեր դեմքը</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Հավաստագրի ժամկետը լրացել է</item>
+        <item>Սենսորը ժամանակավորապես անջատված է</item>
+        <item>Չափաբերման սխալ</item>
+        <item>Դեմքով ապակողպումը հասանելի չէ։ Հեռախոսը գերտաքացել է։</item>
+        <item>Դեմքով ապակողպումն անհրաժեշտ է նորից կարգավորել</item>
+        <item>Կարգավորեք լուսավորությունը և անշարժ պահեք սարքը</item>
+    </string-array>
+</resources>

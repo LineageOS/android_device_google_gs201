@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Text shown on a toggle which disables/enables face unlock, depending if the gaze supported. [CHAR LIMIT=30] -->
+    <string name="security_settings_face_settings_gaze">需要注视屏幕</string>
+
+    <!-- Text shown on the details of a toggle which disables/enables face unlock, depending if the gaze supported. [CHAR LIMIT=70] -->
+    <string name="security_settings_face_settings_gaze_details">必须注视手机才能解锁。为获得最佳效果，请摘下太阳镜。</string>
+</resources>

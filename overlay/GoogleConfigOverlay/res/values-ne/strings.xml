@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">फेस अनलक</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">कृपया आफ्नो अनुहार पुनः दर्ता गर्नुहोस्</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">तपाईंले पुनः दर्ता नगरेसम्म फेस अनलकले काम नगर्न सक्छ</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>प्रमाणपत्रको म्याद सकियो</item>
+        <item>केही समयका लागि सेन्सर अफ गरिएको छ</item>
+        <item>क्यालिब्रेसनसम्बन्धी त्रुटि</item>
+        <item>फेस अनलक उपलब्ध छैन। फोन निकै तातो छ।</item>
+        <item>फेस अनलक फेरि सेटअप गर्नु पर्ने हुन्छ</item>
+        <item>लाइटिङ मिलाउनुहोस् र नहल्लिकन बस्नुहोस्</item>
+    </string-array>
+</resources>

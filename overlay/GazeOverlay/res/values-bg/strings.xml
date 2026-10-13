@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Text shown on a toggle which disables/enables face unlock, depending if the gaze supported. [CHAR LIMIT=30] -->
+    <string name="security_settings_face_settings_gaze">Изискване за поглед към екрана</string>
+
+    <!-- Text shown on the details of a toggle which disables/enables face unlock, depending if the gaze supported. [CHAR LIMIT=70] -->
+    <string name="security_settings_face_settings_gaze_details">За да отключите, трябва да гледате към телефона си. За най-добри резултати свалете слънчевите си очила.</string>
+</resources>
