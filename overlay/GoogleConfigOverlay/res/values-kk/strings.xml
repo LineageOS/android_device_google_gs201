@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Бет тану</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Бетіңізді қайта тіркеңіз.</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Сіз қайта тіркелмейінше, Face Unlock істемеуі мүмкін.</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Сертификат мерзімі аяқталған.</item>
+        <item>Датчик уақытша өшірулі.</item>
+        <item>Калибрлеу қатесі</item>
+        <item>Бет тану функциясы қолжетімсіз. Телефон қатты қызып кеткен.</item>
+        <item>Face Unlock функциясының параметрлерін қайта реттеу қажет.</item>
+        <item>Жарықты реттеп, қозғалтпай ұстаңыз.</item>
+    </string-array>
+</resources>

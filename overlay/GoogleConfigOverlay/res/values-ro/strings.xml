@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Deblocare facială</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Reînregistrează-ți chipul</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Este posibil ca deblocarea facială să nu funcționeze până când nu te înregistrezi din nou</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Certificatul a expirat</item>
+        <item>Senzor dezactivat temporar</item>
+        <item>Eroare de calibrare</item>
+        <item>Deblocarea facială nu este disponibilă. Telefonul este prea fierbinte.</item>
+        <item>Este necesară reconfigurarea deblocării faciale</item>
+        <item>Ajustează luminozitatea și ține dispozitivul nemișcat</item>
+    </string-array>
+</resources>

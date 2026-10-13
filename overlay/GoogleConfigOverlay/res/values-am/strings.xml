@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">በመልክ መክፈት</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">እባክዎ መልክዎን እንደገና ያስመዝግቡት</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">እንደገና እስከሚመዘገቡ ድረስ በመልክ መክፈት ላይሠራ ይችላል</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>የእውቅና ማረጋገጫው ጊዜው አልፎበታል</item>
+        <item>ዳሳሽ ለጊዜው ተሰናክሏል</item>
+        <item>የማስተካከያ ስሕተት</item>
+        <item>በመልክ መክፈት አይገኝም። ስልኩ በጣም ግሏል።</item>
+        <item>በመልክ መክፈት እንደገና መዋቀር ያስፈልገዋል</item>
+        <item>ብርሃንን ያስተካክሉ እና በተረጋጋ ሁኔታ ይያዙ</item>
+    </string-array>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">فتح الجهاز ببصمة الوجه</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">يُرجى إعادة تسجيل وجهك.</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">قد لا تعمل ميزة \"فتح الجهاز ببصمة الوجه\" إلى أن تتم إعادة تسجيل وجهك</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>انتهت صلاحية الشهادة</item>
+        <item>تم إيقاف أداة الاستشعار مؤقتًا</item>
+        <item>خطأ في المعايرة</item>
+        <item>ميزة \"فتح الجهاز ببصمة الوجه\" غير متاحة لأن درجة حرارة الهاتف مرتفعة جدًا.</item>
+        <item>يجب إعداد ميزة \"فتح الجهاز ببصمة الوجه\" مجددًا</item>
+        <item>يُرجى ضبط الإضاءة والحفاظ على ثبات الجهاز</item>
+    </string-array>
+</resources>

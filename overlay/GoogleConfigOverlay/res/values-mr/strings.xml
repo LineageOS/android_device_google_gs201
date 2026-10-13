@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">फेस अनलॉक</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">कृपया तुमच्या चेहऱ्याची पुन्हा नोंदणी करा</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">तुम्ही पुन्हा नोंदणी करेपर्यंत फेस अनलॉक कदाचित काम करणार नाही</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>प्रमाणपत्राची मुदत संपली</item>
+        <item>सेन्सर तात्पुरते बंद केलेले आहेत</item>
+        <item>कॅलिबरेशन एरर</item>
+        <item>फेस अनलॉक उपलब्ध नाही. फोन खूपच गरम झाला आहे.</item>
+        <item>फेस अनलॉक पुन्हा सेट करणे आवश्यक आहे</item>
+        <item>प्रकाशयोजना ॲडजस्ट करा आणि स्थिर धरा</item>
+    </string-array>
+</resources>

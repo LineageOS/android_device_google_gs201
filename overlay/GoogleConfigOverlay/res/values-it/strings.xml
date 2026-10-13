@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Sblocco con il Volto</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Ripeti l\'acquisizione del volto</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Sblocco con il Volto potrebbe non funzionare finché non registri di nuovo il volto</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Certificato scaduto</item>
+        <item>Sensore temporaneamente disattivato</item>
+        <item>Errore di calibrazione</item>
+        <item>Sblocco con il Volto non disponibile. Il telefono è troppo caldo.</item>
+        <item>È necessario riconfigurare Sblocco con il Volto</item>
+        <item>Regola l\'illuminazione e non ti muovere</item>
+    </string-array>
+</resources>
