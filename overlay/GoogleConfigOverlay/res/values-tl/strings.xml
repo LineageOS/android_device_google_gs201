@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Pag-unlock gamit ang mukha</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Paki-enroll ulit ang iyong mukha</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Posibleng hindi gumana ang face unlock hanggang sa mag-enroll ka ulit</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Nag-expire na ang certificate</item>
+        <item>Pansamantalang na-disable ang sensor</item>
+        <item>Error sa pag-calibrate</item>
+        <item>Hindi available ang face unlock. Masyadong mainit ang telepono.</item>
+        <item>Kailangang i-set up ulit ang face unlock</item>
+        <item>I-adjust ang liwanag at huwag gumalaw</item>
+    </string-array>
+</resources>

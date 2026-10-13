@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Otključavanje licem</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Ponovo registrujte lice</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Otključavanje licem možda neće funkcionisati dok se ne registrujete ponovo</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Sertifikat je istekao</item>
+        <item>Senzor je privremeno onemogućen</item>
+        <item>Greška pri kalibrisanju</item>
+        <item>Otključavanje licem nije dostupno. Telefon je previše zagrejan.</item>
+        <item>Treba ponovo da podesite otključavanje licem</item>
+        <item>Prilagodite osvetljenje i budite mirni</item>
+    </string-array>
+</resources>

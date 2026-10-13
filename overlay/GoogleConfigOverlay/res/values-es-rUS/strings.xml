@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Desbloqueo facial</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Vuelve a registrar tu rostro</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Es posible que el desbloqueo facial no funcione hasta que vuelvas a registrar tu rostro</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>El certificado está vencido</item>
+        <item>Se inhabilitó temporalmente el sensor</item>
+        <item>Error de calibración</item>
+        <item>El Desbloqueo facial no está disponible. Se sobrecalentó el teléfono.</item>
+        <item>Debes volver a configurar el desbloqueo facial</item>
+        <item>Ajusta la luz y sostén el dispositivo con firmeza</item>
+    </string-array>
+</resources>

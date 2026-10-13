@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Déverrouillage par reconnaissance faciale</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Veuillez réenregistrer votre visage</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Il se peut que le déverrouillage par reconnaissance faciale ne fonctionne pas tant que vous n\'aurez pas réenregistré votre visage</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Certificat expiré</item>
+        <item>Capteur temporairement désactivé</item>
+        <item>Erreur de calibrage</item>
+        <item>Déverrouillage par reconnaissance faciale indisponible. Le téléphone est trop chaud.</item>
+        <item>Vous devez reconfigurer le déverrouillage par reconnaissance faciale</item>
+        <item>Réglez la luminosité et ne bougez plus</item>
+    </string-array>
+</resources>

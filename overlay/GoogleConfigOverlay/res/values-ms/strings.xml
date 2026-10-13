@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Buka kunci wajah</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Sila daftarkan semula wajah anda</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Buka kunci wajah mungkin tidak berfungsi sehingga anda mendaftar semula</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Sijil telah tamat tempoh</item>
+        <item>Penderia dilumpuhkan sementara</item>
+        <item>Ralat penentukuran</item>
+        <item>Tiada buka kunci wajah. Telefon terlalu panas.</item>
+        <item>Buka kunci wajah perlu disediakan sekali lagi</item>
+        <item>Laraskan pencahayaan dan jangan bergerak</item>
+    </string-array>
+</resources>

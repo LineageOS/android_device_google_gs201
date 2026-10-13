@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Ξεκλείδωμα με το πρόσωπο</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Εγγράψτε ξανά το πρόσωπό σας.</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Το Ξεκλείδωμα με το πρόσωπο ενδέχεται να μην λειτουργεί μέχρι να εγγραφείτε ξανά</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Το πιστοποιητικό έληξε</item>
+        <item>Ο αισθητήρας απενεργοποιήθηκε προσωρινά</item>
+        <item>Σφάλμα βαθμονόμησης</item>
+        <item>Ξεκλείδωμα με πρόσωπο μη διαθέσιμο. Υψηλή θερμοκρασία τηλεφώνου.</item>
+        <item>Το Ξεκλείδωμα με το πρόσωπο πρέπει να ρυθμιστεί ξανά</item>
+        <item>Ρυθμίστε φωτισμό και κρατήστε σταθερά τη συσκευή</item>
+    </string-array>
+</resources>

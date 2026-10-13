@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Odemknutí obličejem</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Zaznamenejte obličej znovu</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Dokud obličej nezaznamenáte znovu, odemknutí obličejem nemusí fungovat</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Platnost certifikátu vypršela</item>
+        <item>Senzor je dočasně deaktivován</item>
+        <item>Chyba kalibrace</item>
+        <item>Odemknutí obličejem není k dispozici. Telefon je příliš zahřátý.</item>
+        <item>Odemknutí obličejem je třeba nastavit znovu</item>
+        <item>Upravte osvětlení a nehýbejte se</item>
+    </string-array>
+</resources>

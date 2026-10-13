@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">ការដោះ​សោ​ដោយស្កេន​មុខ</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">សូមស្កេន​បញ្ចូល​មុខរបស់អ្នក​ម្ដងទៀត</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">ការដោះ​សោ​ដោយស្កេន​មុខអាច​មិនដំណើរការទេ រហូតទាល់តែអ្នក​ស្កេន​បញ្ចូល​ម្ដងទៀត</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>វិញ្ញាបនបត្រ​បានផុត​កំណត់</item>
+        <item>បានបិទ​សេនស័រជា​បណ្ដោះអាសន្ន</item>
+        <item>មានបញ្ហា​ក្នុងការកែតម្រូវ</item>
+        <item>មិនអាចប្រើការដោះ​សោ​ដោយស្កេន​មុខបានទេ។ ទូរសព្ទ​ក្ដៅ​ពេក។</item>
+        <item>ត្រូវរៀបចំការដោះ​សោ​ដោយស្កេន​មុខម្ដងទៀត</item>
+        <item>កែតម្រូវពន្លឺ និងកាន់ឱ្យនឹង</item>
+    </string-array>
+</resources>

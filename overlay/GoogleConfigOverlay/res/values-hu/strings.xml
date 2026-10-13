@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Arcalapú feloldás</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Regisztrálja újra az arcát</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Lehetséges, hogy az Arcalapú feloldás nem működik, amíg nem regisztrálja újra az arcát</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>A tanúsítvány lejárt</item>
+        <item>Az érzékelő átmenetileg le van tiltva</item>
+        <item>Kalibrációs hiba</item>
+        <item>Az Arcalapú feloldás nem áll rendelkezésre. A telefon túlmelegedett.</item>
+        <item>Az arcalapú feloldást újra be kell állítani</item>
+        <item>Állítsa be a megvilágítást, és tartsa stabilan</item>
+    </string-array>
+</resources>

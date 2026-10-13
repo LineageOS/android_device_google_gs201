@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Yüz Tanıma Kilidi</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Lütfen yüzünüzü yeniden kaydedin</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Yüz Tanıma Kilidi yüzünüzü yeniden kaydedene kadar çalışmayabilir</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Sertifikanın süresi doldu</item>
+        <item>Sensör geçici olarak devre dışı bırakıldı</item>
+        <item>Kalibrasyon hatası</item>
+        <item>Yüz Tanıma Kilidi devre dışı. Telefon çok ısındı.</item>
+        <item>Yüz Tanıma Kilidi\'nin tekrar kurulması gerekiyor</item>
+        <item>Işık ayarını yapın ve cihazı sabit tutun</item>
+    </string-array>
+</resources>

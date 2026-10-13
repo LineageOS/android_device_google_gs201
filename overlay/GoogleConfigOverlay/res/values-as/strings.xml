@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">ফে’চ আনলক</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">অনুগ্ৰহ কৰি আপোনাৰ মুখাৱয়ব পুনৰ পঞ্জীয়ন কৰক</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">আপুনি পুনৰ পঞ্জীয়ন নকৰালৈকে ফে’চ আনলকে কাম নকৰিবও পাৰে</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>প্ৰমাণপত্ৰৰ ম্যাদ উকলিছে</item>
+        <item>ছেন্সৰ সাময়িকভাৱে অক্ষম কৰা হৈছে</item>
+        <item>কেলিব্ৰেশ্বন আসোঁৱাহ</item>
+        <item>ফে’চ আনলকৰ সুবিধা উপলব্ধ নহয়। ফ’নটো বেছি গৰম হৈছে।</item>
+        <item>ফে’চ আনলক পুনৰ ছেট আপ কৰাৰ প্রয়োজন</item>
+        <item>উজ্জ্বলতা মিলাওক আৰু স্থিৰ কৰি ৰাখক</item>
+    </string-array>
+</resources>
