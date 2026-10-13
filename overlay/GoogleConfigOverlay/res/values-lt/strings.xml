@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Atrakinimas pagal veidą</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Užregistruokite veidą iš naujo</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Atrakinimo pagal veidą funkcija gali neveikti, kol užsiregistruosite iš naujo</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Sertifikato galiojimo laikas baigėsi</item>
+        <item>Jutiklis laikinai išjungtas</item>
+        <item>Kalibravimo klaida</item>
+        <item>Atrakinimo pagal veidą funkcija nepasiekiama. Telefonas per daug įkaitęs.</item>
+        <item>Reikia iš naujo nustatyti atrakinimą pagal veidą</item>
+        <item>Koreguokite apšvietimą ir tvirtai laikykite</item>
+    </string-array>
+</resources>

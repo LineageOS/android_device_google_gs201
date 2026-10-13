@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">ফেস আনলক</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">আপনার মুখের ছবি আবার নথিভুক্ত করুন</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">আপনি আবার নথিভুক্ত না করা পর্যন্ত, ফেস আনলক হয়ত কাজ করবে না</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>সার্টিফিকেটের মেয়াদ শেষ হয়ে গেছে</item>
+        <item>সেন্সর অস্থায়ীভাবে বন্ধ আছে</item>
+        <item>ক্যালিব্রেশন সংক্রান্ত সমস্যা</item>
+        <item>ফেস আনলক উপলভ্য নেই। ফোন খুব গরম হয়ে গেছে।</item>
+        <item>ফেস আনলক আবার সেট-আপ করতে হবে</item>
+        <item>আলো অ্যাডজাস্ট করুন এবং স্থিরভাবে ধরে থাকুন</item>
+    </string-array>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">ਫ਼ੇਸ ਅਣਲਾਕ</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਚਿਹਰਾ ਦੁਬਾਰਾ ਦਰਜ ਕਰੋ</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">ਤੁਹਾਡਾ ਫ਼ੋਨ ਮੁੜ-ਦਰਜ ਹੋਣ ਤੱਕ ਸ਼ਾਇਦ ਫ਼ੇਸ ਅਣਲਾਕ ਕੰਮ ਨਾ ਕਰੇ</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>ਪ੍ਰਮਾਣ-ਪੱਤਰ ਦੀ ਮਿਆਦ ਸਮਾਪਤ ਹੋ ਗਈ</item>
+        <item>ਸੈਂਸਰ ਅਸਥਾਈ ਤੌਰ \'ਤੇ ਬੰਦ ਕੀਤਾ ਗਿਆ</item>
+        <item>ਕੈਲੀਬ੍ਰੇਸ਼ਨ ਗੜਬੜ</item>
+        <item>ਫ਼ੇਸ ਅਣਲਾਕ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਫ਼ੋਨ ਬਹੁਤ ਗਰਮ ਹੈ।</item>
+        <item>ਫ਼ੇਸ ਅਣਲਾਕ ਨੂੰ ਦੁਬਾਰਾ ਸੈੱਟਅੱਪ ਕੀਤੇ ਜਾਣ ਦੀ ਲੋੜ ਹੈ</item>
+        <item>ਲਾਈਟਿੰਗ ਵਿਵਸਥਿਤ ਕਰੋ ਅਤੇ ਸਥਿਰ ਰੱਖੋ</item>
+    </string-array>
+</resources>
