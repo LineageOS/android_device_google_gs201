@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Mở khoá bằng khuôn mặt</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Vui lòng đăng ký lại khuôn mặt của bạn</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Bạn không dùng được tính năng mở khoá bằng khuôn mặt cho đến khi đăng ký lại</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Chứng chỉ đã hết hạn</item>
+        <item>Đã tắt tạm thời cảm biến</item>
+        <item>Lỗi hiệu chỉnh</item>
+        <item>Không dùng được tính năng mở khoá bằng khuôn mặt. Điện thoại quá nóng.</item>
+        <item>Bạn cần phải thiết lập lại tính năng mở khoá bằng khuôn mặt</item>
+        <item>Điều chỉnh ánh sáng và giữ chắc</item>
+    </string-array>
+</resources>

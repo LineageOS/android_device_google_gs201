@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">قفل‌گشایی با چهره</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">لطفاً چهره‌تان را مجدداً ثبت کنید</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">ممکن است «قفل‌گشایی با چهره» تا ثبت مجدد کار نکند</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>گواهی منقضی شد</item>
+        <item>حسگر به‌طور موقت غیرفعال شد</item>
+        <item>خطای هم‌سو کردن</item>
+        <item>«قفل‌گشایی با چهره» دردسترس نیست. تلفن خیلی داغ است.</item>
+        <item>«قفل‌گشایی با چهره» باید دوباره راه‌اندازی شود</item>
+        <item>نورپردازی را تنظیم کنید و ثابت نگه دارید</item>
+    </string-array>
+</resources>

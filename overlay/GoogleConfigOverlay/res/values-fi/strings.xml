@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Kasvojentunnistusavaus</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Rekisteröi kasvot uudelleen</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Kasvojentunnistusavaus ei välttämättä toimi, ennen kuin rekisteröit kasvot uudelleen</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Varmenne vanhentunut</item>
+        <item>Tunnistin väliaikaisesti pois käytöstä</item>
+        <item>Kalibrointivirhe</item>
+        <item>Kasvojentunnistusavaus ei käytettävissä. Puhelin on liian kuuma.</item>
+        <item>Kasvojentunnistusavaus on otettava käyttöön uudelleen</item>
+        <item>Säädä valaistusta ja pidä laite paikallaan</item>
+    </string-array>
+</resources>

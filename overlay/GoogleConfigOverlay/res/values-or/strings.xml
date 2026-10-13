@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">ଫେସ ଅନଲକ</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">ଦୟାକରି ଆପଣଙ୍କର ମୁହଁର ପୁନଃ-ପଞ୍ଜିକରଣ କରନ୍ତୁ</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">ଆପଣ ପୁଣି-ପଞ୍ଜିକରଣ ନ କରିବା ପର୍ଯ୍ୟନ୍ତ ଫେସ ଅନଲକ କାମ କରିନପାରେ</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>ସାର୍ଟିଫିକେଟର ମିଆଦ ଶେଷ ହୋଇଯାଇଛି</item>
+        <item>ସେନ୍ସରକୁ ଅସ୍ଥାୟୀ ଭାବେ ଅକ୍ଷମ କରାଯାଇଛି</item>
+        <item>କାଲିବ୍ରେସନ ତ୍ରୁଟି</item>
+        <item>ଫେସ ଅନଲକ ଉପଲବ୍ଧ ନାହିଁ। ଫୋନଟି ବହୁତ ଗରମ ଅଛି।</item>
+        <item>ଫେସ ଅନଲକ ପୁଣି ସେଟ ଅପ କରିବାର ଆବଶ୍ୟକତା ଅଛି</item>
+        <item>ଲାଇଟିଂକୁ ଆଡଜଷ୍ଟ କରି ସ୍ଥିର ଭାବେ ଧରି ରଖନ୍ତୁ</item>
+    </string-array>
+</resources>

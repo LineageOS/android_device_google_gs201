@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Aurpegi bidez desblokeatzea</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Erregistratu berriro aurpegia</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Baliteke aurpegi bidez desblokeatzeko eginbideak ez funtzionatzea berriro erregistratu arte</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Ziurtagiria iraungita dago</item>
+        <item>Sentsorea aldi baterako desgaitu da</item>
+        <item>Kalibrazio-errorea</item>
+        <item>Aurpegi bidez desblokeatzea ez dago erabilgarri. Telefonoa gehiegi berotu da.</item>
+        <item>Aurpegi bidez desblokeatzea berriro konfiguratu behar da</item>
+        <item>Doitu argiztapena eta ez mugitu</item>
+    </string-array>
+</resources>

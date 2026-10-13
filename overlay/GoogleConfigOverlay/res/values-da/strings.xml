@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Ansigtsoplåsning</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Registrer dit ansigt igen</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Ansigtsoplåsning virker muligvis ikke, før du registrerer dit ansigt igen</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Certifikatet er udløbet</item>
+        <item>Sensoren er midlertidigt deaktiveret</item>
+        <item>Kalibreringsfejl</item>
+        <item>Ansigtsoplåsning er utilgængelig. Telefonen er for varm.</item>
+        <item>Ansigtsoplåsning skal konfigureres igen</item>
+        <item>Juster belysningen, og hold enheden stille</item>
+    </string-array>
+</resources>

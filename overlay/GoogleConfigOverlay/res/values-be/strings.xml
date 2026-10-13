@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Распазнаванне твару</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Паўтарыце рэгістрацыю твару</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Распазнаванне твару можа не працаваць, пакуль вы не паўторыце рэгістрацыю</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Час дзеяння сертыфіката скончыўся</item>
+        <item>Датчык часова адключаны</item>
+        <item>Памылка каліброўкі</item>
+        <item>Распазнаванне твару недаступнае. Тэлефон перагрэўся.</item>
+        <item>Функцыю распазнавання твару неабходна паўторна наладзіць</item>
+        <item>Адрэгулюйце асвятленне і трымайце прыладу нерухома</item>
+    </string-array>
+</resources>
