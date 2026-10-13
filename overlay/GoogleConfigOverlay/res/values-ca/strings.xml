@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Desbloqueig facial</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Torna a registrar la teva cara</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">És possible que el desbloqueig facial no funcioni fins que no tornis a registrar la teva cara</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>El certificat ha caducat</item>
+        <item>El sensor està desactivat temporalment</item>
+        <item>Error de calibratge</item>
+        <item>El desbloqueig facial no està disponible perquè el telèfon està massa calent.</item>
+        <item>El desbloqueig facial s\'ha de tornar a configurar</item>
+        <item>Ajusta la il·luminació i no et moguis</item>
+    </string-array>
+</resources>

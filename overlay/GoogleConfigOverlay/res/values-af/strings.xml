@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Gesigslot</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Skryf jou gesig asseblief weer in</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Gesigslot sal dalk nie werk voordat jy weer inskryf nie</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Sertifikaat het verval</item>
+        <item>Sensor is tydelik gedeaktiveer</item>
+        <item>Kalibrasiefout</item>
+        <item>Gesigslot onbeskikbaar. Foon is te warm.</item>
+        <item>Gesigslot moet weer opgestel word</item>
+        <item>Verstel beligting en hou stil</item>
+    </string-array>
+</resources>

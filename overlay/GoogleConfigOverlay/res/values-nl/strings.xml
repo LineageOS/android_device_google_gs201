@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Ontgrendelen via gezichtsherkenning</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Registreer je gezicht opnieuw</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Ontgrendelen via gezichtsherkenning werkt misschien pas nadat je je opnieuw hebt geregistreerd</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Certificaat verlopen</item>
+        <item>Sensor tijdelijk uitgezet</item>
+        <item>Kalibratiefout</item>
+        <item>Ontgrendelen via gezichtsherkenning niet beschikbaar. De telefoon is te heet.</item>
+        <item>Ontgrendelen via gezichtsherkenning moet opnieuw worden ingesteld</item>
+        <item>Pas de belichting aan en houd je apparaat stil</item>
+    </string-array>
+</resources>

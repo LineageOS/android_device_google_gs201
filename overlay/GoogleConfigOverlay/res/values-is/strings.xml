@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Notification name shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_name">Andlitskenni</string>
+
+    <!-- Notification title shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_title">Skráðu andlit þitt aftur</string>
+
+    <!-- Notification content shown when the system requires the user to re-enroll their face. [CHAR LIMIT=NONE] -->
+    <string name="face_recalibrate_notification_content">Ekki er víst að andlitskenni virki fyrr en þú skráir andlitið þitt aftur</string>
+
+    <!-- Array containing custom messages shown during face acquisition from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_acquired_vendor"/>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="face_error_vendor">
+        <item>Vottorð útrunnið</item>
+        <item>Tímabundið slökkt á skynjara</item>
+        <item>Villa við kvörðun</item>
+        <item>Andlitskenni ekki í boði. Síminn er of heitur.</item>
+        <item>Setja þarf upp andlitskenni aftur</item>
+        <item>Lagaðu lýsinguna og haltu myndavélinni kyrri</item>
+    </string-array>
+</resources>
