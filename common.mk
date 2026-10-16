@@ -400,10 +400,6 @@ PRODUCT_PACKAGES += \
     SettingsOverlayBatteryGs201 \
     SimpleDeviceConfigOverlayGs201
 
-# Parts
-PRODUCT_PACKAGES += \
-    GoogleParts
-
 # Properties
 TARGET_PRODUCT_PROP += device/google/gs201/product.prop
 ifneq ($(TARGET_IS_TABLET),true)
