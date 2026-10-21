@@ -1,0 +1,16 @@
+app_domain(google_camera_app)
+
+hal_client_domain(google_camera_app, hal_power)
+
+net_domain(google_camera_app)
+
+typeattribute google_camera_app coredomain;
+
+allow google_camera_app app_api_service:service_manager find;
+allow google_camera_app audioserver_service:service_manager find;
+allow google_camera_app cameraserver_service:service_manager find;
+allow google_camera_app mediaextractor_service:service_manager find;
+allow google_camera_app mediametrics_service:service_manager find;
+allow google_camera_app mediaserver_service:service_manager find;
+
+dontaudit google_camera_app vendor_default_prop:file { getattr map open };

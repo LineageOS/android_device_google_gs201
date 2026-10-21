@@ -8,6 +8,7 @@ add_service(edgetpu_tachyon_server, edgetpu_tachyon_service)
 
 binder_call(edgetpu_tachyon_server, dcservice_app)
 binder_call(edgetpu_tachyon_server, edgetpu_app_server)
+binder_call(edgetpu_tachyon_server, google_camera_app)
 binder_call(edgetpu_tachyon_server, hal_audio_default)
 binder_call(edgetpu_tachyon_server, hal_camera_default)
 binder_call(edgetpu_tachyon_server, isolated_compute_app)

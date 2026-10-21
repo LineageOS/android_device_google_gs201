@@ -1,0 +1,6 @@
+get_prop(google_camera_app, vendor_gxp_prop)
+
+allow google_camera_app edgetpu_app_service:service_manager find;
+allow google_camera_app edgetpu_device:chr_file { getattr ioctl map read write };
+allow google_camera_app gxp_device:chr_file rw_file_perms;
+allow google_camera_app vendor_fw_file:dir search;
